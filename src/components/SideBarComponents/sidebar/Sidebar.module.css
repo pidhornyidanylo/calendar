@@ -44,20 +44,58 @@
 
 @media(max-width: 992px) {
     .sidebar {
-        padding: 12px 5px;
-        height: 120px;
+        padding: 0;
+        padding-top: 20px;
+        height: 380px;
         width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        gap: 20px;
     }
 
     .sidebar.expanded {
         width: 100%;
-        height: 470px;
+        height: 400px;
         opacity: 1;
     }
 
     .createBtn {
+        margin-top: 36px;
+        width: 50%;
+        height: 74px;
+    }
+}
+
+@media(max-width: 768px) {
+    .sidebar {
+        padding: 0;
+        height: 120px;
         width: 100%;
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    .createBtn {
+        margin-top: 36px;
+        width: 100%;
+        height: 74px;
+    }
+}
+
+@media(max-width: 576px) {
+    .sidebar {
+        padding: 0;
+        height: 100px;
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .createBtn {
+        margin-top: 20px;
+        width: 100%;
+        height: 50px;
+        font-size: 1em;
     }
 }

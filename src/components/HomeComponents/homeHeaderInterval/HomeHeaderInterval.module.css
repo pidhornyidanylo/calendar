@@ -20,3 +20,52 @@
     background-color: transparent;
     cursor: pointer;
 }
+
+@media(max-width: 768px) {
+    .timeInterval {
+        text-align: start;
+        font-weight: 400;
+        font-size: 1.4em;
+        margin-right: 20px;
+        min-width: 280px;
+    }
+    
+    .arrows {
+        display: flex;
+        gap: 20px;
+        padding: 10px 0;
+        align-items: center;
+        margin-right: 10px;
+    }
+    
+    .arrows>button {
+        margin-top: 3px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}
+
+
+@media(max-width: 768px) {
+    .timeInterval {
+        text-align: start;
+        font-weight: 400;
+        font-size: 1.15em;
+        margin-right: 0px;
+        min-width: 170px;
+    }
+    
+    .arrows {
+        display: flex;
+        gap: 20px;
+        padding: 10px 0;
+        align-items: center;
+        margin-right: 10px;
+        transform: scale(.7);
+        -webkit-transform: scale(.7);
+        -moz-transform: scale(.7);
+        -ms-transform: scale(.7);
+        -o-transform: scale(.7);
+}
+}

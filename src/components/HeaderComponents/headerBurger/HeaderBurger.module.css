@@ -17,3 +17,9 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
+
+@media (max-width: 992px) {
+    .burger {
+        display: none;
+    }
+}

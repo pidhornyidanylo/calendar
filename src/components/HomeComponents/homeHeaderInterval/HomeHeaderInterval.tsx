@@ -8,7 +8,6 @@ import { months } from "../../SideBarComponents/calendar/Calendar";
 import styles from "./HomeHeaderInterval.module.css";
 
 const HomeHeaderInterval = () => {
-  const currentDate = new Date();
 
   const currentMonth = useStore((state) => state.currentMonth);
   const setCurrentMonth = useStore((state) => state.setCurrentMonth);

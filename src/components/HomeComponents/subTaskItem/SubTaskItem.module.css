@@ -49,7 +49,81 @@
 
 .addInfo.visible {
     margin-top: 20px;
-    padding: 0px 35px;
+    padding: 0px;
     display: block;
     color: rgba(0, 0, 0, .6);
+}
+
+@media(max-width: 576px) {
+    .subTask {
+        background-color: rgba(255, 136, 250, .2);
+        padding: 10px;
+        border-radius: 1px;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 17px;
+        -ms-border-radius: 17px;
+        -o-border-radius: 17px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .subTaskMain {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .subTaskTime {
+        position: absolute;
+        font-size: .8em;
+        top: -19px;
+        display: flex;
+        justify-content: center;
+        border-radius: 5px;
+        background-color: rgba(172, 207, 255, 0.6);
+        color: rgba(0, 0, 0, 1);
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+}
+
+    .subTaskTimeSquare {
+        width: 15px;
+        height: 15px;
+        border-radius: 6px;
+        background-color: #FF88FA;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+    }
+
+    .subTaskInner {
+        font-size: .9em;
+        flex: 1;
+    }
+
+    .addInfo.visible {
+        font-size: .9em;
+    }
+}
+
+@media(max-width: 320px) {
+    .subTaskTime {
+        position: absolute;
+        font-size: .8em;
+        top: -19px;
+        right: 0px;
+        display: flex;
+        justify-content: center;
+        border-radius: 5px;
+        background-color: rgba(172, 207, 255, 0.6);
+        color: rgba(0, 0, 0, 1);
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+}
 }

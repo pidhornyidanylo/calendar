@@ -10,7 +10,12 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    padding-right: 80px;
+    padding-right: 92px;
+}
+
+.headerLogo>a{
+    text-decoration: none;
+    color: inherit;
 }
 
 .headerTitle {
@@ -69,7 +74,7 @@
 
 @media(max-width: 992px) {
     .headerLogo {
-        padding-right: 65px;
+        padding-right: 40px;
     }
 
     .headerTitle {
@@ -79,22 +84,86 @@
 
 
 @media(max-width: 768px) {
+    .headerLogo {
+        padding-right: 20px;
+    }
+    .headerMenu {
+        gap: 5px;
+    }
+}
+
+@media(max-width: 576px) {
+    .headerLogo {
+        padding-right: 0px;
+    }
+    .headerMenu {
+        gap: 5px;
+    }
+
     .headerSearch {
-        height: 50px;
-        border-radius: 70px;
-        -webkit-border-radius: 70px;
-        -moz-border-radius: 70px;
-        -ms-border-radius: 70px;
-        -o-border-radius: 70px;
-        padding: 12px;
-        gap: 10px;
+        flex: 1;
+        width: 791px;
+        height: 64px;
+        border-radius: 80px;
+        -webkit-border-radius: 80px;
+        -moz-border-radius: 80px;
+        -ms-border-radius: 80px;
+        -o-border-radius: 80px;
+        background-color: rgba(0, 0, 0, .06);
+        border: none;
+        padding: 5px 15px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .headerSearch input {
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        font-size: 18px;
     }
 
     .headerSearch input::placeholder {
+        color: black;
         font-size: .9em;
     }
+}
 
-    .headerMenu {
+@media(max-width:425px) {
+    .header {
+        width: 100%;
+        padding: 12px 0;
+        display: flex;
+        align-items: center;
         gap: 5px;
+    }
+    .headerSearch {
+        position: relative;
+        flex: 1;
+        width: 120px;
+        height: 50px;
+        border-radius: 60px;
+        -webkit-border-radius: 60px;
+        -moz-border-radius: 60px;
+        -ms-border-radius: 60px;
+        -o-border-radius: 60px;
+        background-color: rgba(0, 0, 0, .06);
+        border: none;
+        padding: 5px 12px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+}
+    
+    .headerSearch input {
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        font-size: 18px;
+    }
+    .headerSearch input::placeholder {
+        color: black;
+        font-size: .8em;
     }
 }

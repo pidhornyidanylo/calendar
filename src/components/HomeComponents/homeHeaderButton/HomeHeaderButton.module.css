@@ -19,3 +19,26 @@
 .todayBtn:hover {
     background-color: rgba(0, 0, 0, .03);
 }
+
+@media(max-width: 768px) {
+    .todayBtn {
+        position: absolute;
+        border-radius: 15px;
+        top: -45px;
+        font-size: 1em;
+        border-color: rgba(0, 0, 0, .2);
+        padding: 9px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        background-color: rgba(172, 207, 255, 0.5);
+        margin-right: 20px;
+        cursor: pointer;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+}
+    
+}

@@ -55,3 +55,94 @@
     flex-direction: column;
     gap: 12px;
 }
+
+
+@media(max-width: 576px) {
+    .taskItem {
+        position: relative;
+        background-color: rgba(172, 207, 255, 0.15);
+        padding: 12px;
+        margin-bottom: 12px;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+}
+
+    .taskDate {
+        width: 130px;
+        padding: 6px 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: .8em;
+    }
+
+    .taskDay {
+        font-weight: 500;
+        font-size: 1.6em;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .taskMonth {
+        flex: 1;
+        font-weight: 500;
+        font-size: 1em;
+        text-transform: uppercase;
+    }
+
+    .taskYear {
+        position: absolute;
+        top: -10px;
+        background-color: rgba(255, 136, 250, .45);
+        padding: 4px 6px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    .taskBody {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+@media(max-width: 320px) {
+    .taskDate {
+        position: absolute;
+        top: -8px;
+        width: 90px;
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        background-color: rgba(151, 151, 151, 0.5);
+        border-radius: 7px;
+        gap: 0px;
+        font-size: .6em;
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        -ms-border-radius: 7px;
+        -o-border-radius: 7px;
+}
+
+    
+    .taskDay {
+        font-weight: 500;
+        font-size: 1.1em;
+        width: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

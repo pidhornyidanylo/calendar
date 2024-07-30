@@ -1,4 +1,4 @@
-.headerMenuBtn {
+.headerMenuLink {
     display: flex;
     justify-content: center;
     align-content: start;
@@ -34,8 +34,57 @@
     z-index: 4;
 }
 
-@media(max-width: 768px) {
+@media(max-width: 992px) {
     .headerMenuBtn {
         padding: 4px;
     }
+}
+
+@media(max-width: 992px) {
+    .headerMenuTablet {
+        display: none;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        align-content: center;
+        justify-items: center;
+        position: absolute;
+        top: 80px;
+        right: 0px;
+        width: 80px;
+        background-color: transparent;
+        background-color: rgba(172, 207, 255, 0.3);
+        backdrop-filter: blur(5px);
+        padding: 5px 20px;
+        z-index: 5;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        transform: translateX(150%);
+        -webkit-transform: translateX(150%);
+        -moz-transform: translateX(150%);
+        -ms-transform: translateX(150%);
+        -o-transform: translateX(150%);
+        transition: all .3s ease;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+}
+
+    .headerMenuTablet.visibleTablet {
+        display: block;
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
+
+    .headerMenuLink>img {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+}
 }
