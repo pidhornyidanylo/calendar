@@ -38,7 +38,8 @@
 }
 
 .headerInfo>span {
-    font-size: 1.2em;
+    font-size: 1.25em;
+    color: var(--main-text);
 }
 
 .headerActions {
@@ -51,7 +52,7 @@
     padding: 7px;
     border: none;
     background-color: inherit;
-    color: black;
+    color: var(--main-text);
     font-weight: 600;
     cursor: pointer;
     display: flex;
@@ -82,6 +83,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.15em;
+    color: var(--main-text);
 }
 
 .calendarDays {
@@ -98,17 +101,18 @@
 .calendarDays div {
     height: 28px;
     width: 34px;
-    border-radius: 80px;
-    background-color: white;
+    color: var(--main-text);
+    background-color: var(--main-white);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
-    -webkit-border-radius: 80px;
-    -moz-border-radius: 80px;
-    -ms-border-radius: 80px;
-    -o-border-radius: 80px;
+    border-radius:14px;
+    -webkit-border-radius:14px;
+    -moz-border-radius:14px;
+    -ms-border-radius:14px;
+    -o-border-radius:14px;
     cursor: pointer;
+    font-size: 1.1em;
 }
 
 .calendarDays div:hover {
@@ -122,7 +126,7 @@
 
 .calendarDays div:hover {
     background-color: rgba(172, 207, 255, .5);
-    color: #fff;
+    color: var(--main-white);
 }
 
 .calendarDays .nextMonthDay {
@@ -135,22 +139,16 @@
 
 @media(max-width: 992px) {
     .calendarContainer {
-        padding-right: 5px;
-        display: flex;
-        flex-direction: column;
-        width: 333px;
-        height: 324px;
         transform: translateX(0);
         -webkit-transform: translateX(0);
         -moz-transform: translateX(0);
         -ms-transform: translateX(0);
         -o-transform: translateX(0);
-}
+    }
 }
 
 @media(max-width: 768px) {
     .calendarContainer {
         display: none;
+    }
 }
-}
-

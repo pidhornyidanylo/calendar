@@ -7,6 +7,7 @@
     -ms-border-radius: 17px;
     -o-border-radius: 17px;
     display: flex;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -18,6 +19,7 @@
 
 .subTaskTime {
     width: 100px;
+    font-size: 1.1em;
     color: rgba(0, 0, 0, .6);
 }
 
@@ -33,7 +35,8 @@
 }
 
 .subTaskInner {
-    font-size: 1em;
+    font-size: 1.2em;
+    color: var(--main-text);
     flex: 1;
 }
 
@@ -45,26 +48,39 @@
 
 .addInfo {
     display: none;
+    margin-top: 20px;
+    padding: 0px;
+    font-size: 1.1em;
+    color: rgba(0, 0, 0, .6);
 }
 
 .addInfo.visible {
-    margin-top: 20px;
-    padding: 0px;
     display: block;
-    color: rgba(0, 0, 0, .6);
+}
+
+@media(max-width: 768px) {
+    .subTaskTime {
+        width: 80px;
+        font-size: .9em;
+    }
+
+    .subTaskInner {
+        font-size: 1.05em;
+    }
+
+    .addInfo {
+        font-size: 1em;
+    }
 }
 
 @media(max-width: 576px) {
     .subTask {
-        background-color: rgba(255, 136, 250, .2);
         padding: 10px;
         border-radius: 1px;
         -webkit-border-radius: 12px;
         -moz-border-radius: 17px;
         -ms-border-radius: 17px;
         -o-border-radius: 17px;
-        display: flex;
-        flex-direction: column;
     }
 
     .subTaskMain {
@@ -76,7 +92,7 @@
 
     .subTaskTime {
         position: absolute;
-        font-size: .8em;
+        font-size: .83em;
         top: -19px;
         display: flex;
         justify-content: center;
@@ -87,13 +103,13 @@
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
-}
+    }
 
     .subTaskTimeSquare {
         width: 15px;
         height: 15px;
         border-radius: 6px;
-        background-color: #FF88FA;
+        background-color: rgb(255, 136, 250);
         -webkit-border-radius: 6px;
         -moz-border-radius: 6px;
         -ms-border-radius: 6px;
@@ -101,12 +117,12 @@
     }
 
     .subTaskInner {
-        font-size: .9em;
+        font-size: 1em;
         flex: 1;
     }
 
-    .addInfo.visible {
-        font-size: .9em;
+    .addInfo {
+        font-size: .94em;
     }
 }
 
@@ -125,5 +141,5 @@
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
-}
+    }
 }

@@ -3,7 +3,6 @@ import { useStore } from "@/store";
 import React from "react";
 import schedule from "../../../events.json";
 import TaskItem from "../taskItem/TaskItem";
-import styles from "./HomeSchedule.module.css";
 
 const HomeSchedule = () => {
   const headerSearchValue = useStore((state) => state.headerSearchValue);
@@ -25,7 +24,7 @@ const HomeSchedule = () => {
   };
 
   return (
-    <div className={styles.scheduleContainer}>
+    <div>
       {getInitFilteredTasks().map((task) => (
         <TaskItem key={task.id} task={task} />
       ))}

@@ -25,7 +25,7 @@
     .timeInterval {
         text-align: start;
         font-weight: 400;
-        font-size: 1.4em;
+        font-size: 1.3em;
         margin-right: 20px;
         min-width: 280px;
     }
@@ -46,26 +46,22 @@
     }
 }
 
-
-@media(max-width: 768px) {
+@media(max-width: 576px) {
     .timeInterval {
-        text-align: start;
-        font-weight: 400;
-        font-size: 1.15em;
-        margin-right: 0px;
-        min-width: 170px;
+        min-width: 200px;
+        font-size: 1.2em;
     }
-    
+
     .arrows {
-        display: flex;
-        gap: 20px;
-        padding: 10px 0;
-        align-items: center;
-        margin-right: 10px;
-        transform: scale(.7);
-        -webkit-transform: scale(.7);
-        -moz-transform: scale(.7);
-        -ms-transform: scale(.7);
-        -o-transform: scale(.7);
+        margin-right: 5px;
+        gap: 30px;
+    }
+
+    .arrows>button {
+        transform: scale(.9);
+        -webkit-transform: scale(.9);
+        -moz-transform: scale(.9);
+        -ms-transform: scale(.9);
+        -o-transform: scale(.9);
 }
 }

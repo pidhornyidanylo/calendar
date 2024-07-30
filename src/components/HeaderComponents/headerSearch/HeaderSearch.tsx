@@ -21,8 +21,7 @@ const HeaderSearch = () => {
             setHeaderSearchValue(searchInputValue);
             if (!searchInputValue.length) {
               setShowAnimate(!showAnimate);
-              // Reset animation state after it ends to allow re-triggering
-              setTimeout(() => setShowAnimate(false), 500); // match the animation duration
+              setTimeout(() => setShowAnimate(false), 500);
             }
           }}
         >

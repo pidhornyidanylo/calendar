@@ -1,5 +1,6 @@
 .header {
     width: 100%;
+    height: 88px;
     padding: 12px 0;
     display: flex;
     align-items: center;
@@ -43,19 +44,29 @@
 
 .headerSearch input {
     background-color: transparent;
+    color: var(--main-text);
     border: none;
     width: 100%;
-    font-size: 18px;
+    font-size: 1.4em;
 }
 
 .headerSearch input::placeholder {
-    color: black;
+    color: var(--main-text);
+    font-size: 1em;
 }
 
 .headerSearch button {
     border: none;
     background-color: transparent;
     cursor: pointer;
+}
+
+.headerSearch button>img {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
 }
 
 .headerSearch input:focus {
@@ -66,10 +77,6 @@
     display: flex;
     align-items: center;
     gap: 12px;
-}
-
-.moreBtn {
-    display: none;
 }
 
 @media(max-width: 992px) {
@@ -86,14 +93,23 @@
 @media(max-width: 768px) {
     .headerLogo {
         padding-right: 20px;
+        gap: 5px;
     }
 
     .headerMenu {
         gap: 5px;
     }
+
+    .headerSearch input {
+        font-size: 1.2em;
+    }
 }
 
 @media(max-width: 576px) {
+    .header {
+        gap: 10px;
+    }
+
     .headerLogo {
         padding-right: 0px;
     }
@@ -103,32 +119,17 @@
     }
 
     .headerSearch {
-        flex: 1;
-        width: 791px;
-        height: 64px;
-        border-radius: 80px;
-        -webkit-border-radius: 80px;
-        -moz-border-radius: 80px;
-        -ms-border-radius: 80px;
-        -o-border-radius: 80px;
-        background-color: rgba(0, 0, 0, .06);
-        border: none;
         padding: 5px 15px;
-        display: flex;
-        gap: 20px;
-        align-items: center;
+        gap: 10px;
     }
 
     .headerSearch input {
-        background-color: transparent;
-        border: none;
-        width: 100%;
-        font-size: 18px;
+        font-size: 1.1em;
     }
 
     .headerSearch input::placeholder {
-        color: black;
-        font-size: .9em;
+        color: var(--main-text);
+        font-size: 1em;
     }
 }
 
@@ -161,13 +162,11 @@
 
     .headerSearch input {
         background-color: transparent;
-        border: none;
         width: 100%;
         font-size: 18px;
     }
 
     .headerSearch input::placeholder {
-        color: black;
         font-size: .8em;
     }
 }
