@@ -1,0 +1,57 @@
+.taskItem {
+    position: relative;
+    background-color: rgba(172, 207, 255, 0.15);
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.taskDate {
+    width: 130px;
+    padding: 6px 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.taskDay {
+    font-weight: 500;
+    font-size: 1.6em;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskMonth {
+    flex: 1;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.taskYear {
+    position: absolute;
+    top: -10px;
+    background-color: rgba(255, 136, 250, .45);
+    padding: 4px 6px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.taskBody {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

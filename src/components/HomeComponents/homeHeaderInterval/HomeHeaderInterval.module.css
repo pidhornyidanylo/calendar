@@ -1,0 +1,22 @@
+.timeInterval {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.7em;
+    margin-right: 20px;
+    min-width: 280px;
+}
+
+.arrows {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.arrows>button {
+    margin-top: 3px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

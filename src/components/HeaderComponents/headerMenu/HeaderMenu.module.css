@@ -1,0 +1,41 @@
+.headerMenuBtn {
+    display: flex;
+    justify-content: center;
+    align-content: start;
+    border: none;
+    padding: 8px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.headerMenuBtn:last-child>img {
+    padding-bottom: 1px;
+}
+
+.moreBtn {
+    display: block;
+    border: none;
+    padding: 8px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.headerMenuTablet {
+    position: absolute;
+    top: 62px;
+    right: 0px;
+    width: 80px;
+    display: grid;
+    background-color: transparent;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    align-content: center;
+    justify-items: center;
+    z-index: 4;
+}
+
+@media(max-width: 768px) {
+    .headerMenuBtn {
+        padding: 4px;
+    }
+}

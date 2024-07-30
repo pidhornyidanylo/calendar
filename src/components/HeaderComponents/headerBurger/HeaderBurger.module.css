@@ -1,0 +1,19 @@
+.burger {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    gap: 3px;
+    cursor: pointer;
+}
+
+
+.burger span {
+    width: 18px;
+    height: 2px;
+    background-color: #000000;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}

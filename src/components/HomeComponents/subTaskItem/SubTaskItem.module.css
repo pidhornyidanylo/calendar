@@ -1,0 +1,55 @@
+.subTask {
+    background-color: rgba(255, 136, 250, .2);
+    padding: 17px;
+    border-radius: 17px;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+    -ms-border-radius: 17px;
+    -o-border-radius: 17px;
+    display: flex;
+    flex-direction: column;
+}
+
+.subTaskMain {
+    display: flex;
+    align-items: end;
+    gap: 16px;
+}
+
+.subTaskTime {
+    width: 100px;
+    color: rgba(0, 0, 0, .6);
+}
+
+.subTaskTimeSquare {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background-color: #FF88FA;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.subTaskInner {
+    font-size: 1em;
+    flex: 1;
+}
+
+.subTaskExpand {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.addInfo {
+    display: none;
+}
+
+.addInfo.visible {
+    margin-top: 20px;
+    padding: 0px 35px;
+    display: block;
+    color: rgba(0, 0, 0, .6);
+}
