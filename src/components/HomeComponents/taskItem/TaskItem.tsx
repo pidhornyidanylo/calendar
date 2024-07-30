@@ -7,8 +7,8 @@ import type { Task } from "./TaskItem.types";
 import { useStore } from "@/store";
 
 const TaskItem = <T extends Task>({ task }: { task: T }): React.JSX.Element => {
-  const currentDate = new Date();
   const headerSearchValue = useStore((state) => state.headerSearchValue);
+  
   const parseDate = (dateString: string): Date => {
     const [day, month, year] = dateString.split("/");
     return new Date(`${year}-${month}-${day}`);
@@ -16,19 +16,17 @@ const TaskItem = <T extends Task>({ task }: { task: T }): React.JSX.Element => {
 
   const shortDayName = (date: Date, locale: string): string =>
     date.toLocaleDateString(locale, { weekday: "short" });
+  
+  const taskDate = parseDate(`${task.date.day}/${task.date.month}/${task.date.year}`);
+  const taskDayName = shortDayName(taskDate, "en-US");
 
   return (
     <div className={styles.taskItem} key={task.id}>
       <div className={styles.taskDate}>
-        <span className={styles.taskDay}>{task.date.day} </span>
+        <span className={styles.taskDay}>{task.date.day}</span>
         <span className={styles.taskMonth}>
           {months[task.date.month - 1].slice(0, 3)},
-          {` ${shortDayName(
-            parseDate(
-              `${currentDate.getDate()}/${currentDate.getMonth()}/${currentDate.getFullYear()}`
-            ),
-            "en-US"
-          )}`}
+          {` ${taskDayName}`}
         </span>
         {headerSearchValue && <span className={styles.taskYear}>{task.date.year}</span>}
       </div>
