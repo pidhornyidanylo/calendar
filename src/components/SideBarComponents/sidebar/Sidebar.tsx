@@ -1,22 +1,17 @@
 "use client";
 import { useStore } from "@/store";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import plus from "../../../../public/icons/plus.svg";
+import React from "react";
 import Calendar from "../calendar/Calendar";
 import styles from "./Sidebar.module.css";
+import BasicModal from "../createModal/CreateModal";
 
 const Sidebar = () => {
   const expandedSideBar = useStore((state) => state.expandedSideBar);
-
   return (
     <aside
       className={`${styles.sidebar} ${expandedSideBar ? styles.expanded : ""}`}
     >
-      <button type="button" className={styles.createBtn}>
-        <Image src={plus} alt="plus" />
-        <span>Create</span>
-      </button>
+      <BasicModal />
       <Calendar />
     </aside>
   );

@@ -4,7 +4,10 @@ export type State = {
   expandedSideBar: boolean;
   toggleExpandedSideBar: () => void;
   setExpandedSideBar: (value: boolean) => void;
-  
+
+  showCreateForm: boolean;
+  setShowCreateForm: (value: boolean) => void;
+
   headerSearchValue: string;
   setHeaderSearchValue: (value: string) => void;
 
@@ -27,6 +30,12 @@ export const useStore = create<State>((set) => ({
     set((state) => ({ expandedSideBar: !state.expandedSideBar })),
   setExpandedSideBar: (value: boolean) =>
     set(() => ({ expandedSideBar: value })),
+
+  showCreateForm: false,
+  setShowCreateForm: (value: boolean) =>
+    set(() => ({
+      showCreateForm: value,
+    })),
 
   headerSearchValue: "",
   setHeaderSearchValue: (value: string) =>
