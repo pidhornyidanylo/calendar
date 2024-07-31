@@ -41,5 +41,10 @@
     .todayBtn {
         font-size: .95em;
     }
+}
 
+@media(max-width: 425px) {
+    .todayBtn {
+        font-size: 1em;
+    }
 }

@@ -1,13 +1,29 @@
 "use client";
 import { useStore } from "@/store";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import arrowBack from "../../../../public/icons/arrow_back_ios_new.svg";
 import arrowForward from "../../../../public/icons/arrow_forward_ios.svg";
 import { months } from "../../SideBarComponents/calendar/Calendar";
 import styles from "./HomeHeaderInterval.module.css";
 
 const HomeHeaderInterval = () => {
+  const [shortenInterval, setShortenInterval] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 425) {
+        setShortenInterval(true);
+      } else {
+        setShortenInterval(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const currentMonth = useStore((state) => state.currentMonth);
   const setCurrentMonth = useStore((state) => state.setCurrentMonth);
@@ -50,12 +66,15 @@ const HomeHeaderInterval = () => {
   return (
     <>
       <h2 className={styles.timeInterval}>
-        {months[currentMonth]}
+        {shortenInterval
+          ? months[currentMonth].slice(0, 3)
+          : months[currentMonth]}
         {""}
         {currentMonth === 10 || currentMonth === 11
           ? `${`, ${currentYear}`}`
           : ""}{" "}
-        - {handleMonthsView()}
+        -{" "}
+        {shortenInterval ? handleMonthsView().slice(0, 3) : handleMonthsView()}
         {", "}
         {currentMonth === 10 || currentMonth === 11
           ? currentYear + 1

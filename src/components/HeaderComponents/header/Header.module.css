@@ -135,38 +135,11 @@
 
 @media(max-width:425px) {
     .header {
-        width: 100%;
-        padding: 12px 0;
-        display: flex;
-        align-items: center;
-        gap: 5px;
+        gap: 6px;
     }
 
     .headerSearch {
-        position: relative;
-        flex: 1;
-        width: 120px;
-        height: 50px;
-        border-radius: 60px;
-        -webkit-border-radius: 60px;
-        -moz-border-radius: 60px;
-        -ms-border-radius: 60px;
-        -o-border-radius: 60px;
-        background-color: rgba(0, 0, 0, .06);
-        border: none;
         padding: 5px 12px;
-        display: flex;
         gap: 10px;
-        align-items: center;
-    }
-
-    .headerSearch input {
-        background-color: transparent;
-        width: 100%;
-        font-size: 18px;
-    }
-
-    .headerSearch input::placeholder {
-        font-size: .8em;
     }
 }

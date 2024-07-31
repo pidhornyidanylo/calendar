@@ -101,3 +101,10 @@
         font-size: 1.13em;
     }
 }
+
+@media(max-width: 425px) {
+    .createBtn {
+        font-size: 1.17em;
+    }
+}
+

@@ -65,3 +65,23 @@
         -o-transform: scale(.9);
 }
 }
+
+@media(max-width: 425px) {
+    .timeInterval {
+        min-width: 185px;
+        font-size: 1.25em;
+    }
+
+    .arrows {
+        margin-right: 5px;
+        gap: 20px;
+    }
+
+    .arrows>button {
+        transform: scale(.9);
+        -webkit-transform: scale(.9);
+        -moz-transform: scale(.9);
+        -ms-transform: scale(.9);
+        -o-transform: scale(.9);
+}
+}

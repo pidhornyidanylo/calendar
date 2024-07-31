@@ -126,6 +126,35 @@
     }
 }
 
+@media(max-width: 425px) {
+    .subTask {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+}
+
+    .subTaskMain {
+        gap: 10px;
+    }
+
+    .subTaskTime {
+        font-size: .8em;
+        top: -18px;
+    }
+
+    .subTaskInner {
+        font-size: 1.1em;
+    }
+
+    .addInfo {
+        font-size: 1em;
+    }
+}
+
 @media(max-width: 320px) {
     .subTaskTime {
         position: absolute;

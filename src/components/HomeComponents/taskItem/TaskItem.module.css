@@ -127,6 +127,46 @@
     }
 }
 
+
+
+@media(max-width: 425px) {
+    .taskItem {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .taskDate {
+        width: 100%;
+        padding: 5px;
+        font-size: .9em;
+    }
+
+    .taskDay {
+        font-weight: 500;
+        font-size: 1.5em;
+    }
+
+    .taskYear {
+        position: absolute;
+        top: -10px;
+        background-color: rgba(255, 136, 250, .45);
+        padding: 4px 6px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    .taskBody {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+}
+
 @media(max-width: 320px) {
     .taskDate {
         position: absolute;
