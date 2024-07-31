@@ -12,8 +12,15 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.headerLogo}>
         <HeaderBurger />
-        <Link href={"/"}>
-          <Image src={logo} alt={"logo"} />
+        <Link
+          href={"/"}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Image src={logo} alt={"logo"} width={40} height={40} />
         </Link>
         <Link href={"/"}>
           <h3 className={styles.headerTitle}>Calendar</h3>
