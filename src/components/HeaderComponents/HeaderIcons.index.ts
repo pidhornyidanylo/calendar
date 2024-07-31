@@ -7,6 +7,7 @@ import more from "../../../public/icons/more.svg";
 import search from "../../../public/icons/search.svg";
 import settings from "../../../public/icons/settings.svg";
 import cross from "../../../public/icons/cross.svg";
+import home from "../../../public/icons/home.svg";
 
 
-export { avatar, logo, filter, search, help, settings, apps, more, cross };
+export { avatar, home, logo, filter, search, help, settings, apps, more, cross };

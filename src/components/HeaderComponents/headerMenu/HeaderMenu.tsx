@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { apps, avatar, help, more, settings } from "../HeaderIcons.index";
+import { apps, avatar, help, more, settings, home } from "../HeaderIcons.index";
 import styles from "./HeaderMenu.module.css";
 import Link from "next/link";
 
@@ -42,17 +42,20 @@ const HeaderMenu = () => {
               showTablet ? styles.visibleTablet : ""
             }`}
           >
-            <Link type="button" className={styles.headerMenuLink} href="/help">
-              <Image src={help} alt="help" />
+            <Link type="button" className={styles.headerMenuLink} href="/">
+              <Image src={home} alt="home" />
             </Link>
-            <Link className={styles.headerMenuLink} href="/settings">
-              <Image src={settings} alt="settings" />
+            <Link type="button" className={styles.headerMenuLink} href="/user">
+              <Image src={avatar} alt="avatar" width={24} height={24} />
             </Link>
             <Link type="button" className={styles.headerMenuLink} href="/apps">
               <Image src={apps} alt="apps" />
             </Link>
-            <Link type="button" className={styles.headerMenuLink} href="/user">
-              <Image src={avatar} alt="avatar" width={24} height={24} />
+            <Link className={styles.headerMenuLink} href="/settings">
+              <Image src={settings} alt="settings" />
+            </Link>
+            <Link type="button" className={styles.headerMenuLink} href="/help">
+              <Image src={help} alt="help" />
             </Link>
           </div>
         </>

@@ -3,7 +3,8 @@ import { create } from "zustand";
 export type State = {
   expandedSideBar: boolean;
   toggleExpandedSideBar: () => void;
-
+  setExpandedSideBar: (value: boolean) => void;
+  
   headerSearchValue: string;
   setHeaderSearchValue: (value: string) => void;
 
@@ -24,6 +25,8 @@ export const useStore = create<State>((set) => ({
   expandedSideBar: false,
   toggleExpandedSideBar: () =>
     set((state) => ({ expandedSideBar: !state.expandedSideBar })),
+  setExpandedSideBar: (value: boolean) =>
+    set(() => ({ expandedSideBar: value })),
 
   headerSearchValue: "",
   setHeaderSearchValue: (value: string) =>
