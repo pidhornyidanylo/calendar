@@ -1,11 +1,27 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useStore } from "@/store";
 import { filter, search, cross } from "../HeaderIcons.index";
 import styles from "./HeaderSearch.module.css";
 
 const HeaderSearch = () => {
+  const [shortenPlaceholder, setShortenPlaceholder] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 425) {
+        setShortenPlaceholder(true);
+      } else {
+        setShortenPlaceholder(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const headerSearchValue = useStore((state) => state.headerSearchValue);
   const [showAnimate, setShowAnimate] = useState(false);
   const setHeaderSearchValue = useStore((state) => state.setHeaderSearchValue);
@@ -43,7 +59,7 @@ const HeaderSearch = () => {
         type="text"
         value={searchInputValue}
         onChange={(e) => setInputSearchValue(e.target.value)}
-        placeholder="Search on Calendar"
+        placeholder={shortenPlaceholder ? "Search" : "Search on Calendar"}
       />
       <button type="button">
         <Image src={filter} alt={"filter"} />

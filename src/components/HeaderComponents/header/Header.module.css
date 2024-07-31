@@ -107,7 +107,7 @@
 
 @media(max-width: 576px) {
     .header {
-        gap: 10px;
+        gap: 20px;
     }
 
     .headerLogo {
@@ -134,12 +134,12 @@
 }
 
 @media(max-width:425px) {
-    .header {
-        gap: 6px;
-    }
-
     .headerSearch {
-        padding: 5px 12px;
-        gap: 10px;
+        padding: 5px 15px;
+        gap: 14px;
+    }
+    .headerSearch input::placeholder {
+        color: var(--main-text);
+        font-size: 1em;
     }
 }

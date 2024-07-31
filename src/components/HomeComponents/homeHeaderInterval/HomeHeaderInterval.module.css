@@ -29,7 +29,7 @@
         margin-right: 20px;
         min-width: 280px;
     }
-    
+
     .arrows {
         display: flex;
         gap: 20px;
@@ -37,7 +37,7 @@
         align-items: center;
         margin-right: 10px;
     }
-    
+
     .arrows>button {
         margin-top: 3px;
         border: none;
@@ -63,12 +63,12 @@
         -moz-transform: scale(.9);
         -ms-transform: scale(.9);
         -o-transform: scale(.9);
-}
+    }
 }
 
 @media(max-width: 425px) {
     .timeInterval {
-        min-width: 185px;
+        min-width: 140px;
         font-size: 1.25em;
     }
 
@@ -83,5 +83,5 @@
         -moz-transform: scale(.9);
         -ms-transform: scale(.9);
         -o-transform: scale(.9);
-}
+    }
 }
