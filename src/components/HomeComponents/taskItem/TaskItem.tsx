@@ -8,15 +8,17 @@ import { useStore } from "@/store";
 
 const TaskItem = <T extends Task>({ task }: { task: T }): React.JSX.Element => {
   const headerSearchValue = useStore((state) => state.headerSearchValue);
-  
+
+  const padZero = (num: number): string => num.toString().padStart(2, '0');
+
   const parseDate = (dateString: string): Date => {
     const [day, month, year] = dateString.split("/");
-    return new Date(`${year}-${month}-${day}`);
+    return new Date(`${year}-${padZero(Number(month))}-${padZero(Number(day))}`);
   };
 
   const shortDayName = (date: Date, locale: string): string =>
     date.toLocaleDateString(locale, { weekday: "short" });
-  
+
   const taskDate = parseDate(`${task.date.day}/${task.date.month}/${task.date.year}`);
   const taskDayName = shortDayName(taskDate, "en-US");
 
