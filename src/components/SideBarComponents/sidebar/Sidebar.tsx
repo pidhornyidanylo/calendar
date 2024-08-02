@@ -7,6 +7,7 @@ import Calendar from "../calendar/Calendar";
 import styles from "./Sidebar.module.css";
 import CreateForm from "../createForm/CreateForm";
 import GenericResize from "@/utils/GenericResize";
+import ModalForm from "../modalForm/ModalForm";
 
 const Sidebar = () => {
   const expandedSideBar = useStore((state) => state.expandedSideBar);
@@ -22,13 +23,16 @@ const Sidebar = () => {
   const toggleMutateCreateBtn = useStore(
     (state) => state.toggleMutateCreateBtn
   );
-  console.log(mutateCreateBtn);
+
+  const setOpenModal = useStore((state) => state.setOpenModal);
+
   const handleClick = () => {
     if (!mutateCreateBtn) {
       setDateToCreateTask(null);
       toggleShowCreateForm();
     } else {
       console.log("show modal window xDDD");
+      setOpenModal(true);
     }
   };
 
@@ -67,6 +71,7 @@ const Sidebar = () => {
       </button>
       <Calendar />
       <CreateForm />
+      <ModalForm />
     </aside>
   );
 };

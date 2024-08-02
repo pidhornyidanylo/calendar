@@ -17,6 +17,9 @@ export type State = {
   mutateCreateBtn: boolean;
   toggleMutateCreateBtn: (value: boolean) => void;
 
+  openModal: boolean;
+  setOpenModal: (value: boolean) => void;
+
   headerSearchValue: string;
   setHeaderSearchValue: (value: string) => void;
 
@@ -56,6 +59,12 @@ export const useStore = create<State>((set) => ({
   toggleMutateCreateBtn: (value: boolean) =>
     set((state) => ({
       mutateCreateBtn: value,
+    })),
+
+  openModal: false,
+  setOpenModal: (value: boolean) =>
+    set(() => ({
+      openModal: value,
     })),
 
   headerSearchValue: "",
