@@ -6,54 +6,69 @@ import plus from "../../../../public/icons/plus.svg";
 import Calendar from "../calendar/Calendar";
 import styles from "./Sidebar.module.css";
 import CreateForm from "../createForm/CreateForm";
+import GenericResize from "@/utils/GenericResize";
 
 const Sidebar = () => {
-	const expandedSideBar = useStore((state) => state.expandedSideBar);
-	const setExpandedSideBar = useStore((state) => state.setExpandedSideBar);
+  const expandedSideBar = useStore((state) => state.expandedSideBar);
+  const setExpandedSideBar = useStore((state) => state.setExpandedSideBar);
 
-	const setDateToCreateTask = useStore((state) => state.setDateToCreateTask);
+  const setDateToCreateTask = useStore((state) => state.setDateToCreateTask);
 
-	const showCreateForm = useStore((state) => state.showCreateForm);
-	const toggleShowCreateForm = useStore((state) => state.toggleShowCreateForm);
-	const setShowCreateForm = useStore((state) => state.setShowCreateForm);
+  const showCreateForm = useStore((state) => state.showCreateForm);
+  const toggleShowCreateForm = useStore((state) => state.toggleShowCreateForm);
+  const setShowCreateForm = useStore((state) => state.setShowCreateForm);
 
-	const handleClick = () => {
-		setDateToCreateTask(null);
-		toggleShowCreateForm();
-	};
+  const mutateCreateBtn = useStore((state) => state.mutateCreateBtn);
+  const toggleMutateCreateBtn = useStore(
+    (state) => state.toggleMutateCreateBtn
+  );
+  console.log(mutateCreateBtn);
+  const handleClick = () => {
+    if (!mutateCreateBtn) {
+      setDateToCreateTask(null);
+      toggleShowCreateForm();
+    } else {
+      console.log("show modal window xDDD");
+    }
+  };
 
-	useEffect(() => {
-		if (showCreateForm) {
-			setExpandedSideBar(true);
-		}
-		if (!expandedSideBar) {
-			setShowCreateForm(false);
-			setExpandedSideBar(false);
-		}
-		if (!expandedSideBar && showCreateForm) {
-			setExpandedSideBar(true);
-			setShowCreateForm(true);
-		}
-	}, [showCreateForm, expandedSideBar]);
+  useEffect(() => {
+    if (showCreateForm) {
+      setExpandedSideBar(true);
+    }
+    if (!expandedSideBar) {
+      setShowCreateForm(false);
+      setExpandedSideBar(false);
+    }
+    if (!expandedSideBar && showCreateForm) {
+      setExpandedSideBar(true);
+      setShowCreateForm(true);
+    }
+  }, [showCreateForm, expandedSideBar]);
 
-	return (
-		<aside
-			className={`${styles.sidebar} ${expandedSideBar ? styles.expanded : ""} ${
-				showCreateForm ? styles.expandedForCreate : ""
-			} `}
-		>
-			<button
-				type="button"
-				className={styles.createBtn}
-				onClick={() => handleClick()}
-			>
-				<Image src={plus} alt="plus" />
-				<span>Create</span>
-			</button>
-			<Calendar />
-			<CreateForm />
-		</aside>
-	);
+  return (
+    <aside
+      className={`${styles.sidebar} ${expandedSideBar ? styles.expanded : ""} ${
+        showCreateForm ? styles.expandedForCreate : ""
+      } `}
+    >
+      <GenericResize
+        size={992}
+        setState={toggleMutateCreateBtn}
+        valueIf={true}
+      />
+      <button
+        type="button"
+        className={styles.createBtn}
+        onClick={() => handleClick()}
+      >
+        <Image src={plus} alt="plus" />
+        <span>Create</span>
+      </button>
+      <Calendar />
+      <CreateForm />
+    </aside>
+  );
 };
 
 export default Sidebar;
