@@ -1,4 +1,3 @@
-"use client";
 import { useStore } from "@/store";
 import Image from "next/image";
 import { useState } from "react";
@@ -25,6 +24,8 @@ export const months = [
 
 const Calendar = () => {
 	const expandedSideBar = useStore((state) => state.expandedSideBar);
+	const setDateToCreateTask = useStore((state) => state.setDateToCreateTask);
+	const setShowCreateForm = useStore((state) => state.setShowCreateForm);
 
 	const currentDate = new Date();
 	const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
@@ -79,6 +80,26 @@ const Calendar = () => {
 		}
 	};
 
+	const handleDateClick = (day: number, monthOffset: number) => {
+		let targetMonth = currentMonth + monthOffset;
+		let targetYear = currentYear;
+
+		if (targetMonth < 0) {
+			targetMonth = 11;
+			targetYear -= 1;
+		} else if (targetMonth > 11) {
+			targetMonth = 0;
+			targetYear += 1;
+		}
+
+		setShowCreateForm(true);
+		setDateToCreateTask({
+			day,
+			month: targetMonth,
+			year: targetYear,
+		});
+	};
+
 	return (
 		<div
 			className={`${styles.calendarContainer} ${
@@ -107,27 +128,42 @@ const Calendar = () => {
 				</div>
 				<div className={styles.calendarDays}>
 					{prevMonthDays.map((day, index) => (
-						<div key={`prev-${index}`} className={styles.prevMonthDay}>
-							{day}
+						<div
+							onClick={() => handleDateClick(day, -1)}
+							data-value={day}
+							key={`prev-${day * index}`}
+							className={styles.prevMonthDay}
+						>
+							<span>{day}</span>
 						</div>
 					))}
 					{monthDays.map((day, index) => (
 						<div
-							key={`current-${index}`}
-							className={
-								currentDate.getDate() === day &&
-								currentDate.getMonth() === currentMonth &&
-								currentDate.getFullYear() === currentYear
-									? styles.today
-									: ""
-							}
+							onClick={() => handleDateClick(day, 0)}
+							data-value={day}
+							key={`current-${day * index}`}
 						>
-							{day}
+							<span
+								className={
+									currentDate.getDate() === day &&
+									currentDate.getMonth() === currentMonth &&
+									currentDate.getFullYear() === currentYear
+										? styles.today
+										: ""
+								}
+							>
+								{day}
+							</span>
 						</div>
 					))}
 					{nextMonthDays.map((day, index) => (
-						<div key={`next-${index}`} className={styles.nextMonthDay}>
-							{day}
+						<div
+							onClick={() => handleDateClick(day, 1)}
+							data-value={day}
+							key={`next-${day * index}`}
+							className={styles.nextMonthDay}
+						>
+							<span>{day}</span>
 						</div>
 					))}
 				</div>

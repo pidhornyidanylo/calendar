@@ -1,457 +1,457 @@
 [
-    {
-        "id": 1,
-        "date": {
-            "year": 2024,
-            "month": 7,
-            "day": 29
-        },
-        "tasks": [
-            {
-                "time": "All day",
-                "task": "clean room",
-                "addInfo": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut explicabo vitae repellat."
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "date": {
-            "year": 2024,
-            "month": 7,
-            "day": 31
-        },
-        "tasks": [
-            {
-                "time": "10AM-5PM",
-                "task": "type code",
-                "addInfo": "Consectetur, adipisicing elit. Aut explicabo vitae repellat, reiciendis sint dolore."
-            }
-        ]
-    },
-    {
-        "id": 3,
-        "date": {
-            "year": 2024,
-            "month": 8,
-            "day": 1
-        },
-        "tasks": [
-            {
-                "time": "11AM-1PM",
-                "task": "start new project",
-                "addInfo": "Lorem elit. Aut explicabo vitae repellat, reiciendis sint dolore, id magni necessitatibus."
-            },
-            {
-                "time": "2PM-6PM",
-                "task": "algorithms new project",
-                "addInfo": "Aut dolore, id magni necessitatibus totam tempora temporibus ipsa consequatur velit eveniet impedit."
-            }
-        ]
-    },
-    {
-        "id": 4,
-        "date": {
-            "year": 2024,
-            "month": 8,
-            "day": 8
-        },
-        "tasks": [
-            {
-                "time": "All day",
-                "task": "greet mama",
-                "addInfo": "Sint dolore, id magni necessitatibus totam tempora temporibus ipsa consequatur velit eveniet impedit."
-            }
-        ]
-    },
-    {
-        "id": 5,
-        "date": {
-            "year": 2024,
-            "month": 8,
-            "day": 10
-        },
-        "tasks": [
-            {
-                "time": "11AM-3PM",
-                "task": "meet mama and rima",
-                "addInfo": "Reiciendis sint dolore, id magni necessitatibus totam tempora temporibus ipsa consequatur velit eveniet impedit."
-            }
-        ]
-    },
-    {
-        "id": 6,
-        "date": {
-            "year": 2024,
-            "month": 9,
-            "day": 5
-        },
-        "tasks": [
-            {
-                "time": "9AM-12PM",
-                "task": "team meeting",
-                "addInfo": "Discuss project milestones and next steps."
-            }
-        ]
-    },
-    {
-        "id": 7,
-        "date": {
-            "year": 2024,
-            "month": 10,
-            "day": 14
-        },
-        "tasks": [
-            {
-                "time": "2PM-4PM",
-                "task": "client presentation",
-                "addInfo": "Present the latest project updates to the client."
-            }
-        ]
-    },
-    {
-        "id": 8,
-        "date": {
-            "year": 2024,
-            "month": 11,
-            "day": 22
-        },
-        "tasks": [
-            {
-                "time": "3PM-5PM",
-                "task": "code review",
-                "addInfo": "Review the codebase for the new feature implementation."
-            }
-        ]
-    },
-    {
-        "id": 9,
-        "date": {
-            "year": 2024,
-            "month": 12,
-            "day": 19
-        },
-        "tasks": [
-            {
-                "time": "10AM-12PM",
-                "task": "performance review",
-                "addInfo": "Yearly performance review with manager."
-            }
-        ]
-    },
-    {
-        "id": 10,
-        "date": {
-            "year": 2024,
-            "month": 10,
-            "day": 30
-        },
-        "tasks": [
-            {
-                "time": "8AM-9AM",
-                "task": "yoga session",
-                "addInfo": "Morning yoga session to start the day."
-            }
-        ]
-    },
-    {
-        "id": 11,
-        "date": {
-            "year": 2024,
-            "month": 11,
-            "day": 7
-        },
-        "tasks": [
-            {
-                "time": "1PM-3PM",
-                "task": "brainstorming session",
-                "addInfo": "Generate new ideas for the upcoming project."
-            }
-        ]
-    },
-    {
-        "id": 12,
-        "date": {
-            "year": 2024,
-            "month": 12,
-            "day": 25
-        },
-        "tasks": [
-            {
-                "time": "All day",
-                "task": "celebrate Christmas",
-                "addInfo": "Spend time with family and friends."
-            }
-        ]
-    },
-    {
-        "id": 13,
-        "date": {
-            "year": 2024,
-            "month": 9,
-            "day": 12
-        },
-        "tasks": [
-            {
-                "time": "6PM-8PM",
-                "task": "dinner with team",
-                "addInfo": "Team dinner at the new restaurant downtown."
-            }
-        ]
-    },
-    {
-        "id": 14,
-        "date": {
-            "year": 2024,
-            "month": 10,
-            "day": 18
-        },
-        "tasks": [
-            {
-                "time": "3PM-5PM",
-                "task": "workshop",
-                "addInfo": "Attend the React workshop."
-            }
-        ]
-    },
-    {
-        "id": 15,
-        "date": {
-            "year": 2024,
-            "month": 11,
-            "day": 30
-        },
-        "tasks": [
-            {
-                "time": "11AM-2PM",
-                "task": "write documentation",
-                "addInfo": "Update project documentation with recent changes."
-            }
-        ]
-    },
-    {
-        "id": 16,
-        "date": {
-            "year": 2024,
-            "month": 12,
-            "day": 15
-        },
-        "tasks": [
-            {
-                "time": "4PM-6PM",
-                "task": "shopping",
-                "addInfo": "Buy gifts for the holiday season."
-            }
-        ]
-    },
-    {
-        "id": 17,
-        "date": {
-            "year": 2025,
-            "month": 1,
-            "day": 10
-        },
-        "tasks": [
-            {
-                "time": "10AM-1PM",
-                "task": "kickoff meeting",
-                "addInfo": "Initial meeting for the new project."
-            }
-        ]
-    },
-    {
-        "id": 18,
-        "date": {
-            "year": 2025,
-            "month": 2,
-            "day": 14
-        },
-        "tasks": [
-            {
-                "time": "All day",
-                "task": "Valentine's Day",
-                "addInfo": "Celebrate Valentine's Day with loved ones."
-            }
-        ]
-    },
-    {
-        "id": 19,
-        "date": {
-            "year": 2025,
-            "month": 2,
-            "day": 28
-        },
-        "tasks": [
-            {
-                "time": "1PM-4PM",
-                "task": "quarterly review",
-                "addInfo": "Review the progress of the first quarter."
-            }
-        ]
-    },
-    {
-        "id": 20,
-        "date": {
-            "year": 2025,
-            "month": 3,
-            "day": 5
-        },
-        "tasks": [
-            {
-                "time": "9AM-11AM",
-                "task": "team building",
-                "addInfo": "Team building activities to strengthen collaboration."
-            }
-        ]
-    },
-    {
-        "id": 21,
-        "date": {
-            "year": 2025,
-            "month": 3,
-            "day": 18
-        },
-        "tasks": [
-            {
-                "time": "2PM-5PM",
-                "task": "client meeting",
-                "addInfo": "Discuss project requirements with the client."
-            }
-        ]
-    },
-    {
-        "id": 22,
-        "date": {
-            "year": 2025,
-            "month": 4,
-            "day": 10
-        },
-        "tasks": [
-            {
-                "time": "10AM-12PM",
-                "task": "sprint planning",
-                "addInfo": "Plan tasks for the next sprint."
-            }
-        ]
-    },
-    {
-        "id": 23,
-        "date": {
-            "year": 2025,
-            "month": 5,
-            "day": 15
-        },
-        "tasks": [
-            {
-                "time": "2PM-3PM",
-                "task": "one-on-one meeting",
-                "addInfo": "Discuss career goals with manager."
-            }
-        ]
-    },
-    {
-        "id": 24,
-        "date": {
-            "year": 2025,
-            "month": 6,
-            "day": 20
-        },
-        "tasks": [
-            {
-                "time": "11AM-1PM",
-                "task": "client meeting",
-                "addInfo": "Team outing to the local park."
-            }
-        ]
-    },
-    {
-        "id": 25,
-        "date": {
-            "year": 2025,
-            "month": 7,
-            "day": 25
-        },
-        "tasks": [
-            {
-                "time": "3PM-4PM",
-                "task": "project demo",
-                "addInfo": "Showcase the completed project to stakeholders."
-            }
-        ]
-    },
-    {
-        "id": 26,
-        "date": {
-            "year": 2025,
-            "month": 8,
-            "day": 19
-        },
-        "tasks": [
-            {
-                "time": "1PM-2PM",
-                "task": "lunch and learn",
-                "addInfo": "Attend a learning session over lunch."
-            }
-        ]
-    },
-    {
-        "id": 27,
-        "date": {
-            "year": 2025,
-            "month": 9,
-            "day": 14
-        },
-        "tasks": [
-            {
-                "time": "4PM-5PM",
-                "task": "tech talk",
-                "addInfo": "Attend a technical talk on new technologies."
-            }
-        ]
-    },
-    {
-        "id": 28,
-        "date": {
-            "year": 2025,
-            "month": 10,
-            "day": 23
-        },
-        "tasks": [
-            {
-                "time": "10AM-11AM",
-                "task": "webinar",
-                "addInfo": "Join a webinar on industry trends."
-            }
-        ]
-    },
-    {
-        "id": 29,
-        "date": {
-            "year": 2025,
-            "month": 11,
-            "day": 12
-        },
-        "tasks": [
-            {
-                "time": "2PM-4PM",
-                "task": "hackathon",
-                "addInfo": "Participate in a company-wide hackathon."
-            }
-        ]
-    },
-    {
-        "id": 30,
-        "date": {
-            "year": 2025,
-            "month": 12,
-            "day": 29
-        },
-        "tasks": [
-            {
-                "time": "5PM-7PM",
-                "task": "year-end party",
-                "addInfo": "Celebrate the end of the year with the team."
-            }
-        ]
-    }
+	{
+		"id": 1,
+		"date": {
+			"year": 2024,
+			"month": 7,
+			"day": 29
+		},
+		"tasks": [
+			{
+				"time": "All day",
+				"task": "clean room",
+				"addInfo": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut explicabo vitae repellat."
+			}
+		]
+	},
+	{
+		"id": 2,
+		"date": {
+			"year": 2024,
+			"month": 7,
+			"day": 31
+		},
+		"tasks": [
+			{
+				"time": "10AM-5PM",
+				"task": "type code",
+				"addInfo": "Consectetur, adipisicing elit. Aut explicabo vitae repellat, reiciendis sint dolore."
+			}
+		]
+	},
+	{
+		"id": 3,
+		"date": {
+			"year": 2024,
+			"month": 8,
+			"day": 1
+		},
+		"tasks": [
+			{
+				"time": "11AM-1PM",
+				"task": "start new project",
+				"addInfo": "Lorem elit. Aut explicabo vitae repellat, reiciendis sint dolore, id magni necessitatibus."
+			},
+			{
+				"time": "2PM-6PM",
+				"task": "algorithms new project",
+				"addInfo": "Aut dolore, id magni necessitatibus totam tempora temporibus ipsa consequatur velit eveniet impedit."
+			}
+		]
+	},
+	{
+		"id": 4,
+		"date": {
+			"year": 2024,
+			"month": 8,
+			"day": 8
+		},
+		"tasks": [
+			{
+				"time": "All day",
+				"task": "greet mama",
+				"addInfo": "Sint dolore, id magni necessitatibus totam tempora temporibus ipsa consequatur velit eveniet impedit."
+			}
+		]
+	},
+	{
+		"id": 5,
+		"date": {
+			"year": 2024,
+			"month": 8,
+			"day": 10
+		},
+		"tasks": [
+			{
+				"time": "11AM-3PM",
+				"task": "meet mama and rima",
+				"addInfo": "Reiciendis sint dolore, id magni necessitatibus totam tempora temporibus ipsa consequatur velit eveniet impedit."
+			}
+		]
+	},
+	{
+		"id": 6,
+		"date": {
+			"year": 2024,
+			"month": 9,
+			"day": 5
+		},
+		"tasks": [
+			{
+				"time": "9AM-12PM",
+				"task": "team meeting",
+				"addInfo": "Discuss project milestones and next steps."
+			}
+		]
+	},
+	{
+		"id": 7,
+		"date": {
+			"year": 2024,
+			"month": 10,
+			"day": 14
+		},
+		"tasks": [
+			{
+				"time": "2PM-4PM",
+				"task": "client presentation",
+				"addInfo": "Present the latest project updates to the client."
+			}
+		]
+	},
+	{
+		"id": 8,
+		"date": {
+			"year": 2024,
+			"month": 11,
+			"day": 22
+		},
+		"tasks": [
+			{
+				"time": "3PM-5PM",
+				"task": "code review",
+				"addInfo": "Review the codebase for the new feature implementation."
+			}
+		]
+	},
+	{
+		"id": 9,
+		"date": {
+			"year": 2024,
+			"month": 12,
+			"day": 19
+		},
+		"tasks": [
+			{
+				"time": "10AM-12PM",
+				"task": "performance review",
+				"addInfo": "Yearly performance review with manager."
+			}
+		]
+	},
+	{
+		"id": 10,
+		"date": {
+			"year": 2024,
+			"month": 10,
+			"day": 30
+		},
+		"tasks": [
+			{
+				"time": "8AM-9AM",
+				"task": "yoga session",
+				"addInfo": "Morning yoga session to start the day."
+			}
+		]
+	},
+	{
+		"id": 11,
+		"date": {
+			"year": 2024,
+			"month": 11,
+			"day": 7
+		},
+		"tasks": [
+			{
+				"time": "1PM-3PM",
+				"task": "brainstorming session",
+				"addInfo": "Generate new ideas for the upcoming project."
+			}
+		]
+	},
+	{
+		"id": 12,
+		"date": {
+			"year": 2024,
+			"month": 12,
+			"day": 25
+		},
+		"tasks": [
+			{
+				"time": "All day",
+				"task": "celebrate Christmas",
+				"addInfo": "Spend time with family and friends."
+			}
+		]
+	},
+	{
+		"id": 13,
+		"date": {
+			"year": 2024,
+			"month": 9,
+			"day": 12
+		},
+		"tasks": [
+			{
+				"time": "6PM-8PM",
+				"task": "dinner with team",
+				"addInfo": "Team dinner at the new restaurant downtown."
+			}
+		]
+	},
+	{
+		"id": 14,
+		"date": {
+			"year": 2024,
+			"month": 10,
+			"day": 18
+		},
+		"tasks": [
+			{
+				"time": "3PM-5PM",
+				"task": "workshop",
+				"addInfo": "Attend the React workshop."
+			}
+		]
+	},
+	{
+		"id": 15,
+		"date": {
+			"year": 2024,
+			"month": 11,
+			"day": 30
+		},
+		"tasks": [
+			{
+				"time": "11AM-2PM",
+				"task": "write documentation",
+				"addInfo": "Update project documentation with recent changes."
+			}
+		]
+	},
+	{
+		"id": 16,
+		"date": {
+			"year": 2024,
+			"month": 12,
+			"day": 15
+		},
+		"tasks": [
+			{
+				"time": "4PM-6PM",
+				"task": "shopping",
+				"addInfo": "Buy gifts for the holiday season."
+			}
+		]
+	},
+	{
+		"id": 17,
+		"date": {
+			"year": 2025,
+			"month": 1,
+			"day": 10
+		},
+		"tasks": [
+			{
+				"time": "10AM-1PM",
+				"task": "kickoff meeting",
+				"addInfo": "Initial meeting for the new project."
+			}
+		]
+	},
+	{
+		"id": 18,
+		"date": {
+			"year": 2025,
+			"month": 2,
+			"day": 14
+		},
+		"tasks": [
+			{
+				"time": "All day",
+				"task": "Valentine's Day",
+				"addInfo": "Celebrate Valentine's Day with loved ones."
+			}
+		]
+	},
+	{
+		"id": 19,
+		"date": {
+			"year": 2025,
+			"month": 2,
+			"day": 28
+		},
+		"tasks": [
+			{
+				"time": "1PM-4PM",
+				"task": "quarterly review",
+				"addInfo": "Review the progress of the first quarter."
+			}
+		]
+	},
+	{
+		"id": 20,
+		"date": {
+			"year": 2025,
+			"month": 3,
+			"day": 5
+		},
+		"tasks": [
+			{
+				"time": "9AM-11AM",
+				"task": "team building",
+				"addInfo": "Team building activities to strengthen collaboration."
+			}
+		]
+	},
+	{
+		"id": 21,
+		"date": {
+			"year": 2025,
+			"month": 3,
+			"day": 18
+		},
+		"tasks": [
+			{
+				"time": "2PM-5PM",
+				"task": "client meeting",
+				"addInfo": "Discuss project requirements with the client."
+			}
+		]
+	},
+	{
+		"id": 22,
+		"date": {
+			"year": 2025,
+			"month": 4,
+			"day": 10
+		},
+		"tasks": [
+			{
+				"time": "10AM-12PM",
+				"task": "sprint planning",
+				"addInfo": "Plan tasks for the next sprint."
+			}
+		]
+	},
+	{
+		"id": 23,
+		"date": {
+			"year": 2025,
+			"month": 5,
+			"day": 15
+		},
+		"tasks": [
+			{
+				"time": "2PM-3PM",
+				"task": "one-on-one meeting",
+				"addInfo": "Discuss career goals with manager."
+			}
+		]
+	},
+	{
+		"id": 24,
+		"date": {
+			"year": 2025,
+			"month": 6,
+			"day": 20
+		},
+		"tasks": [
+			{
+				"time": "11AM-1PM",
+				"task": "client meeting",
+				"addInfo": "Team outing to the local park."
+			}
+		]
+	},
+	{
+		"id": 25,
+		"date": {
+			"year": 2025,
+			"month": 7,
+			"day": 25
+		},
+		"tasks": [
+			{
+				"time": "3PM-4PM",
+				"task": "project demo",
+				"addInfo": "Showcase the completed project to stakeholders."
+			}
+		]
+	},
+	{
+		"id": 26,
+		"date": {
+			"year": 2025,
+			"month": 8,
+			"day": 19
+		},
+		"tasks": [
+			{
+				"time": "1PM-2PM",
+				"task": "lunch and learn",
+				"addInfo": "Attend a learning session over lunch."
+			}
+		]
+	},
+	{
+		"id": 27,
+		"date": {
+			"year": 2025,
+			"month": 9,
+			"day": 14
+		},
+		"tasks": [
+			{
+				"time": "4PM-5PM",
+				"task": "tech talk",
+				"addInfo": "Attend a technical talk on new technologies."
+			}
+		]
+	},
+	{
+		"id": 28,
+		"date": {
+			"year": 2025,
+			"month": 10,
+			"day": 23
+		},
+		"tasks": [
+			{
+				"time": "10AM-11AM",
+				"task": "webinar",
+				"addInfo": "Join a webinar on industry trends."
+			}
+		]
+	},
+	{
+		"id": 29,
+		"date": {
+			"year": 2025,
+			"month": 11,
+			"day": 12
+		},
+		"tasks": [
+			{
+				"time": "2PM-4PM",
+				"task": "hackathon",
+				"addInfo": "Participate in a company-wide hackathon."
+			}
+		]
+	},
+	{
+		"id": 30,
+		"date": {
+			"year": 2025,
+			"month": 12,
+			"day": 29
+		},
+		"tasks": [
+			{
+				"time": "5PM-7PM",
+				"task": "year-end party",
+				"addInfo": "Celebrate the end of the year with the team."
+			}
+		]
+	}
 ]

@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import React, { useState } from "react";
 import arrowDown from "../../../../public/icons/expand_more.svg";

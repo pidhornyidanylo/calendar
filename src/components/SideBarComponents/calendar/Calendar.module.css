@@ -95,10 +95,17 @@
     grid-template-rows: repeat(5, 1fr);
     justify-items: center;
     align-content: center;
-    gap: 5px;
 }
 
 .calendarDays div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendarDays div span {
     height: 28px;
     width: 34px;
     color: var(--main-text);
@@ -106,34 +113,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius:14px;
-    -webkit-border-radius:14px;
-    -moz-border-radius:14px;
-    -ms-border-radius:14px;
-    -o-border-radius:14px;
+    border-radius: 14px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -ms-border-radius: 14px;
+    -o-border-radius: 14px;
     cursor: pointer;
     font-size: 1.1em;
 }
 
-.calendarDays div:hover {
+.calendarDays div span:hover {
     background-color: rgb(211, 211, 211);
 }
 
-.calendarDays div.today {
+.calendarDays div span.today {
     background-color: rgba(172, 207, 255, 1);
     font-weight: 600;
 }
 
-.calendarDays div:hover {
+.calendarDays div span:hover {
     background-color: rgba(172, 207, 255, .5);
     color: var(--main-white);
 }
 
-.calendarDays .nextMonthDay {
+.calendarDays .nextMonthDay span {
     background-color: rgba(178, 185, 199, 0.4);
 }
 
-.calendarDays .prevMonthDay {
+.calendarDays .prevMonthDay span {
     background-color: rgba(178, 185, 199, 0.4);
 }
 
