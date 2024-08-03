@@ -1,34 +1,48 @@
 .animate {
-    animation: shake 0.4s;
-    -webkit-animation: shake 0.4s;
+  animation: shake 0.4s;
+  -webkit-animation: shake 0.4s;
 }
-  
-  @keyframes shake {
-    0% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(-1px);
-      -webkit-transform: translateX(-1px);
-      -moz-transform: translateX(-1px);
-      -ms-transform: translateX(-1px);
-      -o-transform: translateX(-1px);
-}
-    50% {
-      transform: translateX(1px);
-      -webkit-transform: translateX(1px);
-      -moz-transform: translateX(1px);
-      -ms-transform: translateX(1px);
-      -o-transform: translateX(1px);
-}
-    75% {
-      transform: translateX(-2px);
-      -webkit-transform: translateX(-2px);
-      -moz-transform: translateX(-2px);
-      -ms-transform: translateX(-2px);
-      -o-transform: translateX(-2px);
-}
-    100% {
-      transform: translateX(0);
-    }
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
   }
+
+  25% {
+    transform: translateX(-1px);
+    -webkit-transform: translateX(-1px);
+    -moz-transform: translateX(-1px);
+    -ms-transform: translateX(-1px);
+    -o-transform: translateX(-1px);
+  }
+
+  50% {
+    transform: translateX(1px);
+    -webkit-transform: translateX(1px);
+    -moz-transform: translateX(1px);
+    -ms-transform: translateX(1px);
+    -o-transform: translateX(1px);
+  }
+
+  75% {
+    transform: translateX(-2px);
+    -webkit-transform: translateX(-2px);
+    -moz-transform: translateX(-2px);
+    -ms-transform: translateX(-2px);
+    -o-transform: translateX(-2px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.searchFilters {
+  position: absolute;
+  top: 100px;
+  right: 260px;
+  width: 500px;
+  height: 150px;
+  background-color: pink;
+  z-index: -1;
+}

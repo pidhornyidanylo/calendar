@@ -172,6 +172,11 @@
     padding: 8px 13px;
     font-size: 1.1em;
     font-weight: 300;
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    background-color: var(--main-light-gray);
 }
 
 @media(max-width: 576px) {

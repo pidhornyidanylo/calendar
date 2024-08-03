@@ -3,7 +3,6 @@
     height: 88px;
     padding: 12px 0;
     display: flex;
-    align-items: center;
     gap: 40px;
 }
 
@@ -41,6 +40,7 @@
     gap: 20px;
     align-items: center;
 }
+
 
 .headerSearch input {
     background-color: transparent;
@@ -138,6 +138,7 @@
         padding: 5px 15px;
         gap: 14px;
     }
+
     .headerSearch input::placeholder {
         color: var(--main-text);
         font-size: 1em;

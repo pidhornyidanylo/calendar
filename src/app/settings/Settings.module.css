@@ -14,7 +14,7 @@
 
 .settingsSection {
     margin-bottom: 30px;
-    border: 2px solid var(--main-light-gray);
+    background-color: var(--main-light-blue);
     padding: 15px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -35,14 +35,18 @@
 
 .settingsButton {
     margin-top: 20px;
-    background-color: var(--main-light-gray);
-    border: none;
+    background-color: var(--main-white);
+    border: 2px solid var(--main-light-gray);
     border-radius: 10px;
     padding: 10px 20px;
     color: var(--main-text);
     font-size: 1.05em;
     cursor: pointer;
     transition: background 0.3s;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 .settingsButton:hover {

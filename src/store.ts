@@ -27,6 +27,9 @@ export type State = {
   headerSearchValue: string;
   setHeaderSearchValue: (value: string) => void;
 
+  showSearchFilters: boolean;
+  setShowSearchFilters: () => void;
+
   updated: boolean;
   updateSchedule: () => void;
 
@@ -79,6 +82,10 @@ export const useStore = create<State>((set) => ({
     set(() => ({
       headerSearchValue: value,
     })),
+
+  showSearchFilters: false,
+  setShowSearchFilters: () =>
+    set((state) => ({ showSearchFilters: !state.showSearchFilters })),
 
   updated: false,
   updateSchedule: () =>

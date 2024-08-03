@@ -1,0 +1,49 @@
+.appsTitle {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.7em;
+    margin-bottom: 20px;
+}
+
+.appsParagraph {
+    font-weight: 300;
+    font-size: 1.2em;
+    text-align: start;
+    margin-bottom: 30px;
+}
+
+.appsList {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-items: center;
+    gap: 20px;
+}
+
+.appsListItem {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 300px;
+    background-color: var(--main-light-blue);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, height 0.3s, padding 0.3s;
+}
+
+.appsListItem:hover {
+    background-color: var(--bg-subtask-pink);
+}
+
+.appName {
+    font-size: 1.3em;
+    margin: 0 0 10px;
+}
+
+.appDescription {
+    font-size: 1em;
+    color: #333;
+}
