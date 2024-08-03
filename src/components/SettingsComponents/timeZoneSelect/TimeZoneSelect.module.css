@@ -1,0 +1,10 @@
+.settingsSelect {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+}

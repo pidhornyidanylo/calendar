@@ -1,0 +1,56 @@
+.settingsTitle {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.7em;
+    margin-bottom: 20px;
+}
+
+.settingsParagraph {
+    font-weight: 300;
+    font-size: 1.2em;
+    text-align: start;
+    margin-bottom: 40px;
+}
+
+.settingsSection {
+    margin-bottom: 30px;
+    border: 2px solid var(--main-light-gray);
+    padding: 15px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.settingsSection h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.settingsSection p {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.settingsButton {
+    margin-top: 20px;
+    background-color: var(--main-light-gray);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: var(--main-text);
+    font-size: 1.05em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.settingsButton:hover {
+    background: #a5a5a5;
+    color: #333;
+}
+
+.active {
+    background: #333;
+    color: #fff;
+}

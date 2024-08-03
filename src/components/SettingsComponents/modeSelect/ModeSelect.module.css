@@ -1,0 +1,16 @@
+.settingsButton {
+    margin-top: 20px;
+    background-color: var(--main-light-gray);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: var(--main-text);
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.settingsButton:hover {
+    background: #a5a5a5;
+    color: #333;
+}
