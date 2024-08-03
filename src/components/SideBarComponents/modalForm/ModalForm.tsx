@@ -6,6 +6,7 @@ import Sheet from "@mui/joy/Sheet";
 import { useState } from "react";
 import React from "react";
 import { useStore } from "@/store";
+import Form from "../createForm/form/Form";
 
 const ModalForm = () => {
   const openModal = useStore((state) => state.openModal);
@@ -13,13 +14,6 @@ const ModalForm = () => {
 
   return (
     <>
-      {/* <Button
-        variant="outlined"
-        color="neutral"
-        onClick={() => setOpenModal(true)}
-      >
-        Open modal
-      </Button> */}
       <Modal
         aria-labelledby="modal-title"
         aria-describedby="modal-desc"
@@ -30,27 +24,14 @@ const ModalForm = () => {
         <Sheet
           variant="outlined"
           sx={{
+            backgroundColor: 'transparent',
+            border: 'none',
             maxWidth: 500,
-            borderRadius: "md",
-            p: 3,
-            boxShadow: "lg",
+            p: 6,
           }}
         >
-          <ModalClose variant="plain" sx={{ m: 1 }} />
-          <Typography
-            component="h2"
-            id="modal-title"
-            level="h4"
-            textColor="inherit"
-            fontWeight="lg"
-            mb={1}
-          >
-            This is the modal title
-          </Typography>
-          <Typography id="modal-desc" textColor="text.tertiary">
-            Make sure to use <code>aria-labelledby</code> on the modal dialog
-            with an optional <code>aria-describedby</code> attribute.
-          </Typography>
+          <ModalClose variant="plain" sx={{ m: 1}} />
+          <Form showCalendatInput={true} />
         </Sheet>
       </Modal>
     </>

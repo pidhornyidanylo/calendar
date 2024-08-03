@@ -1,14 +1,10 @@
 import { create } from "zustand";
 
 export type State = {
+
   expandedSideBar: boolean;
   toggleExpandedSideBar: () => void;
   setExpandedSideBar: (value: boolean) => void;
-
-  dateToCreateTask: { day: number; month: number; year: number } | null;
-  setDateToCreateTask: (
-    value: { day: number; month: number; year: number } | null
-  ) => void;
 
   showCreateForm: boolean;
   toggleShowCreateForm: () => void;
@@ -19,6 +15,11 @@ export type State = {
 
   openModal: boolean;
   setOpenModal: (value: boolean) => void;
+
+  dateToCreateTask: { day: number; month: number; year: number } | null;
+  setDateToCreateTask: (
+    value: { day: number; month: number; year: number } | null
+  ) => void;
 
   headerSearchValue: string;
   setHeaderSearchValue: (value: string) => void;

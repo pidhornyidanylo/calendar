@@ -97,7 +97,9 @@
     align-content: center;
 }
 
-.calendarDays div {
+.calendarDays button {
+    background-color: transparent;
+    border: none;
     height: 100%;
     width: 100%;
     display: flex;
@@ -105,7 +107,11 @@
     justify-content: center;
 }
 
-.calendarDays div span {
+.calendarDays button:focus {
+    outline-color: white;
+}
+
+.calendarDays button span {
     height: 28px;
     width: 34px;
     color: var(--main-text);

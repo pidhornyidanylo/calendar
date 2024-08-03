@@ -1,30 +1,61 @@
-import React, { useState } from "react";
-import styles from "./Form.module.css";
+import React, { FormEvent, useState } from "react";
 import { useStore } from "@/store";
+import { parseDate } from "@/utils/dateUtils";
+import styles from "./Form.module.css";
 
-const Form = () => {
+const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
   const dateToCreateTask = useStore((state) => state.dateToCreateTask);
   const [timeFrom, setTimeFrom] = useState("00:00");
   const [timeTo, setTimeTo] = useState("23:59");
   const [task, setTask] = useState("go to meeting");
+  const [date, setDate] = useState("1999-06-02");
   const [addInfo, setAddInfo] = useState(
     "meeting will take place at 'Pozitron'"
   );
+  const handleSumbit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log({
+      date: parseDate(date),
+      timeFrom: timeFrom,
+      timeTo: timeTo,
+      task: task,
+      addInfo: addInfo,
+    });
+  };
   return (
     <>
-      <h4 className={styles.formDate}>
-        Date:{" "}
-        {(dateToCreateTask?.day as number) < 10
-          ? `0${dateToCreateTask?.day}`
-          : dateToCreateTask?.day}{" "}
-        /{" "}
-        {(dateToCreateTask?.month as number) + 1 < 10
-          ? `0${(dateToCreateTask?.month as number) + 1}`
-          : (dateToCreateTask?.month as number) + 1}{" "}
-        / {dateToCreateTask?.year}
-      </h4>
-      <form data-value="form" className={styles.createForm}>
+      {!showCalendatInput && (
+        <h4 className={styles.formDate}>
+          Date:{" "}
+          {(dateToCreateTask?.day as number) < 10
+            ? `0${dateToCreateTask?.day}`
+            : dateToCreateTask?.day}{" "}
+          /{" "}
+          {(dateToCreateTask?.month as number) + 1 < 10
+            ? `0${(dateToCreateTask?.month as number) + 1}`
+            : (dateToCreateTask?.month as number) + 1}{" "}
+          / {dateToCreateTask?.year}
+        </h4>
+      )}
+      <form
+        onSubmit={(e) => handleSumbit(e)}
+        data-value="form"
+        className={`${styles.createForm} ${showCalendatInput ? styles.lg : ''}`}
+      >
         <h5 className={styles.taskDetailsTitle}>Task details:</h5>
+        {showCalendatInput && (
+          <div className={styles.dateContainer}>
+            <label htmlFor="time">Date: </label>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              placeholder={`${
+                dateToCreateTask ? dateToCreateTask : "01.01.2025"
+              }`}
+            />
+          </div>
+        )}
         <div className={styles.timeContainer}>
           <div className={styles.timeItem}>
             <label htmlFor="time">From: </label>
@@ -70,6 +101,7 @@ const Form = () => {
             ></textarea>
           </div>
         </div>
+        <button className={styles.submitBtn} type="submit">Add</button>
       </form>
     </>
   );

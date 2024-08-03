@@ -10,7 +10,8 @@
     background-color: rgba(172, 207, 255, .45);
     display: flex;
     flex: 1;
-    width: 100%;
+    width: 330px;
+    min-height: 367px;
     flex-direction: column;
     gap: 10px;
     padding: 12px;
@@ -21,9 +22,43 @@
     -o-border-radius: 20px;
 }
 
+.createForm.lg {
+    background-color: rgba(172, 207, 255, .9);
+    display: flex;
+    flex: 1;
+    width: 400px;
+    min-height: 367px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
 .taskDetailsTitle {
     font-size: 1.2em;
     font-weight: 400;
+}
+
+.dateContainer label {
+    font-size: 1.1em;
+    margin-right: 8px;
+}
+
+.dateContainer input {
+    background-color: var(--main-white);
+    border: none;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    cursor: pointer;
 }
 
 .timeContainer {
@@ -112,7 +147,7 @@
     min-width: 100%;
     max-width: 100%;
     min-height: 100px;
-    max-height: 150px;
+    max-height: 100px;
     padding: 5px 10px;
     border: none;
     border-radius: 10px;
@@ -124,4 +159,17 @@
 
 .addInfoContainer textarea:focus {
     outline: transparent;
+}
+
+.submitBtn {
+    background-color: var(--main-white);
+    border: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding: 9px 12px;
+    font-size: 1.1em;
+    font-weight: 300;
 }

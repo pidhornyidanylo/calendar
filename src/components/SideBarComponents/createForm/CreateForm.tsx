@@ -35,7 +35,7 @@ const CreateForm = () => {
             setState={setShowCreateForm}
             valueIf={false}
           />
-          {showCreateForm && <Form />}
+          {showCreateForm && <Form showCalendatInput={false} />}
         </div>
       </div>
     </>

@@ -12,19 +12,14 @@ import ModalForm from "../modalForm/ModalForm";
 const Sidebar = () => {
   const expandedSideBar = useStore((state) => state.expandedSideBar);
   const setExpandedSideBar = useStore((state) => state.setExpandedSideBar);
-
   const setDateToCreateTask = useStore((state) => state.setDateToCreateTask);
-
   const showCreateForm = useStore((state) => state.showCreateForm);
   const toggleShowCreateForm = useStore((state) => state.toggleShowCreateForm);
-  const setShowCreateForm = useStore((state) => state.setShowCreateForm);
-
+  const setOpenModal = useStore((state) => state.setOpenModal);
   const mutateCreateBtn = useStore((state) => state.mutateCreateBtn);
   const toggleMutateCreateBtn = useStore(
     (state) => state.toggleMutateCreateBtn
   );
-
-  const setOpenModal = useStore((state) => state.setOpenModal);
 
   const handleClick = () => {
     if (!mutateCreateBtn) {
@@ -39,14 +34,6 @@ const Sidebar = () => {
   useEffect(() => {
     if (showCreateForm) {
       setExpandedSideBar(true);
-    }
-    if (!expandedSideBar) {
-      setShowCreateForm(false);
-      setExpandedSideBar(false);
-    }
-    if (!expandedSideBar && showCreateForm) {
-      setExpandedSideBar(true);
-      setShowCreateForm(true);
     }
   }, [showCreateForm, expandedSideBar]);
 

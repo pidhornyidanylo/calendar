@@ -128,17 +128,17 @@ const Calendar = () => {
 				</div>
 				<div className={styles.calendarDays}>
 					{prevMonthDays.map((day, index) => (
-						<div
+						<button
 							onClick={() => handleDateClick(day, -1)}
 							data-value={day}
 							key={`prev-${day * index}`}
 							className={styles.prevMonthDay}
 						>
 							<span>{day}</span>
-						</div>
+						</button>
 					))}
 					{monthDays.map((day, index) => (
-						<div
+						<button
 							onClick={() => handleDateClick(day, 0)}
 							data-value={day}
 							key={`current-${day * index}`}
@@ -154,17 +154,17 @@ const Calendar = () => {
 							>
 								{day}
 							</span>
-						</div>
+						</button>
 					))}
 					{nextMonthDays.map((day, index) => (
-						<div
+						<button
 							onClick={() => handleDateClick(day, 1)}
 							data-value={day}
 							key={`next-${day * index}`}
 							className={styles.nextMonthDay}
 						>
 							<span>{day}</span>
-						</div>
+						</button>
 					))}
 				</div>
 			</div>
