@@ -1,10 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { logo } from "../HeaderIcons.index";
 import HeaderBurger from "../headerBurger/HeaderBurger";
 import HeaderMenu from "../headerMenu/HeaderMenu";
 import HeaderSearch from "../headerSearch/HeaderSearch";
-import Link from "next/link";
 import styles from "./Header.module.css";
 
 const Header = () => {

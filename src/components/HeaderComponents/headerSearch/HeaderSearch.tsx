@@ -1,10 +1,10 @@
 "use client";
+import { useStore } from "@/store";
+import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
 import React, { useState } from "react";
-import { useStore } from "@/store";
-import { filter, search, cross } from "../HeaderIcons.index";
+import { cross, filter, search } from "../HeaderIcons.index";
 import styles from "./HeaderSearch.module.css";
-import GenericResize from "@/utils/GenericResize";
 
 const HeaderSearch = () => {
 	const [searchInputValue, setInputSearchValue] = useState("");

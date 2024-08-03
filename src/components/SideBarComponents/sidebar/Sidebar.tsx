@@ -1,13 +1,13 @@
 "use client";
 import { useStore } from "@/store";
+import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
 import React, { useEffect } from "react";
 import plus from "../../../../public/icons/plus.svg";
 import Calendar from "../calendar/Calendar";
-import styles from "./Sidebar.module.css";
 import CreateForm from "../createForm/CreateForm";
-import GenericResize from "@/utils/GenericResize";
 import ModalForm from "../modalForm/ModalForm";
+import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const expandedSideBar = useStore((state) => state.expandedSideBar);

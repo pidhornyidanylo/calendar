@@ -1,10 +1,10 @@
+import { useStore } from "@/store";
+import { normalizeDate } from "@/utils/dateUtils";
 import type React from "react";
 import { months } from "../../SideBarComponents/calendar/Calendar";
 import SubTaskItem from "../subTaskItem/SubTaskItem";
 import styles from "./TaskItem.module.css";
 import type { Task } from "./TaskItem.types";
-import { useStore } from "@/store";
-import { normalizeDate } from "@/utils/dateUtils";
 
 const TaskItem = <T extends Task>({ task }: { task: T }): React.JSX.Element => {
 	const headerSearchValue = useStore((state) => state.headerSearchValue);

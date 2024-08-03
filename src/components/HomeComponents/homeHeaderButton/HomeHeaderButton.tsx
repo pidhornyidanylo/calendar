@@ -1,8 +1,8 @@
-import React from "react";
+import { useStore } from "@/store";
 import Image from "next/image";
+import React from "react";
 import today from "../../../../public/icons/today.svg";
 import styles from "./HomeHeaderButton.module.css";
-import { useStore } from "@/store";
 
 const HomeHeaderButton = () => {
 	const updateSchedule = useStore((state) => state.updateSchedule);

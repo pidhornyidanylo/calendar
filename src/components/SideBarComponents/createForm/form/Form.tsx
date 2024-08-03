@@ -1,6 +1,6 @@
-import React, { FormEvent, useState } from "react";
 import { useStore } from "@/store";
 import { parseDate } from "@/utils/dateUtils";
+import React, { type FormEvent, useState } from "react";
 import styles from "./Form.module.css";
 
 const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
@@ -40,7 +40,7 @@ const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
       <form
         onSubmit={(e) => handleSumbit(e)}
         data-value="form"
-        className={`${styles.createForm} ${showCalendatInput ? styles.lg : ''}`}
+        className={`${styles.createForm} ${showCalendatInput ? styles.lg : ""}`}
       >
         <h5 className={styles.taskDetailsTitle}>Task details:</h5>
         {showCalendatInput && (
@@ -98,10 +98,12 @@ const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
               id="add-info"
               value={addInfo}
               onChange={(e) => setTask(e.target.value)}
-            ></textarea>
+            />
           </div>
         </div>
-        <button className={styles.submitBtn} type="submit">Add</button>
+        <button className={styles.submitBtn} type="submit">
+          Add
+        </button>
       </form>
     </>
   );
