@@ -3,8 +3,23 @@ import { parseDate } from "@/utils/dateUtils";
 import React, { type FormEvent, useState } from "react";
 import styles from "./Form.module.css";
 
+export type Task = {
+  task: string;
+  addInfo: string;
+  date: {
+    day: number;
+    month: number;
+    year: number;
+  };
+  timeFrom: string;
+  timeTo: string;
+};
+
 const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
   const dateToCreateTask = useStore((state) => state.dateToCreateTask);
+  const storeTask = useStore((state) => state.task);
+  const setStoreTask = useStore((state) => state.setTask);
+
   const [timeFrom, setTimeFrom] = useState("00:00");
   const [timeTo, setTimeTo] = useState("23:59");
   const [task, setTask] = useState("go to meeting");
@@ -14,7 +29,7 @@ const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
   );
   const handleSumbit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({
+    setStoreTask({
       date: parseDate(date),
       timeFrom: timeFrom,
       timeTo: timeTo,
@@ -22,6 +37,7 @@ const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
       addInfo: addInfo,
     });
   };
+  
   return (
     <>
       {!showCalendatInput && (
