@@ -51,7 +51,6 @@
     }
 
     .headerMenuTablet {
-        background-color: var(--main-white);
         backdrop-filter: blur(10px);
         padding: 5px 20px;
         border-top-left-radius: 10px;
