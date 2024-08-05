@@ -9,29 +9,6 @@ import HeaderSearch from "../headerSearch/HeaderSearch";
 import styles from "./Header.module.css";
 
 const Header = () => {
-  const [mode, setMode] = useState("light");
-
-  useEffect(() => {
-    const updateMode = () => {
-      const savedMode = localStorage.getItem("mode") || "light";
-      setMode(savedMode);
-      if (savedMode === "dark") {
-        document.documentElement.classList.add("dark-mode");
-      } else {
-        document.documentElement.classList.remove("dark-mode");
-      }
-    };
-
-    updateMode();
-    window.addEventListener("storage", updateMode);
-
-    return () => {
-      window.removeEventListener("storage", updateMode);
-    };
-  }, []);
-
-  // console.log(localStorage);
-
   return (
     <header className={styles.header}>
       <div className={styles.headerLogo}>
@@ -56,11 +33,7 @@ const Header = () => {
           <h3 className={styles.headerTitle}>Calendar</h3>
         </Link>
       </div>
-      <div
-        className={`${styles.headerSearch} ${
-          localStorage.getItem("mode") === "dark" ? styles.light : ""
-        }`}
-      >
+      <div className={styles.headerSearch}>
         <HeaderSearch />
       </div>
       <div className={styles.headerMenu}>
