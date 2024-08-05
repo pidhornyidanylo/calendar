@@ -16,7 +16,7 @@ const Header = () => {
     if (savedMode === "dark") {
       document.documentElement.classList.add("dark-mode");
     }
-  }, [mode, localStorage.getItem("mode")]);
+  });
   return (
     <header className={styles.header}>
       <div className={styles.headerLogo}>
