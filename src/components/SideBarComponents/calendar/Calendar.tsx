@@ -1,8 +1,8 @@
 import { useStore } from "@/store";
 import Image from "next/image";
 import { useState } from "react";
-import expandLess from "../../../../public/icons/expand_less.svg";
-import expandMore from "../../../../public/icons/expand_more.svg";
+import expandLess from "../../../../public/icons/home/expand_less.svg";
+import expandMore from "../../../../public/icons/home/expand_more.svg";
 import styles from "./Calendar.module.css";
 
 export const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

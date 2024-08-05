@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import arrowDown from "../../../../public/icons/expand_more.svg";
+import arrowDown from "../../../../public/icons/home/expand_more.svg";
 import type { SubTask } from "../taskItem/TaskItem.types";
 import styles from "./SubTaskItem.module.css";
 

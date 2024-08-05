@@ -1,7 +1,7 @@
 import { useStore } from "@/store";
 import Image from "next/image";
 import React from "react";
-import today from "../../../../public/icons/today.svg";
+import today from "../../../../public/icons/home/today.svg";
 import styles from "./HomeHeaderButton.module.css";
 
 const HomeHeaderButton = () => {

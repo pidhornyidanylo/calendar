@@ -13,9 +13,12 @@
 }
 
 .settingsSection {
+    display: flex;
+    align-items: center;
+    gap: 40px;
     margin-bottom: 30px;
     background-color: var(--main-light-blue);
-    padding: 15px;
+    padding: 15px 15px 15px 30px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -23,12 +26,13 @@
     -o-border-radius: 10px;
 }
 
-.settingsSection h3 {
+.settingsSection div h3 {
     font-size: 1.3em;
+    font-weight: 500;
     margin-bottom: 10px;
 }
 
-.settingsSection p {
+.settingsSection div p {
     font-size: 1.1em;
     color: #333;
 }

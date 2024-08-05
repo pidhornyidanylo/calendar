@@ -2,7 +2,7 @@ import { useStore } from "@/store";
 import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
 import React from "react";
-import back from "../../../../public/icons/back.svg";
+import back from "../../../../public/icons/home/back.svg";
 import styles from "./CreateForm.module.css";
 import Form from "./form/Form";
 

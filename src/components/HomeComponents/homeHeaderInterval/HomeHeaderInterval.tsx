@@ -2,8 +2,8 @@ import { useStore } from "@/store";
 import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
 import React, { useState } from "react";
-import arrowBack from "../../../../public/icons/arrow_back_ios_new.svg";
-import arrowForward from "../../../../public/icons/arrow_forward_ios.svg";
+import arrowBack from "../../../../public/icons/home/arrow_back_ios_new.svg";
+import arrowForward from "../../../../public/icons/home/arrow_forward_ios.svg";
 import { months } from "../../SideBarComponents/calendar/Calendar";
 import styles from "./HomeHeaderInterval.module.css";
 

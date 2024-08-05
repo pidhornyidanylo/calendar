@@ -3,7 +3,7 @@ import { useStore } from "@/store";
 import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
 import React, { useEffect } from "react";
-import plus from "../../../../public/icons/plus.svg";
+import plus from "../../../../public/icons/home/plus.svg";
 import Calendar from "../calendar/Calendar";
 import CreateForm from "../createForm/CreateForm";
 import ModalForm from "../modalForm/ModalForm";

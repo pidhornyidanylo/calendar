@@ -1,7 +1,7 @@
 "use client";
 
 import { useStore } from "@/store";
-import React, { useEffect } from "react";
+import React from "react";
 import HomeHeaderButton from "../homeHeaderButton/HomeHeaderButton";
 import HomeHeaderInterval from "../homeHeaderInterval/HomeHeaderInterval";
 import styles from "./HomeHeader.module.css";
