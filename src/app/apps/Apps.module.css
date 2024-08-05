@@ -45,5 +45,5 @@
 
 .appDescription {
     font-size: 1em;
-    color: #333;
+    color: var(--main-text);
 }

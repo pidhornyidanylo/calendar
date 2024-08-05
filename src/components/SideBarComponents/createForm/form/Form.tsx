@@ -20,7 +20,7 @@ const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
   const storeTask = useStore((state) => state.task);
   const setStoreTask = useStore((state) => state.setTask);
 
-  const [timeFrom, setTimeFrom] = useState("00:00");
+  const [timeFrom, setTimeFrom] = useState("00:01");
   const [timeTo, setTimeTo] = useState("23:59");
   const [task, setTask] = useState("go to meeting");
   const [date, setDate] = useState("1999-06-02");

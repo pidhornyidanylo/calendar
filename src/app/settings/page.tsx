@@ -22,7 +22,7 @@ const Settings = () => {
       </p>
 
       <div className={styles.settingsSection}>
-        <Image width={45} height={45} src={exportIcon} alt={"exportIcon"} />
+        <Image className="svgIcon" width={45} height={45} src={exportIcon} alt={"exportIcon"} />
         <div>
           <h3>Export Calendar</h3>
           <p>Export your calendar in various formats such as .ics or .csv.</p>
@@ -31,7 +31,7 @@ const Settings = () => {
       </div>
 
       <div className={styles.settingsSection}>
-        <Image width={45} height={45} src={cycle} alt={"cycle"} />
+        <Image className="svgIcon" width={45} height={45} src={cycle} alt={"cycle"} />
         <div>
           <h3>Set Recurring Events</h3>
           <p>Specify the frequency and duration of recurring events.</p>
@@ -42,7 +42,7 @@ const Settings = () => {
       </div>
 
       <div className={styles.settingsSection}>
-        <Image width={45} height={45} src={account} alt={"account"} />
+        <Image className="svgIcon" width={45} height={45} src={account} alt={"account"} />
         <div>
           <h3>Account Settings</h3>
           <p>
@@ -54,7 +54,7 @@ const Settings = () => {
       </div>
 
       <div className={styles.settingsSection}>
-        <Image width={45} height={45} src={importIcon} alt={"importIcon"} />
+        <Image className="svgIcon" width={45} height={45} src={importIcon} alt={"importIcon"} />
         <div>
           <h3>Import Events</h3>
           <p>
@@ -66,14 +66,14 @@ const Settings = () => {
       </div>
 
       <div className={styles.settingsSection}>
-        <Image width={45} height={45} src={timezone} alt={"timezone"} />
+        <Image className="svgIcon" width={45} height={45} src={timezone} alt={"timezone"} />
         <div>
           <TimeZoneSelect />
         </div>
       </div>
 
       <div className={styles.settingsSection}>
-        <Image width={45} height={45} src={mode} alt={"darkmode"} />
+        <Image className="svgIcon" width={45} height={45} src={mode} alt={"darkmode"} />
         <div>
           <ModeSelect />
         </div>

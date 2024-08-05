@@ -13,7 +13,7 @@ const HomeHeaderButton = () => {
 			type="button"
 			className={styles.todayBtn}
 		>
-			<Image src={today} alt={"today"} />
+			<Image className="svgIcon" src={today} alt={"today"} />
 			<span>Today</span>
 		</button>
 	);

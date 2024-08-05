@@ -12,6 +12,21 @@
   --bg-subtask-blue: rgb(153, 118, 255, .2);
 }
 
+.dark-mode {
+  --main-light-blue: rgb(0, 0, 0);
+  --main-white: rgb(67, 67, 67);
+  --main-light-gray: rgba(95, 95, 95, 0.06);
+
+  --main-text: white;
+  --main-text-dark: #000000;
+
+  --svg-filter: invert(1) hue-rotate(180deg);
+
+  --bg-subtask-pink: rgb(255, 136, 250, .2);
+  --bg-subtask-yellow: rgb(247, 192, 109, .2);
+  --bg-subtask-blue: rgb(153, 118, 255, .2);
+}
+
 * {
   font-family: "DM Sans", sans-serif;
   color: var(--main-text);
@@ -20,6 +35,9 @@
   padding: 0;
 }
 
+.svgIcon {
+  filter: var(--svg-filter);
+}
 
 body {
   width: 100%;

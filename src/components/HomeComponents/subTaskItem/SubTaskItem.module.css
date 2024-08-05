@@ -20,7 +20,7 @@
 .subTaskTime {
     width: 100px;
     font-size: 1.1em;
-    color: rgba(0, 0, 0, .6);
+    color: var(--main-text);
 }
 
 .subTaskTimeSquare {

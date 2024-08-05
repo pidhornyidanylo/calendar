@@ -1,6 +1,7 @@
 .settingsButton {
     margin-top: 20px;
-    background-color: var(--main-light-gray);
+    background-color: var(--main-white);
+    border: 2px solid var(--main-light-gray);
     border: none;
     border-radius: 10px;
     padding: 10px 20px;
@@ -11,6 +12,6 @@
 }
 
 .settingsButton:hover {
-    background: #a5a5a5;
-    color: #333;
+    background: var(--main-text);
+    color: var(--main-white);
 }

@@ -41,6 +41,9 @@
     align-items: center;
 }
 
+.headerSearch.light {
+    background-color: var(--main-white);
+}
 
 .headerSearch input {
     background-color: transparent;
@@ -50,9 +53,19 @@
     font-size: 1.4em;
 }
 
+
+.headerSearch.light input {
+    color: var(--main-text);
+
+}
+
 .headerSearch input::placeholder {
     color: var(--main-text);
     font-size: 1em;
+}
+
+.headerSearch.light input::placeholder {
+    color: var(--main-text);
 }
 
 .headerSearch button {

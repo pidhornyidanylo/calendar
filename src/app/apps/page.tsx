@@ -81,6 +81,7 @@ const Apps = () => {
                 height={50}
                 src={app.image}
                 alt={app.name}
+                className="svgIcon"
               ></Image>
             </div>
             <div>

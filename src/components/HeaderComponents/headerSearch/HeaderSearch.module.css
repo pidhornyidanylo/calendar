@@ -3,6 +3,7 @@
   -webkit-animation: shake 0.4s;
 }
 
+
 @keyframes shake {
   0% {
     transform: translateX(0);
@@ -35,14 +36,4 @@
   100% {
     transform: translateX(0);
   }
-}
-
-.searchFilters {
-  position: absolute;
-  top: 100px;
-  right: 260px;
-  width: 500px;
-  height: 150px;
-  background-color: pink;
-  z-index: -1;
 }

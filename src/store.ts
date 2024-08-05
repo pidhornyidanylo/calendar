@@ -41,6 +41,9 @@ export type State = {
   currentYear: number;
   nextYear: () => void;
   prevYear: () => void;
+
+  mode: "light" | "dark";
+  switchMode: (mode: "light" | "dark") => void;
 };
 
 export const useStore = create<State>((set) => ({
@@ -117,5 +120,11 @@ export const useStore = create<State>((set) => ({
   prevYear: () =>
     set((state) => ({
       currentYear: state.currentYear === 0 ? 11 : state.currentYear - 1,
+    })),
+
+  mode: "light",
+  switchMode: (mode) =>
+    set(() => ({
+      mode: mode,
     })),
 }));

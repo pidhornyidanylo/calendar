@@ -10,6 +10,7 @@
     font-size: 1.2em;
     text-align: start;
     margin-bottom: 40px;
+    color: var(--main-text);
 }
 
 .settingsSection {
@@ -30,11 +31,12 @@
     font-size: 1.3em;
     font-weight: 500;
     margin-bottom: 10px;
+    color: var(--main-text);
 }
 
 .settingsSection div p {
     font-size: 1.1em;
-    color: #333;
+    color: var(--main-text);
 }
 
 .settingsButton {
@@ -54,11 +56,12 @@
 }
 
 .settingsButton:hover {
-    background: #a5a5a5;
-    color: #333;
+    background: var(--main-text);
+    color: var(--main-white);
+
 }
 
 .active {
-    background: #333;
-    color: #fff;
+    background: #ffffff;
+    color: var(--main-text);
 }

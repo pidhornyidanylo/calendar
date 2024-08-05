@@ -22,7 +22,7 @@ const CreateForm = () => {
 				}`}
 			>
 				<h3 className={styles.createFormStarter}>Choose date first</h3>
-				<Image className={styles.backIcon} src={back} alt={"back"} />
+				<Image className="svgIcon" src={back} alt={"back"} />
 			</div>
 			<div
 				className={`${styles.createFormContainer} ${

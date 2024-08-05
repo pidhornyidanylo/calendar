@@ -2,7 +2,8 @@
     font-size: 1.23em;
     border-radius: 80px;
     color: var(--main-text);
-    border-color: rgba(0, 0, 0, .2);
+    background-color: var(--main-text);
+    border-color: var(--main-text);
     -webkit-border-radius: 80px;
     -moz-border-radius: 80px;
     -ms-border-radius: 80px;

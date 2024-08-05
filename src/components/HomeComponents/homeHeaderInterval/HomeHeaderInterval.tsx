@@ -75,10 +75,10 @@ const HomeHeaderInterval = () => {
 			</h2>
 			<div className={styles.arrows}>
 				<button type="button" onClick={() => handleTimeBack()}>
-					<Image src={arrowBack} alt={"arrow-back"} />
+					<Image src={arrowBack} className="svgIcon" alt={"arrow-back"} />
 				</button>
 				<button type="button" onClick={() => handleTimeForward()}>
-					<Image src={arrowForward} alt={"arrow-forward"} />
+					<Image src={arrowForward} className="svgIcon" alt={"arrow-forward"} />
 				</button>
 			</div>
 		</>

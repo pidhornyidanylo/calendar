@@ -15,7 +15,6 @@ const HeaderSearch = () => {
 
   const headerSearchValue = useStore((state) => state.headerSearchValue);
   const setHeaderSearchValue = useStore((state) => state.setHeaderSearchValue);
-  const showSearchFilters = useStore((state) => state.showSearchFilters);
   const setShowSearchFilters = useStore((state) => state.setShowSearchFilters);
 
   useEffect(() => {
@@ -57,7 +56,7 @@ const HeaderSearch = () => {
           className={`${showAnimate ? styles.animate : ""}`}
           onClick={handleSearchSubmit}
         >
-          <Image src={search} alt={"search"} />
+          <Image className="svgIcon" src={search} alt={"search"} />
         </button>
       ) : (
         <button
@@ -68,7 +67,7 @@ const HeaderSearch = () => {
             setHeaderSearchValue("");
           }}
         >
-          <Image src={cross} alt={"cross"} />
+          <Image className="svgIcon" src={cross} alt={"cross"} />
         </button>
       )}
       <input
@@ -79,9 +78,8 @@ const HeaderSearch = () => {
         onKeyDown={handleKeyDown}
       />
       <button type="button" onClick={() => setShowSearchFilters()}>
-        <Image src={filter} alt={"filter"} />
+        <Image className="svgIcon" src={filter} alt={"filter"} />
       </button>
-      {showSearchFilters && <div className={styles.searchFilters}>FILTERS</div>}
     </>
   );
 };

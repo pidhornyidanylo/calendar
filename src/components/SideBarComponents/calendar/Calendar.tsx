@@ -113,10 +113,10 @@ const Calendar = () => {
         </div>
         <div className={styles.headerActions}>
           <button type="button" id="prevMonth" onClick={handlePrevMonth}>
-            <Image src={expandLess} alt={"expandLess"} />
+            <Image className="svgIcon" src={expandLess} alt={"expandLess"} />
           </button>
           <button type="button" id="nextMonth" onClick={handleNextMonth}>
-            <Image src={expandMore} alt={"expandMore"} />
+            <Image className="svgIcon" src={expandMore} alt={"expandMore"} />
           </button>
         </div>
       </div>

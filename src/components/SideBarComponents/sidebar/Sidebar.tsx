@@ -53,7 +53,7 @@ const Sidebar = () => {
         className={styles.createBtn}
         onClick={() => handleClick()}
       >
-        <Image src={plus} alt="plus" />
+        <Image className="svgIcon" src={plus} alt="plus" />
         <span>Create</span>
       </button>
       <Calendar />
