@@ -9,6 +9,24 @@ import HeaderSearch from "../headerSearch/HeaderSearch";
 import styles from "./Header.module.css";
 
 const Header = () => {
+  useEffect(() => {
+    const updateMode = () => {
+      const savedMode = localStorage.getItem("mode") || "light";
+      if (savedMode === "dark") {
+        document.documentElement.classList.add("dark-mode");
+      } else {
+        document.documentElement.classList.remove("dark-mode");
+      }
+    };
+
+    updateMode();
+    window.addEventListener("storage", updateMode);
+
+    return () => {
+      window.removeEventListener("storage", updateMode);
+    };
+  }, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.headerLogo}>
