@@ -9,16 +9,15 @@ import HeaderSearch from "../headerSearch/HeaderSearch";
 import styles from "./Header.module.css";
 
 const Header = () => {
-  const [mode, setMode] = useState("light");
-
   useEffect(() => {
     const updateMode = () => {
-      const savedMode = localStorage.getItem("mode") || "light";
-      setMode(savedMode);
-      if (savedMode === "dark") {
-        document.documentElement.classList.add("dark-mode");
-      } else {
-        document.documentElement.classList.remove("dark-mode");
+      if (localStorage) {
+        const savedMode = localStorage.getItem("mode") || "light";
+        if (savedMode === "dark") {
+          document.documentElement.classList.add("dark-mode");
+        } else {
+          document.documentElement.classList.remove("dark-mode");
+        }
       }
     };
 
@@ -56,7 +55,9 @@ const Header = () => {
       </div>
       <div
         className={`${styles.headerSearch} ${
-          localStorage.getItem("mode") === "dark" ? styles.light : ""
+          localStorage && localStorage.getItem("mode") === "dark"
+            ? styles.light
+            : ""
         }`}
       >
         <HeaderSearch />
