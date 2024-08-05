@@ -26,7 +26,6 @@ const Sidebar = () => {
       setDateToCreateTask(null);
       toggleShowCreateForm();
     } else {
-      console.log("show modal window xDDD");
       setOpenModal(true);
     }
   };

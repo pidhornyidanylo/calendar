@@ -2,7 +2,7 @@
 import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { apps, avatar, help, home, more, settings } from "../HeaderIcons.index";
 import styles from "./HeaderMenu.module.css";
 
@@ -10,13 +10,18 @@ const HeaderMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showTablet, setShowTablet] = useState(false);
 
-  document.addEventListener("click", (e) => {
-    e.preventDefault();
-    // @ts-ignore
-    if (!e.target.attributes["data-menu"]) {
-      setShowTablet(false);
-    }
-  });
+  useEffect(() => {
+    const handleClickOutside = (e: any) => {
+      if (!e.target.closest("[data-menu]")) {
+        setShowTablet(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
