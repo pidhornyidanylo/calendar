@@ -83,7 +83,7 @@
 
 @media(max-width: 576px) {
     .subTask {
-        padding: 13px;
+        padding: 16px 13px;
         border-radius: 5px;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
@@ -102,11 +102,12 @@
         padding: 2px 5px;
         position: absolute;
         font-size: .83em;
-        top: -23px;
+        top: -27px;
         display: flex;
         justify-content: center;
         border-radius: 5px;
-        background-color: rgb(255, 136, 250, .4);
+        background-color: var(--main-hard-blue);
+        border: 2px solid var(--main-white);
         backdrop-filter: blur(10px);
         color: var(--main-text);
         -webkit-border-radius: 5px;
@@ -139,13 +140,13 @@
 @media(max-width: 425px) {
     .subTask {
         width: 100%;
-        padding: 10px;
-        border-radius: 10px;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        -ms-border-radius: 10px;
-        -o-border-radius: 10px;
-    }
+        padding: 11px 4px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+}
 
     .subTaskMain {
         gap: 10px;
@@ -153,7 +154,7 @@
 
     .subTaskTime {
         font-size: .8em;
-        top: -18px;
+        top: -24px;
     }
 
     .subTaskInner {

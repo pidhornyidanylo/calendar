@@ -84,7 +84,7 @@
 
 @media(max-width: 576px) {
     .taskItem {
-        padding: 12px 6px;
+        padding: 13px 6px;
         border-radius: 8px;
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;

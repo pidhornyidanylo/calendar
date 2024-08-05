@@ -10,6 +10,14 @@ const HeaderMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showTablet, setShowTablet] = useState(false);
 
+  document.addEventListener("click", (e) => {
+    e.preventDefault();
+    // @ts-ignore
+    if (!e.target.attributes["data-menu"]) {
+      setShowTablet(false);
+    }
+  });
+
   return (
     <>
       <GenericResize
@@ -22,20 +30,35 @@ const HeaderMenu = () => {
       {showMenu ? (
         <>
           <button
+            data-menu="data-menu"
             type="button"
             id="more"
             className={styles.moreBtn}
             onClick={() => setShowTablet(!showTablet)}
           >
-            <Image className="svgIcon" src={more} alt="more" width={24} height={24} />
+            <Image
+              data-menu="data-menu"
+              className="svgIcon"
+              src={more}
+              alt="more"
+              width={24}
+              height={24}
+            />
           </button>
           <div
+            data-menu="data-menu"
             className={`${styles.headerMenuTablet} ${
               showTablet ? styles.visibleTablet : ""
             }`}
           >
-            <Link type="button" className={styles.headerMenuLink} href="/">
+            <Link
+              data-menu="data-menu"
+              type="button"
+              className={styles.headerMenuLink}
+              href="/"
+            >
               <Image
+                data-menu="data-menu"
                 src={home}
                 alt="home"
                 className="svgIcon"
@@ -43,8 +66,14 @@ const HeaderMenu = () => {
                 height={24}
               />
             </Link>
-            <Link type="button" className={styles.headerMenuLink} href="/user">
+            <Link
+              data-menu="data-menu"
+              type="button"
+              className={styles.headerMenuLink}
+              href="/user"
+            >
               <Image
+                data-menu="data-menu"
                 src={avatar}
                 alt="avatar"
                 className="svgIcon"
@@ -52,8 +81,14 @@ const HeaderMenu = () => {
                 height={24}
               />
             </Link>
-            <Link type="button" className={styles.headerMenuLink} href="/apps">
+            <Link
+              data-menu="data-menu"
+              type="button"
+              className={styles.headerMenuLink}
+              href="/apps"
+            >
               <Image
+                data-menu="data-menu"
                 src={apps}
                 alt="apps"
                 className="svgIcon"
@@ -61,8 +96,13 @@ const HeaderMenu = () => {
                 height={24}
               />
             </Link>
-            <Link className={styles.headerMenuLink} href="/settings">
+            <Link
+              data-menu="data-menu"
+              className={styles.headerMenuLink}
+              href="/settings"
+            >
               <Image
+                data-menu="data-menu"
                 src={settings}
                 alt="settings"
                 className="svgIcon"
@@ -70,8 +110,14 @@ const HeaderMenu = () => {
                 height={24}
               />
             </Link>
-            <Link type="button" className={styles.headerMenuLink} href="/help">
+            <Link
+              data-menu="data-menu"
+              type="button"
+              className={styles.headerMenuLink}
+              href="/help"
+            >
               <Image
+                data-menu="data-menu"
                 src={help}
                 alt="help"
                 className="svgIcon"
