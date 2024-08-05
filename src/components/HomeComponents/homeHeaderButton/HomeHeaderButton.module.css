@@ -1,25 +1,24 @@
 .todayBtn {
     font-size: 1.23em;
-    border-radius: 80px;
+    border: none;
+    background-color: var(--main-hard-blue);
+    border-radius: 15px;
     color: var(--main-text);
-    background-color: var(--main-text);
-    border-color: var(--main-text);
-    -webkit-border-radius: 80px;
-    -moz-border-radius: 80px;
-    -ms-border-radius: 80px;
-    -o-border-radius: 80px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
     padding: 9px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    background-color: inherit;
     margin-right: 20px;
     cursor: pointer;
 }
 
 .todayBtn:hover {
-    background-color: rgba(0, 0, 0, .03);
+    background-color: var(--main-pink);
 }
 
 @media(max-width: 768px) {
@@ -28,12 +27,12 @@
         top: -45px;
         font-size: 1em;
         background-color: rgba(172, 207, 255, 0.9);
-        border-radius: 15px;
-        -webkit-border-radius: 15px;
-        -moz-border-radius: 15px;
-        -ms-border-radius: 15px;
-        -o-border-radius: 15px;
-    }
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+}
 
 }
 
