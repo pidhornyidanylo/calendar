@@ -10,13 +10,26 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   const [mode, setMode] = useState("light");
+
   useEffect(() => {
-    const savedMode = localStorage.getItem("mode") || "light";
-    setMode(savedMode);
-    if (savedMode === "dark") {
-      document.documentElement.classList.add("dark-mode");
-    }
-  });
+    const updateMode = () => {
+      const savedMode = localStorage.getItem("mode") || "light";
+      setMode(savedMode);
+      if (savedMode === "dark") {
+        document.documentElement.classList.add("dark-mode");
+      } else {
+        document.documentElement.classList.remove("dark-mode");
+      }
+    };
+
+    updateMode();
+    window.addEventListener("storage", updateMode);
+
+    return () => {
+      window.removeEventListener("storage", updateMode);
+    };
+  }, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.headerLogo}>
@@ -43,7 +56,7 @@ const Header = () => {
       </div>
       <div
         className={`${styles.headerSearch} ${
-          mode === "dark" ? styles.light : ""
+          localStorage.getItem("mode") === "dark" ? styles.light : ""
         }`}
       >
         <HeaderSearch />
