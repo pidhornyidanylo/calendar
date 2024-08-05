@@ -7,7 +7,7 @@
 }
 
 .createForm {
-    background-color: rgba(172, 207, 255, .45);
+    background-color: var(--main-hard-blue);
     display: flex;
     flex: 1;
     width: 330px;
@@ -23,7 +23,7 @@
 }
 
 .createForm.lg {
-    background-color: rgba(172, 207, 255, .9);
+    background-color: var(--main-hard-blue);
     display: flex;
     flex: 1;
     width: 400px;
@@ -79,6 +79,7 @@
 }
 
 .timeItem input {
+    color: var(--main-text);
     background-color: var(--main-white);
     border: none;
     font-size: 1.1em;
@@ -115,6 +116,8 @@
 }
 
 .taskContainer input {
+    color: var(--main-text);
+    background-color: var(--main-white);
     font-size: 1.1em;
     width: 100%;
     padding: 8px 13px;
@@ -143,6 +146,8 @@
 }
 
 .addInfoContainer textarea {
+    color: var(--main-text);
+    background-color: var(--main-white);
     font-size: 1.1em;
     min-width: 100%;
     max-width: 100%;
@@ -173,10 +178,6 @@
     font-size: 1.1em;
     font-weight: 300;
     cursor: pointer;
-}
-
-.submitBtn:hover {
-    background-color: var(--main-light-gray);
 }
 
 @media(max-width: 576px) {

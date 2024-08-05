@@ -35,7 +35,7 @@
 }
 
 .appsListItem:hover {
-    background-color: var(--bg-subtask-pink);
+  background-color: var(--main-pink);
 }
 
 .appName {
@@ -46,4 +46,17 @@
 .appDescription {
     font-size: 1em;
     color: var(--main-text);
+}
+
+@media(max-width: 768px) {
+    .appsList {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .appsListItem {
+        padding: 10px;
+        gap: 20px;
+        width: 100%;
+    }
+
 }

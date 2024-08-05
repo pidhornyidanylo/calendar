@@ -1,5 +1,5 @@
 .subTask {
-    background-color: rgba(255, 136, 250, .2);
+    background-color: var(--main-pink);
     padding: 17px;
     border-radius: 17px;
     -webkit-border-radius: 17px;
@@ -51,7 +51,7 @@
     margin-top: 20px;
     padding: 0px;
     font-size: 1.1em;
-    color: rgba(0, 0, 0, .6);
+    color: var(--main-text);
 }
 
 .addInfo.visible {
@@ -97,8 +97,8 @@
         display: flex;
         justify-content: center;
         border-radius: 5px;
-        background-color: rgba(172, 207, 255, 0.9);
-        color: rgba(0, 0, 0, 1);
+        background-color: var(--main-blue);
+        color: var(--main-text);
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
@@ -135,7 +135,7 @@
         -moz-border-radius: 10px;
         -ms-border-radius: 10px;
         -o-border-radius: 10px;
-}
+    }
 
     .subTaskMain {
         gap: 10px;

@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import styles from "./Help.module.css";
 
 const faqs = [
@@ -94,7 +93,7 @@ const Help = () => {
       <ul className={styles.helpList}>
         {faqs.map((faq) => (
           <li key={faq.question} className={styles.helpListItem}>
-            <Link href={"#"}>{faq.question}</Link>
+            <h3>{faq.question}</h3>
             <p>{faq.answer}</p>
           </li>
         ))}

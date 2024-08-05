@@ -2,29 +2,28 @@
 
 :root {
   --main-light-blue: rgba(172, 207, 255, 0.15);
+  --main-hard-blue: rgba(172, 207, 255, .45);
   --main-white: rgba(255, 255, 255, 1);
-  --main-light-gray: rgba(95, 95, 95, 0.06);
-
   --main-text: black;
 
-  --bg-subtask-pink: rgb(255, 136, 250, .2);
-  --bg-subtask-yellow: rgb(247, 192, 109, .2);
-  --bg-subtask-blue: rgb(153, 118, 255, .2);
+  --current-month-days: rgba(255, 255, 255, 1);
+  --next-prev-days-calendar: rgba(178, 185, 199, 0.4);
+
+  --main-pink: rgb(255, 136, 250, .4);
+  --main-blue: rgba(172, 207, 255, 0.9) --main-hover: rgb(247, 192, 109, .2);
 }
 
 .dark-mode {
-  --main-light-blue: rgb(0, 0, 0);
-  --main-white: rgb(67, 67, 67);
-  --main-light-gray: rgba(95, 95, 95, 0.06);
-
+  --main-light-blue: rgb(0, 0, 0, .87);
+  --main-hard-blue: rgb(0, 0, 0, .87);
+  --main-white: rgb(57, 57, 57);
   --main-text: white;
-  --main-text-dark: #000000;
 
+  --main-pink: rgba(181, 181, 181, 0.35);
   --svg-filter: invert(1) hue-rotate(180deg);
 
-  --bg-subtask-pink: rgb(255, 136, 250, .2);
-  --bg-subtask-yellow: rgb(247, 192, 109, .2);
-  --bg-subtask-blue: rgb(153, 118, 255, .2);
+  --current-month-days: rgb(173, 171, 171);
+  --next-prev-days-calendar: rgb(71, 71, 71);
 }
 
 * {

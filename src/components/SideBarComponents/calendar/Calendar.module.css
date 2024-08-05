@@ -61,7 +61,7 @@
 }
 
 .calendarBody {
-    background-color: rgba(172, 207, 255, .45);
+    background-color: var(--main-hard-blue);
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -115,7 +115,7 @@
     height: 28px;
     width: 34px;
     color: var(--main-text);
-    background-color: var(--main-white);
+    background-color: var(--current-month-days);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,11 +143,11 @@
 }
 
 .calendarDays .nextMonthDay span {
-    background-color: rgba(178, 185, 199, 0.4);
+    background-color: var(--next-prev-days-calendar);
 }
 
 .calendarDays .prevMonthDay span {
-    background-color: rgba(178, 185, 199, 0.4);
+    background-color: var(--next-prev-days-calendar);
 }
 
 @media(max-width: 992px) {

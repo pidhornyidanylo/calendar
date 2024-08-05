@@ -16,10 +16,10 @@
 .settingsSection {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
     margin-bottom: 30px;
     background-color: var(--main-light-blue);
-    padding: 15px 15px 15px 30px;
+    padding: 20px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -27,14 +27,20 @@
     -o-border-radius: 10px;
 }
 
-.settingsSection div h3 {
+.settingsSectionImageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settingsSectionContent h3 {
     font-size: 1.3em;
     font-weight: 500;
     margin-bottom: 10px;
     color: var(--main-text);
 }
 
-.settingsSection div p {
+.settingsSectionContent p {
     font-size: 1.1em;
     color: var(--main-text);
 }
@@ -42,7 +48,7 @@
 .settingsButton {
     margin-top: 20px;
     background-color: var(--main-white);
-    border: 2px solid var(--main-light-gray);
+    border: none;
     border-radius: 10px;
     padding: 10px 20px;
     color: var(--main-text);
@@ -56,12 +62,16 @@
 }
 
 .settingsButton:hover {
-    background: var(--main-text);
-    color: var(--main-white);
-
+    background: var(--main-pink);
 }
 
 .active {
     background: #ffffff;
     color: var(--main-text);
+}
+
+@media(max-width: 768px) {
+    .settingsSection {
+        padding: 10px;
+    }
 }

@@ -17,7 +17,7 @@ const SubTaskItem = ({ subTask }: { subTask: SubTask }) => {
 					onClick={() => setExpandSubTask(!expandSubTask)}
 					className={styles.subTaskExpand}
 				>
-					<Image src={arrowDown} alt={"arrow-down"} />
+					<Image className="svgIcon" src={arrowDown} alt={"arrow-down"} />
 				</button>
 			</div>
 			<p className={`${styles.addInfo} ${expandSubTask ? styles.visible : ""}`}>
