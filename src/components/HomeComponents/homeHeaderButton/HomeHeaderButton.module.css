@@ -24,9 +24,9 @@
 @media(max-width: 768px) {
     .todayBtn {
         position: absolute;
-        top: -45px;
+        top: -30px;
+        border: 2px solid var(--main-white);
         font-size: 1em;
-        background-color: rgba(172, 207, 255, 0.9);
         border-radius: 10px;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;

@@ -23,8 +23,8 @@ const ModalForm = () => {
 					sx={{
 						backgroundColor: "transparent",
 						border: "none",
-						maxWidth: 500,
-						p: 6,
+						maxWidth: 600,
+						p: 1,
 					}}
 				>
 					<ModalClose variant="plain" sx={{ m: 1 }} />

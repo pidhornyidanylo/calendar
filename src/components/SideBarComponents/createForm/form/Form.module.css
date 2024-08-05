@@ -24,18 +24,19 @@
 
 .createForm.lg {
     background-color: var(--main-hard-blue);
+    backdrop-filter: blur(10px);
     display: flex;
     flex: 1;
-    width: 400px;
+    width: 450px;
     min-height: 367px;
     flex-direction: column;
     gap: 10px;
     padding: 20px;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 .taskDetailsTitle {
@@ -182,7 +183,77 @@
 
 @media(max-width: 576px) {
     .createForm.lg {
-        width: 300px;
+        width: 430px;
+        padding: 15px;
+    }
+
+    .createForm.lg .dateContainer input {
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+    }
+
+    .createForm.lg .timeContainer input {
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+    }
+
+    .createForm.lg .taskContainer input {
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+    }
+
+    .createForm.lg .addInfoContainer textarea {
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+    }
+
+    .timeContainer {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .submitBtn {
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+    }
+
+    .timeItem {
+        width: 100%;
+    }
+
+    .timeItem label {
+        width: 50px;
+    }
+
+    .timeItem input {
+        flex: 1;
+    }
+}
+
+
+@media(max-width: 475px) {
+    .createForm.lg {
+        width: 350px;
     }
 
     .timeContainer {
@@ -208,9 +279,9 @@
     }
 }
 
-@media(max-width: 348px) {
+@media(max-width: 375px) {
     .createForm.lg {
-        width: 265px;
+        width: 350px;
     }
 
     .timeContainer {
