@@ -21,9 +21,27 @@ interface ThemeProviderProps {
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const mode = localStorage.getItem("mode") as string;
+  // useEffect(() => {
+  //   document.documentElement.classList.toggle("dark-mode", mode === "dark");
+  // }, [mode]);
+
   useEffect(() => {
-    document.documentElement.classList.toggle("dark-mode", mode === "dark");
-  }, [mode]);
+    const updateMode = () => {
+      const savedMode = localStorage.getItem("mode") || "light";
+      if (savedMode === "dark") {
+        document.documentElement.classList.add("dark-mode");
+      } else {
+        document.documentElement.classList.remove("dark-mode");
+      }
+    };
+
+    updateMode();
+    window.addEventListener("storage", updateMode);
+
+    return () => {
+      window.removeEventListener("storage", updateMode);
+    };
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ mode }}>{children}</ThemeContext.Provider>

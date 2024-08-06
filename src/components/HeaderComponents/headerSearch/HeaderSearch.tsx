@@ -13,24 +13,6 @@ const HeaderSearch = () => {
     localStorage.setItem("mode", localStorage.getItem("mode") || "light");
   }, []);
 
-  useEffect(() => {
-    const updateMode = () => {
-      const savedMode = localStorage.getItem("mode") || "light";
-      if (savedMode === "dark") {
-        document.documentElement.classList.add("dark-mode");
-      } else {
-        document.documentElement.classList.remove("dark-mode");
-      }
-    };
-
-    updateMode();
-    window.addEventListener("storage", updateMode);
-
-    return () => {
-      window.removeEventListener("storage", updateMode);
-    };
-  }, []);
-
   const router = useRouter();
   const [searchInputValue, setInputSearchValue] = useState("");
   const [showAnimate, setShowAnimate] = useState(false);
