@@ -11,6 +11,7 @@ import {
   timezone,
 } from "./Settings.icons";
 import styles from "./Settings.module.css";
+import Link from "next/link";
 
 const Settings = () => {
   return (
@@ -75,9 +76,11 @@ const Settings = () => {
             Update your personal information, change your password, and manage
             other account settings.
           </p>
-          <button type="button" className={styles.settingsButton}>
-            Account Settings
-          </button>
+          <Link href={'/user'}>
+            <button type="button" className={styles.settingsButton}>
+              Account Settings
+            </button>
+          </Link>
         </div>
       </div>
 
