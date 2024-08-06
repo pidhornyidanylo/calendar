@@ -1,16 +1,16 @@
-import React from "react";
-import Image from "next/image";
-import TimeZoneSelect from "@/components/SettingsComponents/timeZoneSelect/TimeZoneSelect";
 import ModeSelect from "@/components/SettingsComponents/modeSelect/ModeSelect";
-import styles from "./Settings.module.css";
+import TimeZoneSelect from "@/components/SettingsComponents/timeZoneSelect/TimeZoneSelect";
+import Image from "next/image";
+import React from "react";
 import {
   account,
   cycle,
   exportIcon,
   importIcon,
-  timezone,
   mode,
+  timezone,
 } from "./Settings.icons";
+import styles from "./Settings.module.css";
 
 const Settings = () => {
   return (
@@ -23,23 +23,37 @@ const Settings = () => {
 
       <div className={styles.settingsSection}>
         <div className={styles.settingsSectionImageContainer}>
-        <Image className="svgIcon" width={45} height={45} src={exportIcon} alt={"exportIcon"} />
+          <Image
+            className="svgIcon"
+            width={45}
+            height={45}
+            src={exportIcon}
+            alt={"exportIcon"}
+          />
         </div>
         <div className={styles.settingsSectionContent}>
           <h3>Export Calendar</h3>
           <p>Export your calendar in various formats such as .ics or .csv.</p>
-          <button className={styles.settingsButton}>Export Calendar</button>
+          <button type="button" className={styles.settingsButton}>
+            Export Calendar
+          </button>
         </div>
       </div>
 
       <div className={styles.settingsSection}>
         <div className={styles.settingsSectionImageContainer}>
-        <Image className="svgIcon" width={45} height={45} src={cycle} alt={"cycle"} />
+          <Image
+            className="svgIcon"
+            width={45}
+            height={45}
+            src={cycle}
+            alt={"cycle"}
+          />
         </div>
         <div className={styles.settingsSectionContent}>
           <h3>Set Recurring Events</h3>
           <p>Specify the frequency and duration of recurring events.</p>
-          <button className={styles.settingsButton}>
+          <button type="button" className={styles.settingsButton}>
             Set Recurring Events
           </button>
         </div>
@@ -47,7 +61,13 @@ const Settings = () => {
 
       <div className={styles.settingsSection}>
         <div className={styles.settingsSectionImageContainer}>
-        <Image className="svgIcon" width={45} height={45} src={account} alt={"account"} />
+          <Image
+            className="svgIcon"
+            width={45}
+            height={45}
+            src={account}
+            alt={"account"}
+          />
         </div>
         <div className={styles.settingsSectionContent}>
           <h3>Account Settings</h3>
@@ -55,13 +75,21 @@ const Settings = () => {
             Update your personal information, change your password, and manage
             other account settings.
           </p>
-          <button className={styles.settingsButton}>Account Settings</button>
+          <button type="button" className={styles.settingsButton}>
+            Account Settings
+          </button>
         </div>
       </div>
 
       <div className={styles.settingsSection}>
         <div className={styles.settingsSectionImageContainer}>
-        <Image className="svgIcon" width={45} height={45} src={importIcon} alt={"importIcon"} />
+          <Image
+            className="svgIcon"
+            width={45}
+            height={45}
+            src={importIcon}
+            alt={"importIcon"}
+          />
         </div>
         <div className={styles.settingsSectionContent}>
           <h3>Import Events</h3>
@@ -69,13 +97,21 @@ const Settings = () => {
             Import events from another calendar by uploading a compatible file
             or connecting your existing calendar account.
           </p>
-          <button className={styles.settingsButton}>Import Events</button>
+          <button type="button" className={styles.settingsButton}>
+            Import Events
+          </button>
         </div>
       </div>
 
       <div className={styles.settingsSection}>
         <div className={styles.settingsSectionImageContainer}>
-        <Image className="svgIcon" width={45} height={45} src={timezone} alt={"timezone"} />
+          <Image
+            className="svgIcon"
+            width={45}
+            height={45}
+            src={timezone}
+            alt={"timezone"}
+          />
         </div>
         <div className={styles.settingsSectionContent}>
           <TimeZoneSelect />
@@ -84,7 +120,13 @@ const Settings = () => {
 
       <div className={styles.settingsSection}>
         <div className={styles.settingsSectionImageContainer}>
-        <Image className="svgIcon" width={45} height={45} src={mode} alt={"darkmode"} />
+          <Image
+            className="svgIcon"
+            width={45}
+            height={45}
+            src={mode}
+            alt={"darkmode"}
+          />
         </div>
         <div className={styles.settingsSectionContent}>
           <ModeSelect />

@@ -10,14 +10,14 @@ import search from "../../../public/icons/header/search.svg";
 import settings from "../../../public/icons/header/settings.svg";
 
 export {
-  avatar,
-  home,
-  logo,
-  filter,
-  search,
-  help,
-  settings,
-  apps,
-  more,
-  cross,
+	avatar,
+	home,
+	logo,
+	filter,
+	search,
+	help,
+	settings,
+	apps,
+	more,
+	cross,
 };

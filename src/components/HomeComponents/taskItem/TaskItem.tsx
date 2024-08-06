@@ -4,9 +4,11 @@ import type React from "react";
 import { months } from "../../SideBarComponents/calendar/Calendar";
 import SubTaskItem from "../subTaskItem/SubTaskItem";
 import styles from "./TaskItem.module.css";
-import type { TaskItem } from "./TaskItem.types";
+import type { TaskItemType } from "./TaskItem.types";
 
-const TaskItem = <T extends TaskItem>({ task }: { task: T }): React.JSX.Element => {
+const TaskItem = <T extends TaskItemType>({
+	task,
+}: { task: T }): React.JSX.Element => {
 	const headerSearchValue = useStore((state) => state.headerSearchValue);
 
 	return (

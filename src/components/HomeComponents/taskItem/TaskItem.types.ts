@@ -10,7 +10,7 @@ interface DateDetails {
 	day: number;
 }
 
-export interface TaskItem {
+export interface TaskItemType {
 	id: number;
 	date: DateDetails;
 	tasks: SubTask[];

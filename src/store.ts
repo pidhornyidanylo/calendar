@@ -1,5 +1,17 @@
 import { create } from "zustand";
-import { Task } from "./components/SideBarComponents/createForm/form/Form";
+import type { Task } from "./components/SideBarComponents/createForm/form/Form";
+
+type Mode = "light" | "dark";
+
+const getInitialMode = (): Mode => {
+  if (typeof window !== "undefined") {
+    const savedMode = localStorage.getItem("mode") as Mode;
+    if (savedMode) {
+      return savedMode;
+    }
+  }
+  return "light";
+};
 
 export type State = {
   expandedSideBar: boolean;
@@ -42,8 +54,9 @@ export type State = {
   nextYear: () => void;
   prevYear: () => void;
 
-  mode: "light" | "dark";
-  switchMode: (mode: "light" | "dark") => void;
+  mode: Mode;
+  setMode: (mode: Mode) => void;
+  switchMode: () => void;
 };
 
 export const useStore = create<State>((set) => ({
@@ -122,9 +135,12 @@ export const useStore = create<State>((set) => ({
       currentYear: state.currentYear === 0 ? 11 : state.currentYear - 1,
     })),
 
-  mode: "light",
-  switchMode: (mode) =>
-    set(() => ({
-      mode: mode,
-    })),
+  mode: getInitialMode(),
+  setMode: (mode) => set({ mode }),
+  switchMode: () =>
+    set((state) => {
+      const newMode = state.mode === "light" ? "dark" : "light";
+      localStorage.setItem("mode", newMode);
+      return { mode: newMode };
+    }),
 }));
