@@ -1,8 +1,14 @@
 "use client";
-import React, { createContext, ReactNode, useContext, useEffect } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 interface ThemeContextType {
-  mode: string;
+  mode: "light" | "dark";
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -20,28 +26,35 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const mode = localStorage.getItem("mode") as string;
-  // useEffect(() => {
-  //   document.documentElement.classList.toggle("dark-mode", mode === "dark");
-  // }, [mode]);
+  const [mode, setMode] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    const updateMode = () => {
-      const savedMode = localStorage.getItem("mode") || "light";
-      if (savedMode === "dark") {
-        document.documentElement.classList.add("dark-mode");
-      } else {
-        document.documentElement.classList.remove("dark-mode");
+    const savedMode = localStorage.getItem("mode") as "light" | "dark" | null;
+    if (savedMode) {
+      setMode(savedMode);
+      document.documentElement.classList.toggle(
+        "dark-mode",
+        savedMode === "dark"
+      );
+    } else {
+      document.documentElement.classList.remove("dark-mode");
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark-mode", mode === "dark");
+    const updateMode = (event: StorageEvent) => {
+      if (event.key === "mode") {
+        setMode((event.newValue as "light" | "dark") || "light");
       }
     };
 
-    updateMode();
     window.addEventListener("storage", updateMode);
 
     return () => {
       window.removeEventListener("storage", updateMode);
     };
-  }, []);
+  }, [mode]);
 
   return (
     <ThemeContext.Provider value={{ mode }}>{children}</ThemeContext.Provider>
