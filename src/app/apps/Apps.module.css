@@ -34,6 +34,10 @@
     transition: background 0.3s, height 0.3s, padding 0.3s;
 }
 
+.appsListItem a {
+    text-decoration: none;
+}
+
 .appsListItem:hover {
   background-color: var(--main-pink);
 }
