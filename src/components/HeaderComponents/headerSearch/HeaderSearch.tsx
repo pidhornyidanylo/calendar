@@ -9,10 +9,6 @@ import { cross, filter, search } from "../HeaderIcons.index";
 import styles from "./HeaderSearch.module.css";
 
 const HeaderSearch = () => {
-  useEffect(() => {
-    localStorage.setItem("mode", localStorage.getItem("mode") || "light");
-  }, []);
-
   const router = useRouter();
   const [searchInputValue, setInputSearchValue] = useState("");
   const [showAnimate, setShowAnimate] = useState(false);
