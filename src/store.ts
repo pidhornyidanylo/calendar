@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { TaskItemType } from "./components/HomeComponents/taskItem/TaskItem.dto";
 
 export type State = {
   expandedSideBar: boolean;
@@ -20,7 +21,7 @@ export type State = {
     value: { day: number; month: number; year: number } | null
   ) => void;
 
-  task: Task | null;
+  task: TaskItemType | null;
   setTask: (task: any) => void;
 
   headerSearchValue: string;
@@ -62,7 +63,7 @@ export const useStore = create<State>((set) => ({
   setShowCreateForm: (value: boolean) => set(() => ({ showCreateForm: value })),
 
   task: null,
-  setTask: (task: Task) => set(() => ({ task: task })),
+  setTask: (task: TaskItemType) => set(() => ({ task: task })),
 
   mutateCreateBtn: false,
   toggleMutateCreateBtn: (value: boolean) =>
