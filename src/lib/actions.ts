@@ -8,7 +8,7 @@ type AddTaskPayloadType = Omit<
   Omit<Omit<TaskItemType, "_id">, "__v">,
   "tasks"
 > & {
-  task: SubTaskItemType;
+  task: Omit<SubTaskItemType, "_id">;
 };
 
 export const addTask = async (data: AddTaskPayloadType) => {
