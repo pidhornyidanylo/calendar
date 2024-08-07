@@ -30,18 +30,22 @@ const Calendar = () => {
   const currentDate = new Date();
   const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
   const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
-  const [isWindowSmall, setIsWindowSmall] = useState(window.innerWidth < 991);
+  const [isWindowSmall, setIsWindowSmall] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
+    if (typeof window !== "undefined") {
       setIsWindowSmall(window.innerWidth < 991);
-    };
 
-    window.addEventListener("resize", handleResize);
+      const handleResize = () => {
+        setIsWindowSmall(window.innerWidth < 991);
+      };
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
