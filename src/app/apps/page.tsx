@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import {
   budget,
@@ -11,7 +12,6 @@ import {
   travel,
 } from "./Apps.icons";
 import styles from "./Apps.module.css";
-import Link from "next/link";
 
 const apps = [
   {

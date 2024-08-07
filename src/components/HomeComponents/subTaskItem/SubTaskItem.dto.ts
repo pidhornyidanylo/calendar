@@ -7,4 +7,5 @@ export type SubTaskItemType = {
   info: string;
   addInfo: string;
   time: SubTaskItemTimeType;
+  _id: string;
 };

@@ -7,7 +7,6 @@ import styles from "./HomeHeader.module.css";
 
 const HomeHeader = () => {
 	const headerSearchValue = useStore((state) => state.headerSearchValue);
-
 	return (
 		<div className={styles.mainHeader}>
 			{headerSearchValue.length < 1 && (

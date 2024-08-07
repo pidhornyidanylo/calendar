@@ -128,16 +128,13 @@
     font-size: 1.1em;
 }
 
-.calendarDays div span:hover {
-    background-color: rgb(211, 211, 211);
-}
-
-.calendarDays div span.today {
-    background-color: rgba(172, 207, 255, 1);
+.calendarDays button span.today {
+    background-color: transparent;
+    border: 2px solid var(--current-month-days);
     font-weight: 600;
 }
 
-.calendarDays div span:hover {
+.calendarDays button span:hover {
     background-color: rgba(172, 207, 255, .5);
     color: var(--main-white);
 }

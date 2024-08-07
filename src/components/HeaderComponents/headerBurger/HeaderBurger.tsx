@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import burger from "../../../../public/icons/header/burger.svg";
 import styles from "./HeaderBurger.module.css";
 

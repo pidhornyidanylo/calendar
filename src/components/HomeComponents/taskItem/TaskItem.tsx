@@ -21,8 +21,8 @@ const TaskItem = ({ task }: { task: TaskItemType }) => {
         )}
       </div>
       <div className={styles.taskBody}>
-        {task.tasks?.map((subTask) => (
-          <SubTaskItem key={subTask.info} subTask={subTask} />
+        {task.tasks.map((subTask) => (
+          <SubTaskItem key={subTask._id} subTask={subTask} />
         ))}
       </div>
     </div>

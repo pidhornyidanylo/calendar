@@ -1,8 +1,17 @@
 "use server";
 import { connectToDb } from "./db";
-import { TaskModel } from "./models";
+import { SubTaskModel, TaskModel } from "./models";
+import type { TaskItemType } from "@/components/HomeComponents/taskItem/TaskItem.dto";
+import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.dto";
 
-export const addTask = async (data: any) => {
+type AddTaskPayloadType = Omit<
+  Omit<Omit<TaskItemType, "_id">, "__v">,
+  "tasks"
+> & {
+  task: SubTaskItemType;
+};
+
+export const addTask = async (data: AddTaskPayloadType) => {
   try {
     await connectToDb();
     const dateAlreadyExistsInDB = await TaskModel.findOne({
@@ -45,5 +54,15 @@ export const addTask = async (data: any) => {
   } catch (error) {
     console.error("Error connecting to DB:", error);
     throw new Error("Error connecting to DB");
+  }
+};
+
+export const deleteTask = async (subTaskID: string) => {
+  try {
+    await connectToDb();
+    await SubTaskModel.findByIdAndDelete(subTaskID);
+    console.log("Successfully deleted from DB");
+  } catch (error) {
+    throw new Error("Error deleting task from DB");
   }
 };

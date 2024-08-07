@@ -20,7 +20,7 @@ const taskItemSchema = new mongoose.Schema(
     info: { type: String, required: true },
     addInfo: { type: String, required: true },
   },
-  { _id: false }
+  { _id: true }
 );
 
 const mainTaskSchema = new mongoose.Schema({
@@ -35,6 +35,9 @@ const mainTaskSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+export const SubTaskModel =
+  mongoose.models?.SubTask || mongoose.model("SubTask", taskItemSchema);
 
 export const TaskModel =
   mongoose.models?.Task || mongoose.model("Task", mainTaskSchema);

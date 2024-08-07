@@ -1,12 +1,16 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useStore } from "@/store";
 import TaskItem from "../taskItem/TaskItem";
 import type { TaskItemType } from "../taskItem/TaskItem.dto";
 import type { SubTaskItemType } from "../subTaskItem/SubTaskItem.dto";
 
 const HomeSchedule = ({ data }: { data: string }) => {
-  const schedule = JSON.parse(data);
+  const [schedule, setSchedule] = useState<TaskItemType[] | []>([]);
+  useEffect(() => {
+    setSchedule(JSON.parse(data));
+  }, [data]);
+  
   const headerSearchValue = useStore((state) => state.headerSearchValue);
   const currentMonthForFiltering = useStore((state) => state.currentMonth);
   const currentYearForFiltering = useStore((state) => state.currentYear);

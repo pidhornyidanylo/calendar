@@ -13,12 +13,23 @@
 
 .subTaskMain {
     display: flex;
-    align-items: end;
+    align-items: center;
     gap: 16px;
 }
 
+.subTaskMain img {
+    transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+}
+
 .subTaskTime {
-    min-width: 120px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.1em;
     color: var(--main-text);
     background-color: var(--time-bc);
@@ -53,12 +64,27 @@
     cursor: pointer;
 }
 
+.subTaskExpand.upsided {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+
 .addInfo {
+    position: relative;
     display: none;
     margin-top: 20px;
-    padding: 0px;
+    padding-left: 35px;
     font-size: 1.1em;
     color: var(--main-text);
+}
+
+.addInfoDelete {
+    position: absolute;
+    bottom: -10px;
+    right: -8px;
 }
 
 .addInfo.visible {
@@ -164,6 +190,22 @@
     .subTaskMain {
         gap: 10px;
     }
+
+    .subTaskMain button img {
+        transform: translateX(-8px) scale(1.2);
+        -webkit-transform: translateX(-8px) scale(1.2);
+        -moz-transform: translateX(-8px) scale(1.2);
+        -ms-transform: translateX(-8px) scale(1.2);
+        -o-transform: translateX(-8px) scale(1.2);
+    }
+
+    .addInfoDelete {
+        transform: translateX(-8px);
+        -webkit-transform: translateX(-8px);
+        -moz-transform: translateX(-8px);
+        -ms-transform: translateX(-8px);
+        -o-transform: translateX(-8px);
+}
 
     .subTaskTime {
         font-size: .8em;

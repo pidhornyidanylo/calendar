@@ -7,7 +7,7 @@ import HeaderMenu from "../headerMenu/HeaderMenu";
 import HeaderSearch from "../headerSearch/HeaderSearch";
 import styles from "./Header.module.css";
 
-const Header = async () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerLogo}>
