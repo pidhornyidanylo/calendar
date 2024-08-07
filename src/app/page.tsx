@@ -1,14 +1,14 @@
+import React from "react";
 import HomeHeader from "@/components/HomeComponents/homeHeader/HomeHeader";
 import HomeSchedule from "@/components/HomeComponents/homeSchedule/HomeSchedule";
-import type React from "react";
 
-const Home: React.FC = () => {
-	return (
-		<>
-			<HomeHeader />
-			<HomeSchedule />
-		</>
-	);
+const Home = async (): Promise<JSX.Element> => {
+  return (
+    <>
+      <HomeHeader />
+      <HomeSchedule />
+    </>
+  );
 };
 
 export default Home;

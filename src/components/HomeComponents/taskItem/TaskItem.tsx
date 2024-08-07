@@ -9,6 +9,7 @@ import type { TaskItemType } from "./TaskItem.types";
 const TaskItem = <T extends TaskItemType>({
 	task,
 }: { task: T }): React.JSX.Element => {
+	console.log(task)
 	const headerSearchValue = useStore((state) => state.headerSearchValue);
 
 	return (

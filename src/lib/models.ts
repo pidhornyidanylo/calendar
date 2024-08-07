@@ -1,47 +1,22 @@
 import mongoose from "mongoose";
 
-const dateSchema = new mongoose.Schema({
-	day: {
-		type: Number,
-		required: true,
-	},
-	month: {
-		type: Number,
-		required: true,
-	},
-	year: {
-		type: Number,
-		required: true,
-	},
+const taskItemSchema = new mongoose.Schema(
+  {
+    time: { type: String, required: true },
+    task: { type: String, required: true },
+    addInfo: { type: String, required: true },
+  },
+  { _id: false }
+);
+
+const mainTaskSchema = new mongoose.Schema({
+  id: { type: Number, required: true },
+  date: {
+    year: { type: Number, required: true },
+    month: { type: Number, required: true },
+    day: { type: Number, required: true },
+  },
+  tasks: [taskItemSchema],
 });
 
-const taskSchema = new mongoose.Schema({
-	task: {
-		type: String,
-		required: true,
-		unique: false,
-		min: 3,
-		max: 50,
-	},
-	addInfo: {
-		type: String,
-		required: true,
-		unique: false,
-		min: 3,
-		max: 150,
-	},
-	date: {
-		type: dateSchema,
-		required: true,
-	},
-	timeFrom: {
-		type: String,
-		required: false,
-	},
-	timeTo: {
-		type: String,
-		required: false,
-	},
-});
-
-export const Task = mongoose.models?.Task || mongoose.model("Task", taskSchema);
+export const TaskModel =  mongoose.models?.Task || mongoose.model("Task", mainTaskSchema);

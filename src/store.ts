@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Task } from "./components/SideBarComponents/createForm/form/Form";
+// import type { Task } from "./components/SideBarComponents/createForm/form/Form";
 
 export type State = {
   expandedSideBar: boolean;
@@ -22,7 +22,7 @@ export type State = {
   ) => void;
 
   task: Task | null;
-  setTask: (task: Task) => void;
+  setTask: (task: any) => void;
 
   headerSearchValue: string;
   setHeaderSearchValue: (value: string) => void;
