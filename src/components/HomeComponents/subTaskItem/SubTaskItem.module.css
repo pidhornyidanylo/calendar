@@ -18,9 +18,16 @@
 }
 
 .subTaskTime {
-    width: 100px;
+    min-width: 120px;
     font-size: 1.1em;
     color: var(--main-text);
+    background-color: var(--time-bc);
+    padding: 2px 5px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
 }
 
 .subTaskTimeSquare {
@@ -68,8 +75,14 @@
     }
 
     .subTaskTime {
-        width: 80px;
+        min-width: 80px;
         font-size: .9em;
+        padding: 1px 3px;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
     }
 
     .subTaskInner {
@@ -89,7 +102,7 @@
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
-}
+    }
 
     .subTaskMain {
         position: relative;
@@ -146,7 +159,7 @@
         -moz-border-radius: 4px;
         -ms-border-radius: 4px;
         -o-border-radius: 4px;
-}
+    }
 
     .subTaskMain {
         gap: 10px;

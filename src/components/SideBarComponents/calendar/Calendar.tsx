@@ -1,6 +1,6 @@
 import { useStore } from "@/store";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import expandLess from "../../../../public/icons/home/expand_less.svg";
 import expandMore from "../../../../public/icons/home/expand_more.svg";
 import styles from "./Calendar.module.css";
@@ -30,6 +30,19 @@ const Calendar = () => {
   const currentDate = new Date();
   const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
   const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
+  const [isWindowSmall, setIsWindowSmall] = useState(window.innerWidth < 991);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsWindowSmall(window.innerWidth < 991);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
@@ -81,6 +94,8 @@ const Calendar = () => {
   };
 
   const handleDateClick = (day: number, monthOffset: number) => {
+    if (isWindowSmall) return;
+
     let targetMonth = currentMonth + monthOffset;
     let targetYear = currentYear;
 

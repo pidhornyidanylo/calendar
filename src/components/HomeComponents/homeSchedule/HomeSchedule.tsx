@@ -1,52 +1,53 @@
 "use client";
-import { useStore } from "@/store";
 import React from "react";
-import schedule from "../../../events.json";
+import { useStore } from "@/store";
 import TaskItem from "../taskItem/TaskItem";
+import type { TaskItemType } from "../taskItem/TaskItem.dto";
+import type { SubTaskItemType } from "../subTaskItem/SubTaskItem.dto";
 
-const HomeSchedule = () => {
-	// const schedule = JSON.parse(data);
-	// console.log(schedule)
+const HomeSchedule = ({ data }: { data: string }) => {
+  const schedule = JSON.parse(data);
   const headerSearchValue = useStore((state) => state.headerSearchValue);
-
   const currentMonthForFiltering = useStore((state) => state.currentMonth);
   const currentYearForFiltering = useStore((state) => state.currentYear);
 
   const getInitFilteredTasks = () => {
     return headerSearchValue.length < 1
-      ? schedule.filter((task) => {
+      ? schedule.filter((task: TaskItemType) => {
           const validInterval =
             task.date.month - currentMonthForFiltering + 1 < 5 &&
             task.date.month - currentMonthForFiltering + 1 > 1 &&
             task.date.year === currentYearForFiltering;
           return validInterval;
         })
-      : schedule.filter((task) =>
-          task.tasks.find((task) => task.task.includes(headerSearchValue))
+      : schedule.filter((task: TaskItemType) =>
+          task.tasks.find((task: SubTaskItemType) =>
+            task.info.includes(headerSearchValue)
+          )
         );
   };
 
   return (
     <div>
-      {getInitFilteredTasks().map((task) => (
-        <TaskItem key={task.id} task={task} />
+      {getInitFilteredTasks().map((task: TaskItemType) => (
+        <TaskItem key={task._id} task={task} />
       ))}
       {currentMonthForFiltering === 10 &&
         schedule
           .filter(
-            (task) =>
+            (task: TaskItemType) =>
               task.date.month <= 1 &&
               task.date.year === currentYearForFiltering + 1
           )
-          .map((task) => <TaskItem key={task.id} task={task} />)}
+          .map((task: TaskItemType) => <TaskItem key={task._id} task={task} />)}
       {currentMonthForFiltering === 11 &&
         schedule
           .filter(
-            (task) =>
+            (task: TaskItemType) =>
               task.date.month <= 2 &&
               task.date.year === currentYearForFiltering + 1
           )
-          .map((task) => <TaskItem key={task.id} task={task} />)}
+          .map((task: TaskItemType) => <TaskItem key={task._id} task={task} />)}
     </div>
   );
 };

@@ -9,7 +9,7 @@ const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
   console.log(dateToCreateTask);
   const [timeFrom, setTimeFrom] = useState("00:01");
   const [timeTo, setTimeTo] = useState("23:59");
-  const [task, setTask] = useState("some task");
+  const [taskInfo, setTaskInfo] = useState("some task");
   const [date, setDate] = useState("");
   const [addInfo, setAddInfo] = useState("some task details");
 
@@ -19,10 +19,30 @@ const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
       date: showCalendatInput
         ? parseDate(date)
         : (dateToCreateTask as { day: number; month: number; year: number }),
-      timeFrom: timeFrom,
-      timeTo: timeTo,
-      task: task,
-      addInfo: addInfo,
+      task: {
+        time: {
+          timeFrom: timeFrom,
+          timeTo: timeTo,
+        },
+        info: taskInfo,
+        addInfo: addInfo,
+      },
+      dateIdentifier: showCalendatInput
+        ? String(parseDate(date).day) +
+          String(parseDate(date).month) +
+          String(parseDate(date).year)
+        : String(
+            (dateToCreateTask as { day: number; month: number; year: number })
+              .day
+          ) +
+          String(
+            (dateToCreateTask as { day: number; month: number; year: number })
+              .month
+          ) +
+          String(
+            (dateToCreateTask as { day: number; month: number; year: number })
+              .year
+          ),
     });
   };
 
@@ -91,8 +111,8 @@ const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
               type="text"
               name="task"
               id="task"
-              value={task}
-              onChange={(e) => setTask(e.target.value)}
+              value={taskInfo}
+              onChange={(e) => setTaskInfo(e.target.value)}
             />
           </div>
           <div className={styles.addInfoContainer}>

@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 :root {
-  --main-light-blue: rgba(97, 163, 255, 0.15);
+  --main-light-blue: rgba(97, 163, 255, 0.149);
   --main-hard-blue: rgba(79, 152, 255, 0.6);
   --main-white: rgba(255, 255, 255, 1);
   --main-text: black;
 
   --current-month-days: rgba(255, 255, 255, 1);
   --next-prev-days-calendar: rgba(147, 148, 149, 0.543);
+
+  --time-bc: #e7f1ff;
 
   --main-pink: rgb(255, 136, 250, .4);
   --main-blue: rgba(172, 207, 255, 0.9) --main-hover: rgb(247, 192, 109, .2);
@@ -24,6 +26,9 @@
 
   --current-month-days: rgb(173, 171, 171);
   --next-prev-days-calendar: rgba(71, 71, 71, 0.702);
+
+  --time-bc: none;
+
 }
 
 * {
