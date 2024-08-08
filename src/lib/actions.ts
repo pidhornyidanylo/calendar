@@ -3,6 +3,7 @@ import { connectToDb } from "./db";
 import { SubTaskModel, TaskModel } from "./models";
 import type { TaskItemType } from "@/components/HomeComponents/taskItem/TaskItem.dto";
 import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.dto";
+import { revalidatePath } from "next/cache";
 
 type AddTaskPayloadType = Omit<
   Omit<Omit<TaskItemType, "_id">, "__v">,
@@ -51,6 +52,7 @@ export const addTask = async (data: AddTaskPayloadType) => {
       await newTask.save();
       console.log("Saved new date with task to DB");
     }
+    revalidatePath("/");
   } catch (error) {
     console.error("Error connecting to DB:", error);
     throw new Error("Error connecting to DB");
