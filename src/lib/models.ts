@@ -36,8 +36,5 @@ const mainTaskSchema = new mongoose.Schema({
   },
 });
 
-export const SubTaskModel =
-  mongoose.models?.SubTask || mongoose.model("SubTask", taskItemSchema);
-
 export const TaskModel =
   mongoose.models?.Task || mongoose.model("Task", mainTaskSchema);

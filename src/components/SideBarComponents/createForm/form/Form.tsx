@@ -4,6 +4,7 @@ import { parseDate } from "@/utils/dateUtils";
 import { addTask } from "@/lib/actions";
 import { FormProps } from "./Form.types";
 import styles from "./Form.module.css";
+import toast from "react-hot-toast";
 
 const Form: React.FC<FormProps> = ({
   showCalendatInput,
@@ -11,16 +12,15 @@ const Form: React.FC<FormProps> = ({
   showCalendatInput: boolean;
 }) => {
   const dateToCreateTask = useStore((state) => state.dateToCreateTask);
-  console.log(dateToCreateTask);
   const [timeFrom, setTimeFrom] = useState("00:01");
   const [timeTo, setTimeTo] = useState("23:59");
   const [taskInfo, setTaskInfo] = useState("some task");
+  const [allDay, setAllDay] = useState(false);
   const [date, setDate] = useState("");
   const [addInfo, setAddInfo] = useState("some task details");
-
   const handleSumbit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await addTask({
+    const response = await addTask({
       date: showCalendatInput
         ? parseDate(date)
         : (dateToCreateTask as { day: number; month: number; year: number }),
@@ -49,6 +49,16 @@ const Form: React.FC<FormProps> = ({
               .year
           ),
     });
+    if (response.success) {
+      toast.success("Task added successfully!");
+      setTimeFrom("00:01");
+      setTimeTo("23:59");
+      setTaskInfo("some task");
+      setDate("");
+      setAddInfo("some task details");
+    } else {
+      toast.error(response.message as string);
+    }
   };
 
   return (
@@ -85,12 +95,15 @@ const Form: React.FC<FormProps> = ({
             />
           </div>
         )}
-        <div className={styles.timeContainer}>
+        <div
+          className={`${styles.timeContainer} ${allDay ? styles.disabled : ""}`}
+        >
           <div className={styles.timeItem}>
             <label htmlFor="time">From: </label>
             <input
               onChange={(e) => setTimeFrom(e.target.value)}
               value={timeFrom}
+              disabled={allDay}
               type="time"
               name="timeFrom"
               id="time-from"
@@ -102,12 +115,23 @@ const Form: React.FC<FormProps> = ({
             <input
               onChange={(e) => setTimeTo(e.target.value)}
               value={timeTo}
+              disabled={allDay}
               type="time"
               name="timeTo"
               id="time-to"
               step={3600}
             />
           </div>
+        </div>
+        <div className={styles.wholeDay}>
+          <label htmlFor="all_day">All day</label>
+          <input
+            checked={allDay}
+            onChange={() => setAllDay(!allDay)}
+            type="checkbox"
+            name="allday"
+            id="all_day"
+          />
         </div>
         <div className={styles.infoContainer}>
           <div className={styles.taskContainer}>

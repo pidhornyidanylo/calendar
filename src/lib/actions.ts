@@ -1,6 +1,6 @@
 "use server";
 import { connectToDb } from "./db";
-import { SubTaskModel, TaskModel } from "./models";
+import { TaskModel } from "./models";
 import type { TaskItemType } from "@/components/HomeComponents/taskItem/TaskItem.dto";
 import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.dto";
 import { revalidatePath } from "next/cache";
@@ -20,6 +20,15 @@ export const addTask = async (data: AddTaskPayloadType) => {
     });
 
     if (taskAlreadyExistsInDB) {
+      const sameParametersTask = taskAlreadyExistsInDB.tasks.find(
+        (subTask: SubTaskItemType) =>
+          subTask.time.timeFrom === data.task.time.timeFrom &&
+          subTask.time.timeTo === data.task.time.timeTo &&
+          subTask.info === data.task.info
+      );
+      if (sameParametersTask) {
+        return { success: false, message: "Task already exists." };
+      }
       taskAlreadyExistsInDB.tasks.push({
         time: {
           timeFrom: data.task.time.timeFrom,
@@ -29,7 +38,6 @@ export const addTask = async (data: AddTaskPayloadType) => {
         addInfo: data.task.addInfo,
       });
       await taskAlreadyExistsInDB.save();
-      console.log("Updated existing date with new task");
     } else {
       const newTask = new TaskModel({
         date: {
@@ -50,12 +58,11 @@ export const addTask = async (data: AddTaskPayloadType) => {
         dateIdentifier: data.dateIdentifier,
       });
       await newTask.save();
-      console.log("Saved new date with task to DB");
     }
     revalidatePath("/");
+    return { success: true };
   } catch (error) {
-    console.error("Error connecting to DB:", error);
-    throw new Error("Error connecting to DB");
+    return { success: false, message: "Error connecting to DB" };
   }
 };
 

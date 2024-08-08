@@ -16,7 +16,11 @@ const HomeSchedule: React.FC<HomeScheduleProps> = ({
 }) => {
   const [schedule, setSchedule] = useState<TaskItemType[] | []>([]);
   useEffect(() => {
-    setSchedule(JSON.parse(data));
+    setSchedule(
+      JSON.parse(data).sort(
+        (a: TaskItemType, b: TaskItemType) => a.date.day - b.date.day
+      )
+    );
   }, [data]);
 
   const headerSearchValue = useStore((state) => state.headerSearchValue);

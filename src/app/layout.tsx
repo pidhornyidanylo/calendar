@@ -3,6 +3,7 @@ import Sidebar from "@/components/SideBarComponents/sidebar/Sidebar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import ThemeProvider from "@/context/ThemeContext";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import Head from "next/head";
 
@@ -37,7 +38,10 @@ export default function RootLayout({
           <Header />
           <main>
             <Sidebar />
-            <div className="main-content">{children}</div>
+            <div className="main-content">
+              <Toaster position="bottom-left" />
+              {children}
+            </div>
           </main>
         </body>
       </html>

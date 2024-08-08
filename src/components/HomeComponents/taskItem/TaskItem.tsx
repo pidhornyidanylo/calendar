@@ -25,9 +25,18 @@ const TaskItem: React.FC<TaskItemProps> = ({
         )}
       </div>
       <div className={styles.taskBody}>
-        {task.tasks.map((subTask) => (
-          <SubTaskItem key={subTask._id} subTask={subTask} taskID={task._id} />
-        ))}
+        {task.tasks
+          .sort(
+            (a, b) =>
+              +a.time.timeFrom.slice(0, 2) - +b.time.timeFrom.slice(0, 2)
+          )
+          .map((subTask) => (
+            <SubTaskItem
+              key={subTask._id}
+              subTask={subTask}
+              taskID={task._id}
+            />
+          ))}
       </div>
     </div>
   );
