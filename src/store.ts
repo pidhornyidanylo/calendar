@@ -41,6 +41,9 @@ export type State = {
   currentYear: number;
   nextYear: () => void;
   prevYear: () => void;
+
+  showPastEvents: boolean;
+  setShowPastEvents: () => void;
 };
 
 export const useStore = create<State>((set) => ({
@@ -67,7 +70,7 @@ export const useStore = create<State>((set) => ({
 
   mutateCreateBtn: false,
   toggleMutateCreateBtn: (value: boolean) =>
-    set((state) => ({
+    set(() => ({
       mutateCreateBtn: value,
     })),
 
@@ -118,4 +121,9 @@ export const useStore = create<State>((set) => ({
     set((state) => ({
       currentYear: state.currentYear === 0 ? 11 : state.currentYear - 1,
     })),
+
+    showPastEvents: false,
+    setShowPastEvents: () => set((state) => ({
+      showPastEvents: !state.showPastEvents
+    }))
 }));

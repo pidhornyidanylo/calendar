@@ -3,67 +3,72 @@ import React, { useEffect, useState } from "react";
 import { useStore } from "@/store";
 import TaskItem from "../taskItem/TaskItem";
 import type { TaskItemType } from "../taskItem/TaskItem.dto";
-import type { SubTaskItemType } from "../subTaskItem/SubTaskItem.dto";
 
 type HomeScheduleProps = {
   data: string;
 };
 
-const HomeSchedule: React.FC<HomeScheduleProps> = ({
-  data,
-}: {
-  data: string;
-}) => {
-  const [schedule, setSchedule] = useState<TaskItemType[] | []>([]);
-  useEffect(() => {
-    setSchedule(
-      JSON.parse(data).sort(
-        (a: TaskItemType, b: TaskItemType) => a.date.day - b.date.day
-      )
-    );
-  }, [data]);
-
+const HomeSchedule: React.FC<HomeScheduleProps> = ({ data }) => {
+  const [schedule, setSchedule] = useState<TaskItemType[]>([]);
+  const showPastEvents = useStore((state) => state.showPastEvents);
   const headerSearchValue = useStore((state) => state.headerSearchValue);
   const currentMonthForFiltering = useStore((state) => state.currentMonth);
   const currentYearForFiltering = useStore((state) => state.currentYear);
 
-  const getInitFilteredTasks = () => {
-    return headerSearchValue.length < 1
-      ? schedule.filter((task: TaskItemType) => {
-          const validInterval =
-            task.date.month - currentMonthForFiltering + 1 < 5 &&
-            task.date.month - currentMonthForFiltering + 1 > 1 &&
-            task.date.year === currentYearForFiltering;
-          return validInterval;
-        })
-      : schedule.filter((task: TaskItemType) =>
-          task.tasks.find((task: SubTaskItemType) =>
-            task.info.includes(headerSearchValue)
-          )
+  useEffect(() => {
+    const tasks: TaskItemType[] = JSON.parse(data);
+
+    const today = new Date();
+    const todayDay = today.getDate();
+    const todayMonth = today.getMonth() + 1;
+
+    const filteredTasks = tasks.filter((task) => {
+      const isCurrentOrFuture =
+        task.date.month > todayMonth ||
+        (task.date.month === todayMonth && task.date.day >= todayDay);
+      return showPastEvents || isCurrentOrFuture;
+    });
+
+    const sortedTasks = filteredTasks.sort((a, b) => {
+      if (a.date.month !== b.date.month) return a.date.month - b.date.month;
+      return a.date.day - b.date.day;
+    });
+
+    setSchedule(sortedTasks);
+  }, [data, showPastEvents]);
+
+  const filteredTasks = headerSearchValue
+    ? schedule.filter((task) =>
+        task.tasks.some((subTask) =>
+          subTask.info.toLowerCase().includes(headerSearchValue.toLowerCase())
+        )
+      )
+    : schedule.filter((task) => {
+        const monthDifference = task.date.month - currentMonthForFiltering + 1;
+        return (
+          monthDifference < 5 &&
+          monthDifference > 1 &&
+          task.date.year === currentYearForFiltering
         );
-  };
+      });
+
+  const extraTasks =
+    currentMonthForFiltering === 10 || currentMonthForFiltering === 11
+      ? schedule.filter(
+          (task) =>
+            task.date.year === currentYearForFiltering + 1 &&
+            task.date.month <= currentMonthForFiltering - 9
+        )
+      : [];
 
   return (
     <div>
-      {getInitFilteredTasks().map((task: TaskItemType) => (
+      {filteredTasks.map((task) => (
         <TaskItem key={task._id} task={task} />
       ))}
-      {currentMonthForFiltering === 10 &&
-        schedule
-          .filter(
-            (task: TaskItemType) =>
-              task.date.month <= 1 &&
-              task.date.year === currentYearForFiltering + 1
-          )
-          .map((task: TaskItemType) => <TaskItem key={task._id} task={task} />)}
-      {currentMonthForFiltering === 11 &&
-        schedule
-          .filter(
-            (task: TaskItemType) =>
-              task.date.month <= 2 &&
-              task.date.year === currentYearForFiltering + 1
-          )
-          .map((task: TaskItemType) => <TaskItem key={task._id} task={task} />)}
+      {extraTasks.map((task) => (
+        <TaskItem key={task._id} task={task} />
+      ))}
     </div>
   );
 };

@@ -23,19 +23,23 @@
 
 @media(max-width: 768px) {
     .timeInterval {
-        text-align: start;
+        text-align: center;
         font-weight: 400;
         font-size: 1.3em;
         margin-right: 20px;
         min-width: 280px;
+        flex: 1;
+        
     }
 
     .arrows {
+        position: absolute;
         display: flex;
         gap: 20px;
+        margin: 0;
         padding: 10px 0;
         align-items: center;
-        margin-right: 10px;
+        right: 5px;
     }
 
     .arrows>button {

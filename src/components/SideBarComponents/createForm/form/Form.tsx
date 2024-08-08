@@ -26,8 +26,8 @@ const Form: React.FC<FormProps> = ({
         : (dateToCreateTask as { day: number; month: number; year: number }),
       task: {
         time: {
-          timeFrom: timeFrom,
-          timeTo: timeTo,
+          timeFrom: allDay ? "00:00" : timeFrom,
+          timeTo: allDay ? "00:00" : timeTo,
         },
         info: taskInfo,
         addInfo: addInfo,

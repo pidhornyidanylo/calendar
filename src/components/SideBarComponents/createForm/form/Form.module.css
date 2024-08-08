@@ -104,7 +104,7 @@
 .wholeDay {
     padding-top: 15px;
     display: flex;
-    gap: 10px;
+    gap: 13px;
     align-items: center;
 }
 
@@ -115,8 +115,9 @@
 .wholeDay input {
     width: 20px;
     height: 20px;
-    cursor: pointer;
     border: none;
+    background-color: var(--main-white);
+    cursor: pointer;
 }
 
 .wholeDay input:focus {
