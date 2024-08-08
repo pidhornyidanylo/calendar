@@ -9,3 +9,8 @@ export type SubTaskItemType = {
   time: SubTaskItemTimeType;
   _id: string;
 };
+
+export type SubTaskItemProps = {
+  subTask: SubTaskItemType;
+  taskID: string;
+};

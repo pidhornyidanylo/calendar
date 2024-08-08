@@ -20,10 +20,9 @@ export const useTheme = () => {
   }
   return context;
 };
-
-interface ThemeProviderProps {
+type ThemeProviderProps = {
   children: ReactNode;
-}
+};
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [mode, setMode] = useState<"light" | "dark">("light");

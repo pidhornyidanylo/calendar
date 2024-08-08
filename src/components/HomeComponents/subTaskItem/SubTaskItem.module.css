@@ -85,6 +85,7 @@
     position: absolute;
     bottom: -10px;
     right: -8px;
+    cursor: pointer;
 }
 
 .addInfo.visible {
@@ -205,7 +206,7 @@
         -moz-transform: translateX(-8px);
         -ms-transform: translateX(-8px);
         -o-transform: translateX(-8px);
-}
+    }
 
     .subTaskTime {
         font-size: .8em;

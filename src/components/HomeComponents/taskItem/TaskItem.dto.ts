@@ -13,3 +13,7 @@ export type TaskItemType = {
   _id: string;
   __v: number;
 };
+
+export type TaskItemProps = {
+  task: TaskItemType;
+};

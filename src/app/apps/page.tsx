@@ -65,7 +65,7 @@ const apps = [
     image: photo,
   },
 ];
-const Apps = () => {
+const Apps: React.FC = () => {
   return (
     <>
       <h2 className={styles.appsTitle}>Discover Other Useful Apps</h2>

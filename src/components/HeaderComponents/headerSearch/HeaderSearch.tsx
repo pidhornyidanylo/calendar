@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { cross, filter, search } from "../HeaderIcons.index";
 import styles from "./HeaderSearch.module.css";
 
-const HeaderSearch = () => {
+const HeaderSearch: React.FC = () => {
   const router = useRouter();
   const [searchInputValue, setInputSearchValue] = useState("");
   const [showAnimate, setShowAnimate] = useState(false);

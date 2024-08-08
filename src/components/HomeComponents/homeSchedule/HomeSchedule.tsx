@@ -5,12 +5,20 @@ import TaskItem from "../taskItem/TaskItem";
 import type { TaskItemType } from "../taskItem/TaskItem.dto";
 import type { SubTaskItemType } from "../subTaskItem/SubTaskItem.dto";
 
-const HomeSchedule = ({ data }: { data: string }) => {
+type HomeScheduleProps = {
+  data: string;
+};
+
+const HomeSchedule: React.FC<HomeScheduleProps> = ({
+  data,
+}: {
+  data: string;
+}) => {
   const [schedule, setSchedule] = useState<TaskItemType[] | []>([]);
   useEffect(() => {
     setSchedule(JSON.parse(data));
   }, [data]);
-  
+
   const headerSearchValue = useStore((state) => state.headerSearchValue);
   const currentMonthForFiltering = useStore((state) => state.currentMonth);
   const currentYearForFiltering = useStore((state) => state.currentYear);

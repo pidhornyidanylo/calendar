@@ -1,12 +1,16 @@
+import type React from "react";
 import { useStore } from "@/store";
 import { normalizeDate } from "@/utils/dateUtils";
 import { months } from "../../SideBarComponents/calendar/Calendar";
 import SubTaskItem from "../subTaskItem/SubTaskItem";
-import type React from "react";
-import type { TaskItemType } from "./TaskItem.dto";
+import type { TaskItemProps, TaskItemType } from "./TaskItem.dto";
 import styles from "./TaskItem.module.css";
 
-const TaskItem = ({ task }: { task: TaskItemType }) => {
+const TaskItem: React.FC<TaskItemProps> = ({
+  task,
+}: {
+  task: TaskItemType;
+}) => {
   const headerSearchValue = useStore((state) => state.headerSearchValue);
   return (
     <div className={styles.taskItem} key={task._id}>
@@ -22,7 +26,7 @@ const TaskItem = ({ task }: { task: TaskItemType }) => {
       </div>
       <div className={styles.taskBody}>
         {task.tasks.map((subTask) => (
-          <SubTaskItem key={subTask._id} subTask={subTask} />
+          <SubTaskItem key={subTask._id} subTask={subTask} taskID={task._id} />
         ))}
       </div>
     </div>

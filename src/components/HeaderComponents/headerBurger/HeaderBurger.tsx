@@ -6,7 +6,7 @@ import React from "react";
 import burger from "../../../../public/icons/header/burger.svg";
 import styles from "./HeaderBurger.module.css";
 
-const HeaderBurger = () => {
+const HeaderBurger: React.FC = () => {
   const toggleSideBar = useStore((state) => state.toggleExpandedSideBar);
   const setExpandedSideBar = useStore((state) => state.setExpandedSideBar);
   const setShowCreateForm = useStore((state) => state.setShowCreateForm);

@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { apps, avatar, help, home, more, settings } from "../HeaderIcons.index";
 import styles from "./HeaderMenu.module.css";
 
-const HeaderMenu = () => {
+const HeaderMenu: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showTablet, setShowTablet] = useState(false);
 

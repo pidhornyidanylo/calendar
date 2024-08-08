@@ -13,7 +13,7 @@ import {
 import styles from "./Settings.module.css";
 import Link from "next/link";
 
-const Settings = () => {
+const Settings: React.FC = () => {
   return (
     <>
       <h2 className={styles.settingsTitle}>Settings</h2>
@@ -76,7 +76,7 @@ const Settings = () => {
             Update your personal information, change your password, and manage
             other account settings.
           </p>
-          <Link href={'/user'}>
+          <Link href={"/user"}>
             <button type="button" className={styles.settingsButton}>
               Account Settings
             </button>

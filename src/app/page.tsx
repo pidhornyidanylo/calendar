@@ -3,9 +3,8 @@ import HomeHeader from "@/components/HomeComponents/homeHeader/HomeHeader";
 import HomeSchedule from "@/components/HomeComponents/homeSchedule/HomeSchedule";
 import { getTasks } from "@/lib/data";
 
-const Home = async () => {
+const Home: React.FC = async () => {
   const schedule = await getTasks();
-
   return (
     <>
       <HomeHeader />

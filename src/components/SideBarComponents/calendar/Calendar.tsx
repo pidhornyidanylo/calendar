@@ -22,7 +22,7 @@ export const months = [
   "December",
 ];
 
-const Calendar = () => {
+const Calendar: React.FC = () => {
   const expandedSideBar = useStore((state) => state.expandedSideBar);
   const setDateToCreateTask = useStore((state) => state.setDateToCreateTask);
   const setShowCreateForm = useStore((state) => state.setShowCreateForm);

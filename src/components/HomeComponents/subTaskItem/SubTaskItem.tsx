@@ -3,14 +3,20 @@ import React, { useState } from "react";
 import arrowDown from "../../../../public/icons/home/expand_more.svg";
 import cross from "../../../../public/icons/header/cross.svg";
 import { convertTimeRange } from "@/utils/timeUtils";
-import type { SubTaskItemType } from "./SubTaskItem.dto";
-import styles from "./SubTaskItem.module.css";
+import type { SubTaskItemProps, SubTaskItemType } from "./SubTaskItem.dto";
 import { deleteTask } from "@/lib/actions";
+import styles from "./SubTaskItem.module.css";
 
-const SubTaskItem = ({ subTask }: { subTask: SubTaskItemType }) => {
+const SubTaskItem: React.FC<SubTaskItemProps> = ({
+  subTask,
+  taskID,
+}: {
+  subTask: SubTaskItemType;
+  taskID: string;
+}) => {
   const [expandSubTask, setExpandSubTask] = useState(false);
-  const handleSubTaskDelete = async (subTaskID: string) => {
-    await deleteTask(subTaskID);
+  const handleSubTaskDelete = async (subTaskID: string, taskID: string) => {
+    await deleteTask(subTaskID, taskID);
   };
   return (
     <div className={styles.subTask}>
@@ -37,7 +43,7 @@ const SubTaskItem = ({ subTask }: { subTask: SubTaskItemType }) => {
       >
         <p>{subTask.addInfo}</p>
         <span
-          onClick={() => handleSubTaskDelete(subTask._id)}
+          onClick={() => handleSubTaskDelete(subTask._id, taskID)}
           className={styles.addInfoDelete}
         >
           <Image className="svgIcon" src={cross} alt={"delete"} />

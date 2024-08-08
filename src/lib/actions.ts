@@ -15,12 +15,12 @@ type AddTaskPayloadType = Omit<
 export const addTask = async (data: AddTaskPayloadType) => {
   try {
     await connectToDb();
-    const dateAlreadyExistsInDB = await TaskModel.findOne({
+    const taskAlreadyExistsInDB = await TaskModel.findOne({
       dateIdentifier: data.dateIdentifier,
     });
 
-    if (dateAlreadyExistsInDB) {
-      dateAlreadyExistsInDB.tasks.push({
+    if (taskAlreadyExistsInDB) {
+      taskAlreadyExistsInDB.tasks.push({
         time: {
           timeFrom: data.task.time.timeFrom,
           timeTo: data.task.time.timeTo,
@@ -28,7 +28,7 @@ export const addTask = async (data: AddTaskPayloadType) => {
         info: data.task.info,
         addInfo: data.task.addInfo,
       });
-      await dateAlreadyExistsInDB.save();
+      await taskAlreadyExistsInDB.save();
       console.log("Updated existing date with new task");
     } else {
       const newTask = new TaskModel({
@@ -59,12 +59,25 @@ export const addTask = async (data: AddTaskPayloadType) => {
   }
 };
 
-export const deleteTask = async (subTaskID: string) => {
+export const deleteTask = async (subTaskID: string, taskID: string) => {
   try {
     await connectToDb();
-    await SubTaskModel.findByIdAndDelete(subTaskID);
-    console.log("Successfully deleted from DB");
+    const task = await TaskModel.findById(taskID);
+    if (task) {
+      task.tasks = task.tasks.filter(
+        (subTask: SubTaskItemType) => subTask._id.toString() !== subTaskID
+      );
+      if (task.tasks.length === 0) {
+        await TaskModel.findByIdAndDelete(taskID);
+      } else {
+        await task.save();
+      }
+      revalidatePath("/");
+    } else {
+      throw new Error("Task not found");
+    }
   } catch (error) {
+    console.error("Error deleting task from DB:", error);
     throw new Error("Error deleting task from DB");
   }
 };

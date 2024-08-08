@@ -4,7 +4,7 @@ import React from "react";
 import today from "../../../../public/icons/home/today.svg";
 import styles from "./HomeHeaderButton.module.css";
 
-const HomeHeaderButton = () => {
+const HomeHeaderButton: React.FC = () => {
 	const updateSchedule = useStore((state) => state.updateSchedule);
 
 	return (

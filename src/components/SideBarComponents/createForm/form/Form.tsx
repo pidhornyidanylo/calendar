@@ -1,10 +1,15 @@
 import { useStore } from "@/store";
 import React, { type FormEvent, useState } from "react";
-import styles from "./Form.module.css";
 import { parseDate } from "@/utils/dateUtils";
 import { addTask } from "@/lib/actions";
+import { FormProps } from "./Form.types";
+import styles from "./Form.module.css";
 
-const Form = ({ showCalendatInput }: { showCalendatInput: boolean }) => {
+const Form: React.FC<FormProps> = ({
+  showCalendatInput,
+}: {
+  showCalendatInput: boolean;
+}) => {
   const dateToCreateTask = useStore((state) => state.dateToCreateTask);
   console.log(dateToCreateTask);
   const [timeFrom, setTimeFrom] = useState("00:01");
