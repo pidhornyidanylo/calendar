@@ -6,36 +6,49 @@ import { FormProps } from "./Form.types";
 import styles from "./Form.module.css";
 import toast from "react-hot-toast";
 
-const Form: React.FC<FormProps> = ({
-  showCalendatInput,
-}: {
-  showCalendatInput: boolean;
-}) => {
+const Form: React.FC<FormProps> = ({ showCalendatInput }) => {
   const dateToCreateTask = useStore((state) => state.dateToCreateTask);
-  const [timeFrom, setTimeFrom] = useState("00:01");
-  const [timeTo, setTimeTo] = useState("23:59");
-  const [taskInfo, setTaskInfo] = useState("some task");
-  const [allDay, setAllDay] = useState(false);
-  const [date, setDate] = useState("");
-  const [addInfo, setAddInfo] = useState("some task details");
+
+  const [formState, setFormState] = useState({
+    timeFrom: "00:01",
+    timeTo: "23:59",
+    taskInfo: "some task",
+    allDay: false,
+    date: "",
+    addInfo: "some task details",
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    // @ts-ignore
+    const { name, value, type, checked } = e.target;
+
+    setFormState((prevState) => ({
+      ...prevState,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
   const handleSumbit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const response = await addTask({
       date: showCalendatInput
-        ? parseDate(date)
+        ? parseDate(formState.date)
         : (dateToCreateTask as { day: number; month: number; year: number }),
       task: {
         time: {
-          timeFrom: allDay ? "00:00" : timeFrom,
-          timeTo: allDay ? "00:00" : timeTo,
+          timeFrom: formState.allDay ? "00:00" : formState.timeFrom,
+          timeTo: formState.allDay ? "00:00" : formState.timeTo,
         },
-        info: taskInfo,
-        addInfo: addInfo,
+        info: formState.taskInfo,
+        addInfo: formState.addInfo,
       },
       dateIdentifier: showCalendatInput
-        ? String(parseDate(date).day) +
-          String(parseDate(date).month) +
-          String(parseDate(date).year)
+        ? String(parseDate(formState.date).day) +
+          String(parseDate(formState.date).month) +
+          String(parseDate(formState.date).year)
         : String(
             (dateToCreateTask as { day: number; month: number; year: number })
               .day
@@ -49,13 +62,17 @@ const Form: React.FC<FormProps> = ({
               .year
           ),
     });
+
     if (response.success) {
       toast.success("Task added successfully!");
-      setTimeFrom("00:01");
-      setTimeTo("23:59");
-      setTaskInfo("some task");
-      setDate("");
-      setAddInfo("some task details");
+      setFormState({
+        timeFrom: "00:01",
+        timeTo: "23:59",
+        taskInfo: "some task",
+        allDay: false,
+        date: "",
+        addInfo: "some task details",
+      });
     } else {
       toast.error(response.message as string);
     }
@@ -77,7 +94,7 @@ const Form: React.FC<FormProps> = ({
         </h4>
       )}
       <form
-        onSubmit={(e) => handleSumbit(e)}
+        onSubmit={handleSumbit}
         data-value="form"
         className={`${styles.createForm} ${showCalendatInput ? styles.lg : ""}`}
       >
@@ -87,8 +104,9 @@ const Form: React.FC<FormProps> = ({
             <label htmlFor="time">Date: </label>
             <input
               type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
+              name="date"
+              value={formState.date}
+              onChange={handleInputChange}
               placeholder={`${
                 dateToCreateTask ? dateToCreateTask : "01.01.2025"
               }`}
@@ -96,14 +114,16 @@ const Form: React.FC<FormProps> = ({
           </div>
         )}
         <div
-          className={`${styles.timeContainer} ${allDay ? styles.disabled : ""}`}
+          className={`${styles.timeContainer} ${
+            formState.allDay ? styles.disabled : ""
+          }`}
         >
           <div className={styles.timeItem}>
             <label htmlFor="time">From: </label>
             <input
-              onChange={(e) => setTimeFrom(e.target.value)}
-              value={timeFrom}
-              disabled={allDay}
+              onChange={handleInputChange}
+              value={formState.timeFrom}
+              disabled={formState.allDay}
               type="time"
               name="timeFrom"
               id="time-from"
@@ -113,9 +133,9 @@ const Form: React.FC<FormProps> = ({
           <div className={styles.timeItem}>
             <label htmlFor="time">To: </label>
             <input
-              onChange={(e) => setTimeTo(e.target.value)}
-              value={timeTo}
-              disabled={allDay}
+              onChange={handleInputChange}
+              value={formState.timeTo}
+              disabled={formState.allDay}
               type="time"
               name="timeTo"
               id="time-to"
@@ -126,10 +146,10 @@ const Form: React.FC<FormProps> = ({
         <div className={styles.wholeDay}>
           <label htmlFor="all_day">All day</label>
           <input
-            checked={allDay}
-            onChange={() => setAllDay(!allDay)}
+            checked={formState.allDay}
+            onChange={handleInputChange}
             type="checkbox"
-            name="allday"
+            name="allDay"
             id="all_day"
           />
         </div>
@@ -138,19 +158,19 @@ const Form: React.FC<FormProps> = ({
             <label htmlFor="task">Task:</label>
             <input
               type="text"
-              name="task"
+              name="taskInfo"
               id="task"
-              value={taskInfo}
-              onChange={(e) => setTaskInfo(e.target.value)}
+              value={formState.taskInfo}
+              onChange={handleInputChange}
             />
           </div>
           <div className={styles.addInfoContainer}>
             <label htmlFor="add-info">Additional info:</label>
             <textarea
-              name="add-info"
+              name="addInfo"
               id="add-info"
-              value={addInfo}
-              onChange={(e) => setAddInfo(e.target.value)}
+              value={formState.addInfo}
+              onChange={handleInputChange}
             />
           </div>
         </div>

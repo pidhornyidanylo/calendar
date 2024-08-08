@@ -8,6 +8,7 @@ import type { SubTaskItemProps, SubTaskItemType } from "./SubTaskItem.dto";
 import { deleteTask } from "@/lib/actions";
 import styles from "./SubTaskItem.module.css";
 import ModalForm from "@/components/SideBarComponents/modalForm/ModalForm";
+import ModalEditForm from "./modalEditForm/ModalEditForm";
 
 const SubTaskItem: React.FC<SubTaskItemProps> = ({
   subTask,
@@ -17,8 +18,12 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
   taskID: string;
 }) => {
   const [expandSubTask, setExpandSubTask] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const handleSubTaskDelete = async (subTaskID: string, taskID: string) => {
     await deleteTask(subTaskID, taskID);
+  };
+  const handleEditStateChange = () => {
+    setIsEditing(!isEditing);
   };
   return (
     <div className={styles.subTask}>
@@ -49,6 +54,7 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
         <div className={styles.subTaskControls}>
           <button
             className={styles.addInfoEdit}
+            onClick={() => setIsEditing(true)}
           >
             <Image
               className="svgIcon"
@@ -66,7 +72,7 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
           </button>
         </div>
       </div>
-      <ModalForm />
+      <ModalEditForm subTask={subTask} open={isEditing} setOpen={handleEditStateChange} />
     </div>
   );
 };
