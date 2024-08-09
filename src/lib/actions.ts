@@ -4,6 +4,7 @@ import { TaskModel } from "./models";
 import type { TaskItemType } from "@/components/HomeComponents/taskItem/TaskItem.dto";
 import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.dto";
 import { revalidatePath } from "next/cache";
+import { FormStateType } from "@/components/HomeComponents/subTaskItem/editForm/EditForm";
 
 type AddTaskPayloadType = Omit<
   Omit<Omit<TaskItemType, "_id">, "__v">,
@@ -86,5 +87,41 @@ export const deleteTask = async (subTaskID: string, taskID: string) => {
   } catch (error) {
     console.error("Error deleting task from DB:", error);
     throw new Error("Error deleting task from DB");
+  }
+};
+
+export const updateTask = async (
+  formState: FormStateType,
+  taskID: string,
+  subTaskID: string
+) => {
+  try {
+    await connectToDb();
+
+    const task = await TaskModel.findById(taskID);
+    if (!task) {
+      return { success: false, message: "Task not found" };
+    }
+
+    const subTask = task.tasks.find(
+      (subTask: SubTaskItemType) => subTask._id.toString() === subTaskID
+    );
+
+    if (!subTask) {
+      return { success: false, message: "Subtask not found" };
+    }
+    subTask.time = {
+      timeFrom: formState.timeFrom,
+      timeTo: formState.timeTo,
+    };
+    subTask.info = formState.taskInfo;
+    subTask.addInfo = formState.addInfo;
+
+    await task.save();
+
+    return { success: true, message: "Task updated successfully" };
+  } catch (error) {
+    console.error("Error updating task from DB:", error);
+    return { success: false, message: "Error updating task from DB" };
   }
 };

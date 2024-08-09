@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { type FormEvent, useState } from "react";
 import styles from "./EditForm.module.css";
 import { SubTaskItemType } from "../SubTaskItem.dto";
 import GenericFormItems from "@/components/reusable/GenericFormItems/GenericFormItems";
+import { updateTask } from "@/lib/actions";
+import toast from "react-hot-toast";
 
 type EditFormProps = {
   subTask: SubTaskItemType;
+  taskID: string;
 };
 
-const EditForm: React.FC<EditFormProps> = ({ subTask }) => {
-  const [formState, setFormState] = useState({
+export type FormStateType = {
+  timeFrom: string;
+  timeTo: string;
+  taskInfo: string;
+  allDay: boolean;
+  addInfo: string;
+};
+
+const EditForm: React.FC<EditFormProps> = ({ subTask, taskID }) => {
+  const [formState, setFormState] = useState<FormStateType>({
     timeFrom: subTask.time.timeFrom,
     timeTo: subTask.time.timeTo,
     taskInfo: subTask.info,
@@ -36,8 +47,31 @@ const EditForm: React.FC<EditFormProps> = ({ subTask }) => {
     }
   };
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(formState);
+    const response = await updateTask(formState, taskID, subTask._id);
+
+    if (response.success) {
+      toast.success("Task updated successfully!");
+      setFormState({
+        timeFrom: "00:01",
+        timeTo: "23:59",
+        taskInfo: "some task",
+        allDay: false,
+        addInfo: "some task details",
+      });
+    } else {
+      toast.error(response.message as string);
+    }
+  };
+
   return (
-    <form data-value="form" className={styles.createForm}>
+    <form
+      data-value="form"
+      className={styles.createForm}
+      onSubmit={handleSubmit}
+    >
       <h5 className={styles.taskDetailsTitle}>Task details:</h5>
       <GenericFormItems
         formState={formState}

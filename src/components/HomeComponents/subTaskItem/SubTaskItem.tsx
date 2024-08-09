@@ -73,7 +73,7 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
         </div>
       </div>
       <GenericModal
-        children={<EditForm subTask={subTask} />}
+        children={<EditForm subTask={subTask} taskID={taskID} />}
         open={isEditing}
         setOpen={handleEditStateChange}
       />
