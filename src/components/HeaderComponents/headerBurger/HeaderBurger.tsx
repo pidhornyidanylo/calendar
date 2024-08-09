@@ -1,10 +1,10 @@
 "use client";
 import { useStore } from "@/store";
-import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
 import React from "react";
 import burger from "../../../../public/icons/header/burger.svg";
 import styles from "./HeaderBurger.module.css";
+import GenericResize from "@/components/reusable/GenericResize/GenericResize";
 
 const HeaderBurger: React.FC = () => {
   const toggleSideBar = useStore((state) => state.toggleExpandedSideBar);

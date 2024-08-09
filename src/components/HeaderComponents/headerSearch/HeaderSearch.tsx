@@ -1,12 +1,12 @@
 "use client";
 import { useStore } from "@/store";
-import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { cross, filter, search } from "../HeaderIcons.index";
 import styles from "./HeaderSearch.module.css";
+import GenericResize from "@/components/reusable/GenericResize/GenericResize";
 
 const HeaderSearch: React.FC = () => {
   const router = useRouter();

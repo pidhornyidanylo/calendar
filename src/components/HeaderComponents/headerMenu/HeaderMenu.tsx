@@ -1,10 +1,10 @@
 "use client";
-import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { apps, avatar, help, home, more, settings } from "../HeaderIcons.index";
 import styles from "./HeaderMenu.module.css";
+import GenericResize from "@/components/reusable/GenericResize/GenericResize";
 
 const HeaderMenu: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);

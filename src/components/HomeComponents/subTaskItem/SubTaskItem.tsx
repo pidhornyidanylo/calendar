@@ -7,8 +7,8 @@ import { convertTimeRange } from "@/utils/timeUtils";
 import type { SubTaskItemProps, SubTaskItemType } from "./SubTaskItem.dto";
 import { deleteTask } from "@/lib/actions";
 import styles from "./SubTaskItem.module.css";
-import ModalForm from "@/components/SideBarComponents/modalForm/ModalForm";
-import ModalEditForm from "./modalEditForm/ModalEditForm";
+import EditForm from "./editForm/EditForm";
+import GenericModal from "@/components/reusable/GenericModal/GenericModal";
 
 const SubTaskItem: React.FC<SubTaskItemProps> = ({
   subTask,
@@ -72,7 +72,11 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
           </button>
         </div>
       </div>
-      <ModalEditForm subTask={subTask} open={isEditing} setOpen={handleEditStateChange} />
+      <GenericModal
+        children={<EditForm subTask={subTask} />}
+        open={isEditing}
+        setOpen={handleEditStateChange}
+      />
     </div>
   );
 };

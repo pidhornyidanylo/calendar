@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./EditForm.module.css";
 import { SubTaskItemType } from "../SubTaskItem.dto";
+import GenericFormItems from "@/components/reusable/GenericFormItems/GenericFormItems";
 
 type EditFormProps = {
   subTask: SubTaskItemType;
@@ -38,68 +39,11 @@ const EditForm: React.FC<EditFormProps> = ({ subTask }) => {
   return (
     <form data-value="form" className={styles.createForm}>
       <h5 className={styles.taskDetailsTitle}>Task details:</h5>
-      <div
-        className={`${styles.timeContainer} ${
-          formState.allDay ? styles.disabled : ""
-        }`}
-      >
-        <div className={styles.timeItem}>
-          <label htmlFor="time">From: </label>
-          <input
-            value={formState.timeFrom}
-            onChange={handleInputChange}
-            type="time"
-            name="timeFrom"
-            id="time-from"
-            step={3600}
-          />
-        </div>
-        <div className={styles.timeItem}>
-          <label htmlFor="time">To: </label>
-          <input
-            value={formState.timeTo}
-            onChange={handleInputChange}
-            type="time"
-            name="timeTo"
-            id="time-to"
-            step={3600}
-          />
-        </div>
-      </div>
-      <div className={styles.wholeDay}>
-        <label htmlFor="all_day">All day</label>
-        <input
-          checked={formState.allDay}
-          onChange={handleInputChange}
-          type="checkbox"
-          name="allDay"
-          id="all_day"
-        />
-      </div>
-      <div className={styles.infoContainer}>
-        <div className={styles.taskContainer}>
-          <label htmlFor="task">Task:</label>
-          <input
-            value={formState.taskInfo}
-            onChange={handleInputChange}
-            type="text"
-            name="taskInfo"
-            id="task"
-          />
-        </div>
-        <div className={styles.addInfoContainer}>
-          <label htmlFor="add-info">Additional info:</label>
-          <textarea
-            value={formState.addInfo}
-            onChange={handleInputChange}
-            name="addInfo"
-            id="add-info"
-          />
-        </div>
-      </div>
-      <button className={styles.submitBtn} type="submit">
-        Update task
-      </button>
+      <GenericFormItems
+        formState={formState}
+        handleInputChange={handleInputChange}
+        type={"edit"}
+      />
     </form>
   );
 };

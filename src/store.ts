@@ -13,9 +13,6 @@ export type State = {
   mutateCreateBtn: boolean;
   toggleMutateCreateBtn: (value: boolean) => void;
 
-  openModal: boolean;
-  setOpenModal: (value: boolean) => void;
-
   dateToCreateTask: { day: number; month: number; year: number } | null;
   setDateToCreateTask: (
     value: { day: number; month: number; year: number } | null
@@ -74,12 +71,6 @@ export const useStore = create<State>((set) => ({
       mutateCreateBtn: value,
     })),
 
-  openModal: false,
-  setOpenModal: (value: boolean) =>
-    set(() => ({
-      openModal: value,
-    })),
-
   headerSearchValue: "",
   setHeaderSearchValue: (value: string) =>
     set(() => ({
@@ -122,8 +113,9 @@ export const useStore = create<State>((set) => ({
       currentYear: state.currentYear === 0 ? 11 : state.currentYear - 1,
     })),
 
-    showPastEvents: false,
-    setShowPastEvents: () => set((state) => ({
-      showPastEvents: !state.showPastEvents
-    }))
+  showPastEvents: false,
+  setShowPastEvents: () =>
+    set((state) => ({
+      showPastEvents: !state.showPastEvents,
+    })),
 }));

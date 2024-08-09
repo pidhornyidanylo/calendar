@@ -1,10 +1,10 @@
 import { useStore } from "@/store";
-import GenericResize from "@/utils/GenericResize";
 import Image from "next/image";
 import React from "react";
 import back from "../../../../public/icons/home/back.svg";
 import styles from "./CreateForm.module.css";
 import Form from "./form/Form";
+import GenericResize from "@/components/reusable/GenericResize/GenericResize";
 
 const CreateForm: React.FC = () => {
   const dateToCreateTask = useStore((state) => state.dateToCreateTask);
