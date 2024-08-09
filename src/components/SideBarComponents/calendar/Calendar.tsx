@@ -1,9 +1,8 @@
 import { useStore } from "@/store";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import expandLess from "../../../../public/icons/home/expand_less.svg";
-import expandMore from "../../../../public/icons/home/expand_more.svg";
 import styles from "./Calendar.module.css";
+import CalendarHeader from "./calendarHeader/CalendarHeader";
+import CalendarBody from "./calendarBody/CalendarBody";
 
 export const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -50,7 +49,6 @@ const Calendar: React.FC = () => {
 
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
   const prevMonthDays = [];
   const nextMonthDays = [];
   const monthDays = [];
@@ -60,7 +58,7 @@ const Calendar: React.FC = () => {
   const daysInPrevMonth = new Date(prevMonthYear, prevMonth + 1, 0).getDate();
 
   for (
-    let empty = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
+    let empty = firstDayOfMonth === 0 ? 6 : firstDayOfMonth;
     empty > 0;
     empty--
   ) {
@@ -68,7 +66,11 @@ const Calendar: React.FC = () => {
   }
 
   for (let day = 1; day <= daysInMonth; day++) {
-    monthDays.push(day);
+    const dateToCompare = new Date(currentYear, currentMonth, day);
+    monthDays.push({
+      day,
+      isToday: dateToCompare.toDateString() === currentDate.toDateString(),
+    });
   }
 
   const totalDaysDisplayed = prevMonthDays.length + monthDays.length;
@@ -125,71 +127,18 @@ const Calendar: React.FC = () => {
         expandedSideBar ? styles.visible : ""
       }`}
     >
-      <div className={styles.calendarHeader}>
-        <div className={styles.headerInfo}>
-          <span>{months[currentMonth]}</span>
-          <span>{currentYear}</span>
-        </div>
-        <div className={styles.headerActions}>
-          <button type="button" id="prevMonth" onClick={handlePrevMonth}>
-            <Image className="svgIcon" src={expandLess} alt={"expandLess"} />
-          </button>
-          <button type="button" id="nextMonth" onClick={handleNextMonth}>
-            <Image className="svgIcon" src={expandMore} alt={"expandMore"} />
-          </button>
-        </div>
-      </div>
-      <div className={styles.calendarBody}>
-        <div className={styles.calendarWeekdays}>
-          {weekdays.map((day) => (
-            <div key={day}>{day[0]}</div>
-          ))}
-        </div>
-        <div className={styles.calendarDays}>
-          {prevMonthDays.map((day, index) => (
-            <button
-              type="button"
-              onClick={() => handleDateClick(day, -1)}
-              data-value={day}
-              key={`prev-${day * index}`}
-              className={styles.prevMonthDay}
-            >
-              <span>{day}</span>
-            </button>
-          ))}
-          {monthDays.map((day, index) => (
-            <button
-              type="button"
-              onClick={() => handleDateClick(day, 0)}
-              data-value={day}
-              key={`current-${day * index}`}
-            >
-              <span
-                className={
-                  currentDate.getDate() === day &&
-                  currentDate.getMonth() === currentMonth &&
-                  currentDate.getFullYear() === currentYear
-                    ? styles.today
-                    : ""
-                }
-              >
-                {day}
-              </span>
-            </button>
-          ))}
-          {nextMonthDays.map((day, index) => (
-            <button
-              type="button"
-              onClick={() => handleDateClick(day, 1)}
-              data-value={day}
-              key={`next-${day * index}`}
-              className={styles.nextMonthDay}
-            >
-              <span>{day}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <CalendarHeader
+        currentMonth={months[currentMonth]}
+        currentYear={currentYear}
+        handlePrevMonth={handlePrevMonth}
+        handleNextMonth={handleNextMonth}
+      />
+      <CalendarBody
+        prevMonthDays={prevMonthDays}
+        monthDays={monthDays}
+        nextMonthDays={nextMonthDays}
+        handleDateClick={handleDateClick}
+      />
     </div>
   );
 };

@@ -1,0 +1,87 @@
+
+.calendarBody {
+    background-color: var(--main-hard-blue);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.calendarWeekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 10px;
+}
+
+.calendarWeekdays>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.15em;
+    color: var(--main-text);
+}
+
+.calendarDays {
+    flex: 1;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-items: center;
+    align-content: center;
+}
+
+.calendarDays button {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendarDays button:focus {
+    outline-color: white;
+}
+
+.calendarDays button span {
+    height: 28px;
+    width: 34px;
+    color: var(--main-text);
+    background-color: var(--current-month-days);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -ms-border-radius: 14px;
+    -o-border-radius: 14px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.calendarDays button span.today {
+    background-color: transparent;
+    border: 2px solid var(--current-month-days);
+    font-weight: 600;
+}
+
+.calendarDays button span:hover {
+    background-color: rgba(172, 207, 255, .5);
+    color: var(--main-white);
+}
+
+.calendarDays .nextMonthDay span {
+    background-color: var(--next-prev-days-calendar);
+}
+
+.calendarDays .prevMonthDay span {
+    background-color: var(--next-prev-days-calendar);
+}

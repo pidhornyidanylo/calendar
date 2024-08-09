@@ -1,0 +1,35 @@
+.calendarHeader {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.headerInfo {
+    display: flex;
+    gap: 10px;
+}
+
+.headerInfo>span {
+    font-size: 1.25em;
+    color: var(--main-text);
+}
+
+.headerActions>button {
+    padding: 7px;
+    border: none;
+    background-color: inherit;
+    color: var(--main-text);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
