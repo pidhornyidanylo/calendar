@@ -44,15 +44,21 @@
     font-weight: 400;
 }
 
+.dateContainer {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
 .dateContainer label {
     font-size: 1.1em;
-    margin-right: 8px;
 }
 
 .dateContainer input {
     background-color: var(--main-white);
     border: none;
     font-size: 1.1em;
+    flex: 1;
     padding: 8px 13px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -78,10 +84,42 @@
         width: 350px;
         gap: 5px;
     }
+
+    .createForm.lg .dateContainer {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+    
 }
 
 @media(max-width: 375px) {
     .createForm.lg {
         width: 300px;
     }
+
+    .createForm.lg .dateContainer {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .dateContainer label {
+        font-size: 1.1em;
+        margin-right: 8px;
+    }
+    
+    .dateContainer input {
+        background-color: var(--main-white);
+        border: none;
+        font-size: 1.1em;
+        padding: 8px 13px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        cursor: pointer;
+    }
+    
 }

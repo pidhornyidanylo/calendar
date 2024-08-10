@@ -1,8 +1,7 @@
 .timeContainer {
-    margin-top: 5px;
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 5px;
 }
 
 .timeContainer.disabled {
@@ -18,7 +17,7 @@
 
 .timeItem {
     display: flex;
-    gap: 8px;
+    gap: 5px;
     align-items: center;
     width: 100%;
 }
@@ -205,28 +204,8 @@
 
 
 @media(max-width: 475px) {
-    
     .timeContainer {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: start;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .timeItem {
-        width: 100%;
-    }
-
-    .timeItem input {
-        flex: 1;
-    }
-}
-
-@media(max-width: 375px) {
-    .timeContainer {
-        margin-top: 20px;
+        margin-top: 5px;
         flex-direction: column;
         gap: 10px;
     }
