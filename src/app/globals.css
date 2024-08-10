@@ -92,7 +92,7 @@ main .main-content {
   background: #555;
 }
 
-@media(max-width: 992px) {
+@media(max-width: 1025px) {
   main {
     flex-direction: column;
   }

@@ -85,8 +85,8 @@
     position: absolute;
     border: none;
     background-color: transparent;
-    bottom: -6px;
-    right: 24px;
+    bottom: -5px;
+    right: 33px;
     cursor: pointer;
 }
 .addInfoEdit:hover {
