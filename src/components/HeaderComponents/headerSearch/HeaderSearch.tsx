@@ -16,7 +16,6 @@ const HeaderSearch: React.FC = () => {
 
   const headerSearchValue = useStore((state) => state.headerSearchValue);
   const setHeaderSearchValue = useStore((state) => state.setHeaderSearchValue);
-  const setShowSearchFilters = useStore((state) => state.setShowSearchFilters);
 
   useEffect(() => {
     if (headerSearchValue.length > 1) {
@@ -78,7 +77,7 @@ const HeaderSearch: React.FC = () => {
         placeholder={shortenPlaceholder ? "Search" : "Search on Calendar"}
         onKeyDown={handleKeyDown}
       />
-      <button type="button" onClick={() => setShowSearchFilters()}>
+      <button type="button">
         <Image className="svgIcon" src={filter} alt={"filter"} />
       </button>
     </>

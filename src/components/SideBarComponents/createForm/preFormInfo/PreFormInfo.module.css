@@ -16,3 +16,27 @@
     font-weight: 300;
     display: block;
 }
+
+
+@media(max-width: 1320px) {
+    .startingSign {
+        width: 200px;
+        display: block;
+        position: absolute;
+        top: 550px;
+        left: 120px;
+        z-index: -1;
+    }
+
+    .startingSign img {
+        transform: rotate(90deg) translateX(-100%) translateY(95%);
+        -webkit-transform: rotate(90deg) translateX(-100%) translateY(95%);
+        -moz-transform: rotate(90deg) translateX(-100%) translateY(95%);
+        -ms-transform: rotate(90deg) translateX(-100%) translateY(95%);
+        -o-transform: rotate(90deg) translateX(-100%) translateY(95%);
+    }
+
+    .startingSign.hidden {
+        display: none;
+    }
+}

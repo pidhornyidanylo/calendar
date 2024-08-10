@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { TaskItemType } from "./components/HomeComponents/taskItem/TaskItem.dto";
 
 export type State = {
   expandedSideBar: boolean;
@@ -10,25 +9,13 @@ export type State = {
   toggleShowCreateForm: () => void;
   setShowCreateForm: (value: boolean) => void;
 
-  mutateCreateBtn: boolean;
-  toggleMutateCreateBtn: (value: boolean) => void;
-
   dateToCreateTask: { day: number; month: number; year: number } | null;
   setDateToCreateTask: (
     value: { day: number; month: number; year: number } | null
   ) => void;
 
-  task: TaskItemType | null;
-  setTask: (task: any) => void;
-
   headerSearchValue: string;
   setHeaderSearchValue: (value: string) => void;
-
-  showSearchFilters: boolean;
-  setShowSearchFilters: () => void;
-
-  updated: boolean;
-  updateSchedule: () => void;
 
   currentMonth: number;
   setCurrentMonth: (monthToSet: number) => void;
@@ -36,6 +23,7 @@ export type State = {
   prevMonth: () => void;
 
   currentYear: number;
+  setCurrentYear: (yearToSet: number) => void;
   nextYear: () => void;
   prevYear: () => void;
 
@@ -62,31 +50,10 @@ export const useStore = create<State>((set) => ({
     })),
   setShowCreateForm: (value: boolean) => set(() => ({ showCreateForm: value })),
 
-  task: null,
-  setTask: (task: TaskItemType) => set(() => ({ task: task })),
-
-  mutateCreateBtn: false,
-  toggleMutateCreateBtn: (value: boolean) =>
-    set(() => ({
-      mutateCreateBtn: value,
-    })),
-
   headerSearchValue: "",
   setHeaderSearchValue: (value: string) =>
     set(() => ({
       headerSearchValue: value,
-    })),
-
-  showSearchFilters: false,
-  setShowSearchFilters: () =>
-    set((state) => ({ showSearchFilters: !state.showSearchFilters })),
-
-  updated: false,
-  updateSchedule: () =>
-    set((state) => ({
-      updated: !state.updated,
-      currentMonth: new Date().getMonth(),
-      currentYear: new Date().getFullYear(),
     })),
 
   currentMonth: new Date().getMonth(),
@@ -104,6 +71,10 @@ export const useStore = create<State>((set) => ({
     })),
 
   currentYear: new Date().getFullYear(),
+  setCurrentYear: (yearToSet: number) =>
+    set(() => ({
+      currentYear: yearToSet,
+    })),
   nextYear: () =>
     set((state) => ({
       currentYear: state.currentYear === 11 ? 0 : state.currentYear + 1,

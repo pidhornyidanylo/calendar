@@ -10,22 +10,22 @@ import Form from "../createForm/form/Form";
 import GenericResize from "@/components/reusable/GenericResize/GenericResize";
 import GenericModal from "@/components/reusable/GenericModal/GenericModal";
 
-
 const Sidebar: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [mutateCreateButton, setMutateCreateButton] = useState(false);
 
   const expandedSideBar = useStore((state) => state.expandedSideBar);
   const setExpandedSideBar = useStore((state) => state.setExpandedSideBar);
   const setDateToCreateTask = useStore((state) => state.setDateToCreateTask);
   const showCreateForm = useStore((state) => state.showCreateForm);
   const toggleShowCreateForm = useStore((state) => state.toggleShowCreateForm);
-  const mutateCreateBtn = useStore((state) => state.mutateCreateBtn);
-  const toggleMutateCreateBtn = useStore(
-    (state) => state.toggleMutateCreateBtn
-  );
+
+  const handleMutateCreateButton = (value: boolean) => {
+    setMutateCreateButton(value);
+  };
 
   const handleClick = () => {
-    if (!mutateCreateBtn) {
+    if (!mutateCreateButton) {
       setDateToCreateTask(null);
       toggleShowCreateForm();
     } else {
@@ -51,7 +51,7 @@ const Sidebar: React.FC = () => {
     >
       <GenericResize
         size={992}
-        setState={toggleMutateCreateBtn}
+        setState={handleMutateCreateButton}
         valueIf={true}
       />
       <button
