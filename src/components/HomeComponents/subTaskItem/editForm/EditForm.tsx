@@ -69,7 +69,7 @@ const EditForm: React.FC<EditFormProps> = ({ subTask, taskID }) => {
   return (
     <form
       data-value="form"
-      className={styles.createForm}
+      className={styles.editForm}
       onSubmit={handleSubmit}
     >
       <h5 className={styles.taskDetailsTitle}>Task details:</h5>

@@ -27,7 +27,7 @@
     backdrop-filter: blur(10px);
     display: flex;
     flex: 1;
-    width: 450px;
+    width: 400px;
     min-height: 367px;
     flex-direction: column;
     gap: 10px;
@@ -62,158 +62,7 @@
     cursor: pointer;
 }
 
-.timeContainer {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.timeContainer.disabled {
-    opacity: .4;
-}
-
-.createForm.lg .timeContainer .timeItem {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.timeItem label {
-    font-size: 1.1em;
-
-}
-
-.timeItem input {
-    color: var(--main-text);
-    background-color: var(--main-white);
-    border: none;
-    font-size: 1.1em;
-    padding: 8px 13px;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    cursor: pointer;
-}
-
-.timeItem input:focus {
-    outline: transparent;
-}
-
-.wholeDay {
-    padding-top: 15px;
-    display: flex;
-    gap: 13px;
-    align-items: center;
-}
-
-.wholeDay label {
-    font-size: 1.1em;
-}
-
-.wholeDay input {
-    width: 20px;
-    height: 20px;
-    border: none;
-    background-color: var(--main-white);
-    cursor: pointer;
-}
-
-.wholeDay input:focus {
-    outline: transparent;
-}
-
-.infoContainer {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-}
-
-.taskContainer {
-    width: 100%;
-    position: relative;
-    margin-bottom: 50px;
-}
-
-.taskContainer label {
-    position: absolute;
-    font-size: 1.1em;
-    top: -30px;
-}
-
-.taskContainer input {
-    color: var(--main-text);
-    background-color: var(--main-white);
-    font-size: 1.1em;
-    width: 100%;
-    padding: 8px 13px;
-    border: none;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-}
-
-.taskContainer input:focus {
-    outline: transparent;
-}
-
-.addInfoContainer {
-    width: 100%;
-    position: relative;
-}
-
-.addInfoContainer label {
-    position: absolute;
-    font-size: 1.1em;
-    top: -30px;
-
-}
-
-.addInfoContainer textarea {
-    color: var(--main-text);
-    background-color: var(--main-white);
-    font-size: 1.1em;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100px;
-    max-height: 100px;
-    padding: 8px 13px;
-    border: none;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-}
-
-.addInfoContainer textarea:focus {
-    outline: transparent;
-}
-
-.submitBtn {
-    background-color: var(--main-white);
-    border: none;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    padding: 8px 13px;
-    font-size: 1.1em;
-    font-weight: 300;
-    cursor: pointer;
-}
-
 @media(max-width: 576px) {
-    .createForm.lg {
-        width: 430px;
-        padding: 15px;
-    }
-
     .createForm.lg .dateContainer input {
         border-radius: 5px;
         -webkit-border-radius: 5px;
@@ -221,115 +70,18 @@
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
     }
-
-    .createForm.lg .timeContainer input {
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-    }
-
-    .createForm.lg .taskContainer input {
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-    }
-
-    .createForm.lg .addInfoContainer textarea {
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-    }
-
-    .timeContainer {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .submitBtn {
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-    }
-
-    .timeItem {
-        width: 100%;
-    }
-
-    .timeItem label {
-        width: 50px;
-    }
-
-    .timeItem input {
-        flex: 1;
-    }
 }
 
 
 @media(max-width: 475px) {
     .createForm.lg {
         width: 350px;
-    }
-
-    .timeContainer {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .timeItem {
-        width: 100%;
-    }
-
-    .timeItem label {
-        width: 50px;
-    }
-
-    .timeItem input {
-        flex: 1;
+        gap: 5px;
     }
 }
 
 @media(max-width: 375px) {
     .createForm.lg {
-        width: 350px;
-    }
-
-    .timeContainer {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .timeItem {
-        width: 100%;
-    }
-
-    .timeItem label {
-        width: 50px;
-    }
-
-    .timeItem input {
-        flex: 1;
+        width: 300px;
     }
 }

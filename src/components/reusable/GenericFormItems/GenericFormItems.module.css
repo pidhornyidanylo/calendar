@@ -1,17 +1,26 @@
 .timeContainer {
-    margin-top: 20px;
+    margin-top: 5px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 8px;
 }
 
 .timeContainer.disabled {
     opacity: .4;
 }
 
-.createForm.lg .timeContainer .timeItem {
+.timeContainer .timeItem {
     display: flex;
     gap: 15px;
     align-items: center;
+    width: 100%;
+}
+
+.timeItem {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
 }
 
 .timeItem label {
@@ -31,14 +40,16 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     cursor: pointer;
+    flex: 1;
 }
 
 .timeItem input:focus {
     outline: transparent;
 }
 
+
 .wholeDay {
-    padding-top: 15px;
+    padding-top: 10px;
     display: flex;
     gap: 13px;
     align-items: center;
@@ -61,7 +72,7 @@
 }
 
 .infoContainer {
-    margin-top: 50px;
+    margin-top: 35px;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -145,12 +156,7 @@
 }
 
 @media(max-width: 576px) {
-    .createForm.lg {
-        width: 430px;
-        padding: 15px;
-    }
-
-    .createForm.lg .dateContainer input {
+    .timeContainer .timeItem input {
         border-radius: 5px;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
@@ -158,7 +164,7 @@
         -o-border-radius: 5px;
     }
 
-    .createForm.lg .timeContainer input {
+    .taskContainer input {
         border-radius: 5px;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
@@ -166,30 +172,12 @@
         -o-border-radius: 5px;
     }
 
-    .createForm.lg .taskContainer input {
+    .addInfoContainer textarea {
         border-radius: 5px;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
-    }
-
-    .createForm.lg .addInfoContainer textarea {
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-    }
-
-    .timeContainer {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
-        gap: 20px;
     }
 
     .submitBtn {
@@ -201,11 +189,13 @@
     }
 
     .timeItem {
+        display: flex;
+        align-items: center;
         width: 100%;
     }
 
     .timeItem label {
-        width: 50px;
+        min-width: 25px;
     }
 
     .timeItem input {
@@ -215,26 +205,18 @@
 
 
 @media(max-width: 475px) {
-    .createForm.lg {
-        width: 350px;
-    }
-
+    
     .timeContainer {
         margin-top: 20px;
         display: flex;
         justify-content: space-between;
-        flex-direction: column;
         align-items: start;
         justify-content: center;
-        gap: 20px;
+        gap: 10px;
     }
 
     .timeItem {
         width: 100%;
-    }
-
-    .timeItem label {
-        width: 50px;
     }
 
     .timeItem input {
@@ -243,18 +225,10 @@
 }
 
 @media(max-width: 375px) {
-    .createForm.lg {
-        width: 350px;
-    }
-
     .timeContainer {
         margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
         flex-direction: column;
-        align-items: start;
-        justify-content: center;
-        gap: 20px;
+        gap: 10px;
     }
 
     .timeItem {
@@ -262,7 +236,7 @@
     }
 
     .timeItem label {
-        width: 50px;
+        width: 60px;
     }
 
     .timeItem input {
