@@ -10,24 +10,17 @@
 
 .timeContainer .timeItem {
     display: flex;
-    gap: 15px;
-    align-items: center;
-    width: 100%;
-}
-
-.timeItem {
-    display: flex;
     gap: 5px;
     align-items: center;
     width: 100%;
 }
 
-.timeItem label {
+.timeContainer .timeItem label {
     font-size: 1.1em;
 
 }
 
-.timeItem input {
+.timeContainer .timeItem input {
     color: var(--main-text);
     background-color: var(--main-white);
     border: none;
@@ -42,7 +35,7 @@
     flex: 1;
 }
 
-.timeItem input:focus {
+.timeContainer .timeItem input:focus {
     outline: transparent;
 }
 
@@ -152,6 +145,15 @@
     font-size: 1.1em;
     font-weight: 300;
     cursor: pointer;
+}
+
+@media(max-width: 1020px) {
+    .timeContainer .timeItem {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        width: 100%;
+    }
 }
 
 @media(max-width: 576px) {
