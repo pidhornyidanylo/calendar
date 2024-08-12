@@ -4,7 +4,7 @@ import arrowDown from "../../../../public/icons/home/expand_more.svg";
 import cross from "../../../../public/icons/header/cross.svg";
 import edit from "../../../../public/icons/home/editt.svg";
 import { convertTimeRange } from "@/utils/timeUtils";
-import type { SubTaskItemProps, SubTaskItemType } from "./SubTaskItem.dto";
+import type { SubTaskItemProps, SubTaskItemType } from "./SubTaskItem.types";
 import { deleteTask } from "@/lib/actions";
 import styles from "./SubTaskItem.module.css";
 import EditForm from "./editForm/EditForm";

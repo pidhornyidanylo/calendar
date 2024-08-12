@@ -1,5 +1,10 @@
+import { Metadata } from "next";
 import React from "react";
 import styles from "./Help.module.css";
+
+export const metadata: Metadata = {
+  title: "help",
+};
 
 const faqs = [
   {

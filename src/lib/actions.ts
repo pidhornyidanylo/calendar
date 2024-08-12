@@ -6,6 +6,7 @@ import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/Su
 import type {
   addTaskActionPayloadType,
   deleteTaskActionPayloadType,
+  loginUserActionPayloadType,
   updateTaskActionPayloadType,
 } from "./actions.types";
 
@@ -63,19 +64,16 @@ export const addTask = async (data: addTaskActionPayloadType) => {
   }
 };
 
-export const deleteTask = async ({
-  subTaskID,
-  taskID,
-}: deleteTaskActionPayloadType) => {
+export const deleteTask = async (data: deleteTaskActionPayloadType) => {
   try {
     await connectToDb();
-    const task = await TaskModel.findById(taskID);
+    const task = await TaskModel.findById(data.taskID);
     if (task) {
       task.tasks = task.tasks.filter(
-        (subTask: SubTaskItemType) => subTask._id.toString() !== subTaskID
+        (subTask: SubTaskItemType) => subTask._id.toString() !== data.subTaskID
       );
       if (task.tasks.length === 0) {
-        await TaskModel.findByIdAndDelete(taskID);
+        await TaskModel.findByIdAndDelete(data.taskID);
       } else {
         await task.save();
       }
@@ -89,32 +87,28 @@ export const deleteTask = async ({
   }
 };
 
-export const updateTask = async ({
-  formState,
-  taskID,
-  subTaskID,
-}: updateTaskActionPayloadType) => {
+export const updateTask = async (data: updateTaskActionPayloadType) => {
   try {
     await connectToDb();
 
-    const task = await TaskModel.findById(taskID);
+    const task = await TaskModel.findById(data.taskID);
     if (!task) {
       return { success: false, message: "Task not found" };
     }
 
     const subTask = task.tasks.find(
-      (subTask: SubTaskItemType) => subTask._id.toString() === subTaskID
+      (subTask: SubTaskItemType) => subTask._id.toString() === data.subTaskID
     );
 
     if (!subTask) {
       return { success: false, message: "Subtask not found" };
     }
     subTask.time = {
-      timeFrom: formState.timeFrom,
-      timeTo: formState.timeTo,
+      timeFrom: data.formState.timeFrom,
+      timeTo: data.formState.timeTo,
     };
-    subTask.info = formState.taskInfo;
-    subTask.addInfo = formState.addInfo;
+    subTask.info = data.formState.taskInfo;
+    subTask.addInfo = data.formState.addInfo;
 
     await task.save();
     revalidatePath("/");
@@ -123,4 +117,8 @@ export const updateTask = async ({
     console.error("Error updating task from DB:", error);
     return { success: false, message: "Error updating task from DB" };
   }
+};
+
+export const loginUser = async (data: loginUserActionPayloadType) => {
+  console.log(data.email);
 };

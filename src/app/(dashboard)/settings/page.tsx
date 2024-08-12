@@ -1,5 +1,4 @@
-import ModeSelect from "@/components/SettingsComponents/modeSelect/ModeSelect";
-import TimeZoneSelect from "@/components/SettingsComponents/timeZoneSelect/TimeZoneSelect";
+import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
 import {
@@ -12,6 +11,12 @@ import {
 } from "./Settings.icons";
 import styles from "./Settings.module.css";
 import Link from "next/link";
+import TimeZoneSelect from "@/components/SettingsComponents/timeZoneSelect/TimeZoneSelect";
+import ModeSelect from "@/components/SettingsComponents/modeSelect/ModeSelect";
+
+export const metadata: Metadata = {
+  title: "settings",
+};
 
 const Settings: React.FC = () => {
   return (

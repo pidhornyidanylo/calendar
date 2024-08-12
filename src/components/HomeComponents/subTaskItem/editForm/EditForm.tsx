@@ -10,7 +10,6 @@ const EditForm: React.FC<EditFormProps> = ({
   taskID,
   handleCloseModal,
 }) => {
-
   const [formState, setFormState] = useState<FormStateType>({
     timeFrom: subTask.time.timeFrom,
     timeTo: subTask.time.timeTo,
@@ -34,7 +33,11 @@ const EditForm: React.FC<EditFormProps> = ({
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formState);
-    const response = await updateTask(formState, taskID, subTask._id);
+    const response = await updateTask({
+      formState,
+      taskID,
+      subTaskID: subTask._id,
+    });
 
     if (response.success) {
       handleCloseModal();
