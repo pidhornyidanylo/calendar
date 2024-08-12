@@ -21,7 +21,7 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
   const [expandSubTask, setExpandSubTask] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const handleSubTaskDelete = async (subTaskID: string, taskID: string) => {
-    const response = await deleteTask(subTaskID, taskID);
+    const response = await deleteTask({ subTaskID, taskID });
 
     if (response.success) {
       toast.success("Task deleted successfully!");
