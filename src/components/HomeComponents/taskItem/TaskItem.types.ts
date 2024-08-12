@@ -1,4 +1,4 @@
-import { SubTaskItemType } from "../subTaskItem/SubTaskItem.dto";
+import { SubTaskItemType } from "../subTaskItem/SubTaskItem.types";
 
 type TaskItemDateType = {
   year: number;

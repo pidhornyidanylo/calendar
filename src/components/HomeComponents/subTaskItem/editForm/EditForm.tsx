@@ -1,25 +1,16 @@
 import React, { type FormEvent, useState } from "react";
-import { SubTaskItemType } from "../SubTaskItem.dto";
 import GenericFormItems from "@/components/reusable/GenericFormItems/GenericFormItems";
 import { updateTask } from "@/lib/actions";
 import toast from "react-hot-toast";
+import type { EditFormProps, FormStateType } from "./EditForm.types";
 import styles from "./EditForm.module.css";
 
-type EditFormProps = {
-  subTask: SubTaskItemType;
-  taskID: string;
-  handleCloseModal: () => void;
-};
+const EditForm: React.FC<EditFormProps> = ({
+  subTask,
+  taskID,
+  handleCloseModal,
+}) => {
 
-export type FormStateType = {
-  timeFrom: string;
-  timeTo: string;
-  taskInfo: string;
-  allDay: boolean;
-  addInfo: string;
-};
-
-const EditForm: React.FC<EditFormProps> = ({ subTask, taskID, handleCloseModal }) => {
   const [formState, setFormState] = useState<FormStateType>({
     timeFrom: subTask.time.timeFrom,
     timeTo: subTask.time.timeTo,
@@ -32,20 +23,12 @@ const EditForm: React.FC<EditFormProps> = ({ subTask, taskID, handleCloseModal }
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
-
+    const { name, value, type } = e.target;
     setFormState((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]:
+        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     }));
-
-    if (e.target instanceof HTMLInputElement && e.target.type === "checkbox") {
-      setFormState((prevState) => ({
-        ...prevState,
-        // @ts-ignore
-        [name]: e.target.checked,
-      }));
-    }
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -69,11 +52,7 @@ const EditForm: React.FC<EditFormProps> = ({ subTask, taskID, handleCloseModal }
   };
 
   return (
-    <form
-      data-value="form"
-      className={styles.editForm}
-      onSubmit={handleSubmit}
-    >
+    <form data-value="form" className={styles.editForm} onSubmit={handleSubmit}>
       <h5 className={styles.taskDetailsTitle}>Task details:</h5>
       <GenericFormItems
         formState={formState}

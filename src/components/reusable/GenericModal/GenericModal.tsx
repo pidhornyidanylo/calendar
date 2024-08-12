@@ -1,11 +1,6 @@
 import React from "react";
 import { Modal, ModalClose, Sheet } from "@mui/joy";
-
-type GenericModalProps = {
-  open: boolean;
-  setOpen: () => void;
-  children: React.ReactNode;
-};
+import type { GenericModalProps } from "./GenericModal.types";
 
 const GenericModal: React.FC<GenericModalProps> = ({
   open,

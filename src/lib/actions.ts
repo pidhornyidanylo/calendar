@@ -1,19 +1,15 @@
 "use server";
 import { connectToDb } from "./db";
 import { TaskModel } from "./models";
-import type { TaskItemType } from "@/components/HomeComponents/taskItem/TaskItem.dto";
-import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.dto";
 import { revalidatePath } from "next/cache";
-import { FormStateType } from "@/components/HomeComponents/subTaskItem/editForm/EditForm";
+import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.types";
+import type {
+  addTaskActionPayloadType,
+  deleteTaskActionPayloadType,
+  updateTaskActionPayloadType,
+} from "./actions.types";
 
-type AddTaskPayloadType = Omit<
-  Omit<Omit<TaskItemType, "_id">, "__v">,
-  "tasks"
-> & {
-  task: Omit<SubTaskItemType, "_id">;
-};
-
-export const addTask = async (data: AddTaskPayloadType) => {
+export const addTask = async (data: addTaskActionPayloadType) => {
   try {
     await connectToDb();
     const taskAlreadyExistsInDB = await TaskModel.findOne({
@@ -67,7 +63,10 @@ export const addTask = async (data: AddTaskPayloadType) => {
   }
 };
 
-export const deleteTask = async (subTaskID: string, taskID: string) => {
+export const deleteTask = async ({
+  subTaskID,
+  taskID,
+}: deleteTaskActionPayloadType) => {
   try {
     await connectToDb();
     const task = await TaskModel.findById(taskID);
@@ -90,11 +89,11 @@ export const deleteTask = async (subTaskID: string, taskID: string) => {
   }
 };
 
-export const updateTask = async (
-  formState: FormStateType,
-  taskID: string,
-  subTaskID: string
-) => {
+export const updateTask = async ({
+  formState,
+  taskID,
+  subTaskID,
+}: updateTaskActionPayloadType) => {
   try {
     await connectToDb();
 

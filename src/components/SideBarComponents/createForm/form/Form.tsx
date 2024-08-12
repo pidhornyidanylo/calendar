@@ -1,6 +1,6 @@
 import { useStore } from "@/store";
 import React, { type FormEvent, useState } from "react";
-import { parseDate } from "@/utils/dateUtils";
+import { createDateIdentifier, parseDate } from "@/utils/dateUtils";
 import { addTask } from "@/lib/actions";
 import { FormProps } from "./Form.types";
 import styles from "./Form.module.css";
@@ -22,12 +22,12 @@ const Form: React.FC<FormProps> = ({ showCalendatInput, handleCloseModal }) => {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    // @ts-ignore
-    const { name, value, type, checked } = e.target;
+    const { name, value, type } = e.target;
 
     setFormState((prevState) => ({
       ...prevState,
-      [name]: type === "checkbox" ? checked : value,
+      [name]:
+        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -46,22 +46,11 @@ const Form: React.FC<FormProps> = ({ showCalendatInput, handleCloseModal }) => {
         info: formState.taskInfo,
         addInfo: formState.addInfo,
       },
-      dateIdentifier: showCalendatInput
-        ? String(parseDate(formState.date).day) +
-          String(parseDate(formState.date).month) +
-          String(parseDate(formState.date).year)
-        : String(
-            (dateToCreateTask as { day: number; month: number; year: number })
-              .day
-          ) +
-          String(
-            (dateToCreateTask as { day: number; month: number; year: number })
-              .month
-          ) +
-          String(
-            (dateToCreateTask as { day: number; month: number; year: number })
-              .year
-          ),
+      dateIdentifier: createDateIdentifier(
+        showCalendatInput,
+        formState,
+        dateToCreateTask
+      ),
     });
 
     if (response.success) {

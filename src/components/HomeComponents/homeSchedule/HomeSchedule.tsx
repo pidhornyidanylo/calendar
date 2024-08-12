@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useStore } from "@/store";
 import TaskItem from "../taskItem/TaskItem";
-import type { TaskItemType } from "../taskItem/TaskItem.dto";
+import type { TaskItemType } from "../taskItem/TaskItem.types";
 
 type HomeScheduleProps = {
   data: string;
