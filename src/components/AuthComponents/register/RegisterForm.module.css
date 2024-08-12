@@ -138,6 +138,8 @@
         -ms-border-radius: 10px;
         -o-border-radius: 10px;
         box-shadow: none;
+        overflow-y: hidden;
+
     }
 
     .registerFormItem {
