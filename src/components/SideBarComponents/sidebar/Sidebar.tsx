@@ -67,7 +67,7 @@ const Sidebar: React.FC = () => {
       <GenericModal
         open={openModal}
         setOpen={handleAddStateChange}
-        children={<Form showCalendatInput={true} />}
+        children={<Form handleCloseModal={handleAddStateChange} showCalendatInput={true} />}
       />
     </aside>
   );

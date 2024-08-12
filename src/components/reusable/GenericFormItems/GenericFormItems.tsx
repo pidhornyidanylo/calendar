@@ -29,15 +29,15 @@ const GenericFormItems: React.FC<GenericFormItemsProps> = ({
       >
         <div className={styles.timeItem}>
           <label htmlFor="time">From: </label>
-          <input
-            onChange={handleInputChange}
-            value={formState.timeFrom}
-            disabled={formState.allDay}
-            type="time"
-            name="timeFrom"
-            id="time-from"
-            step={3600}
-          />
+            <input
+              onChange={handleInputChange}
+              value={formState.timeFrom}
+              disabled={formState.allDay}
+              type="time"
+              name="timeFrom"
+              id="time-from"
+              step={3600}
+            />
         </div>
         <div className={styles.timeItem}>
           <label htmlFor="time">To: </label>

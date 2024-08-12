@@ -60,7 +60,7 @@
 }
 
 .wholeDay input:focus {
-    outline: transparent;
+    outline:invert;
 }
 
 .infoContainer {

@@ -1,13 +1,14 @@
 import React, { type FormEvent, useState } from "react";
-import styles from "./EditForm.module.css";
 import { SubTaskItemType } from "../SubTaskItem.dto";
 import GenericFormItems from "@/components/reusable/GenericFormItems/GenericFormItems";
 import { updateTask } from "@/lib/actions";
 import toast from "react-hot-toast";
+import styles from "./EditForm.module.css";
 
 type EditFormProps = {
   subTask: SubTaskItemType;
   taskID: string;
+  handleCloseModal: () => void;
 };
 
 export type FormStateType = {
@@ -18,7 +19,7 @@ export type FormStateType = {
   addInfo: string;
 };
 
-const EditForm: React.FC<EditFormProps> = ({ subTask, taskID }) => {
+const EditForm: React.FC<EditFormProps> = ({ subTask, taskID, handleCloseModal }) => {
   const [formState, setFormState] = useState<FormStateType>({
     timeFrom: subTask.time.timeFrom,
     timeTo: subTask.time.timeTo,
@@ -53,6 +54,7 @@ const EditForm: React.FC<EditFormProps> = ({ subTask, taskID }) => {
     const response = await updateTask(formState, taskID, subTask._id);
 
     if (response.success) {
+      handleCloseModal();
       toast.success("Task updated successfully!");
       setFormState({
         timeFrom: "00:01",

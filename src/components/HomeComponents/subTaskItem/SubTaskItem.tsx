@@ -9,6 +9,7 @@ import { deleteTask } from "@/lib/actions";
 import styles from "./SubTaskItem.module.css";
 import EditForm from "./editForm/EditForm";
 import GenericModal from "@/components/reusable/GenericModal/GenericModal";
+import toast from "react-hot-toast";
 
 const SubTaskItem: React.FC<SubTaskItemProps> = ({
   subTask,
@@ -20,7 +21,13 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
   const [expandSubTask, setExpandSubTask] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const handleSubTaskDelete = async (subTaskID: string, taskID: string) => {
-    await deleteTask(subTaskID, taskID);
+    const response = await deleteTask(subTaskID, taskID);
+
+    if (response.success) {
+      toast.success("Task deleted successfully!");
+    } else {
+      toast.error(response.message as string);
+    }
   };
   const handleEditStateChange = () => {
     setIsEditing(!isEditing);
@@ -73,7 +80,13 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
         </div>
       </div>
       <GenericModal
-        children={<EditForm subTask={subTask} taskID={taskID} />}
+        children={
+          <EditForm
+            subTask={subTask}
+            taskID={taskID}
+            handleCloseModal={handleEditStateChange}
+          />
+        }
         open={isEditing}
         setOpen={handleEditStateChange}
       />

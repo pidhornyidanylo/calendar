@@ -81,12 +81,12 @@ export const deleteTask = async (subTaskID: string, taskID: string) => {
         await task.save();
       }
       revalidatePath("/");
+      return { success: true };
     } else {
       throw new Error("Task not found");
     }
   } catch (error) {
-    console.error("Error deleting task from DB:", error);
-    throw new Error("Error deleting task from DB");
+    return { success: false, message: "Error deleting task from DB." };
   }
 };
 
@@ -118,7 +118,7 @@ export const updateTask = async (
     subTask.addInfo = formState.addInfo;
 
     await task.save();
-
+    revalidatePath("/");
     return { success: true, message: "Task updated successfully" };
   } catch (error) {
     console.error("Error updating task from DB:", error);

@@ -7,7 +7,7 @@ import styles from "./Form.module.css";
 import toast from "react-hot-toast";
 import GenericFormItems from "@/components/reusable/GenericFormItems/GenericFormItems";
 
-const Form: React.FC<FormProps> = ({ showCalendatInput }) => {
+const Form: React.FC<FormProps> = ({ showCalendatInput, handleCloseModal }) => {
   const dateToCreateTask = useStore((state) => state.dateToCreateTask);
 
   const [formState, setFormState] = useState({
@@ -65,6 +65,9 @@ const Form: React.FC<FormProps> = ({ showCalendatInput }) => {
     });
 
     if (response.success) {
+      if (handleCloseModal) {
+        handleCloseModal();
+      }
       toast.success("Task added successfully!");
       setFormState({
         timeFrom: "00:01",
