@@ -3,7 +3,7 @@ import { useStore } from "@/store";
 import { normalizeDate } from "@/utils/dateUtils";
 import { months } from "../../SideBarComponents/calendar/Calendar";
 import SubTaskItem from "../subTaskItem/SubTaskItem";
-import type { TaskItemProps, TaskItemType } from "./TaskItem.dto";
+import type { TaskItemProps, TaskItemType } from "./TaskItem.types";
 import styles from "./TaskItem.module.css";
 
 const TaskItem: React.FC<TaskItemProps> = ({
