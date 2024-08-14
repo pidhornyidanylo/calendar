@@ -133,6 +133,9 @@ export const updateTheme = async (theme: "dark" | "light") => {
     themeFromDB.theme = theme;
     await themeFromDB.save();
     revalidatePath("/");
+    revalidatePath("/settings");
+    revalidatePath("/apps");
+    revalidatePath("/user");
     return { success: true, message: "Theme changed!" };
   } catch (error) {
     return { success: false, message: "Error changing theme." };
