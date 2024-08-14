@@ -127,17 +127,16 @@ export const updateTheme = async (theme: "dark" | "light") => {
   try {
     await connectToDb();
     const themeFromDB = await ThemeModel.findOne();
-    if (!themeFromDB) {
-      return { success: false, message: "DB not responding." };
-    }
     themeFromDB.theme = theme;
     await themeFromDB.save();
     revalidatePath("/");
+    revalidatePath("/login");
+    revalidatePath("/register");
     revalidatePath("/settings");
     revalidatePath("/apps");
     revalidatePath("/user");
     revalidatePath("/help");
-    return { success: true, message: "Theme changed!" };
+    return { success: true, message: "Theme changed!", theme: theme};
   } catch (error) {
     return { success: false, message: "Error changing theme." };
   }

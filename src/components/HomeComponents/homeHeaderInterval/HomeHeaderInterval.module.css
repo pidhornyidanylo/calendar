@@ -2,16 +2,17 @@
     text-align: center;
     font-weight: 400;
     font-size: 1.7em;
-    margin-right: 20px;
     min-width: 280px;
 }
 
 .arrows {
     display: flex;
-    gap: 20px;
+    justify-content: flex-end;
+    gap: 40px;
     padding: 10px 0;
     align-items: center;
     margin-right: 10px;
+    width: 250px;
 }
 
 .arrows>button {

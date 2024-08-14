@@ -89,6 +89,7 @@
     right: 33px;
     cursor: pointer;
 }
+
 .addInfoEdit:hover {
     transform: scale(1.1);
     -webkit-transform: scale(1.1);
@@ -105,12 +106,18 @@
     right: -8px;
     cursor: pointer;
 }
+
 .addInfoDelete:hover {
     transform: scale(1.1);
 }
 
 .addInfo.visible {
     display: block;
+}
+
+
+.addInfo p {
+    width: 70%;
 }
 
 @media(max-width: 768px) {
@@ -221,14 +228,14 @@
         -o-transform: translateX(-8px) scale(1.2);
     }
 
-    
-.subTaskExpand.upsided {
-    transform: rotate(180deg) translateX(15px);
-    -webkit-transform: rotate(180deg) translateX(15px);
-    -moz-transform: rotate(180deg) translateX(15px);
-    -ms-transform: rotate(180deg) translateX(15px);
-    -o-transform: rotate(180deg) translateX(15px);
-}
+
+    .subTaskExpand.upsided {
+        transform: rotate(180deg) translateX(15px);
+        -webkit-transform: rotate(180deg) translateX(15px);
+        -moz-transform: rotate(180deg) translateX(15px);
+        -ms-transform: rotate(180deg) translateX(15px);
+        -o-transform: rotate(180deg) translateX(15px);
+    }
 
     .addInfoDelete {
         transform: translateX(-8px);
