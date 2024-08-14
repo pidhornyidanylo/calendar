@@ -1,54 +1,50 @@
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useStore } from "@/store";
-import React, { type FormEvent, useState } from "react";
 import { createDateIdentifier, parseDate } from "@/utils/dateUtils";
 import { addTask } from "@/lib/actions";
-import { FormProps } from "./Form.types";
+import { FormProps, FormStateType } from "./Form.types";
 import styles from "./Form.module.css";
 import toast from "react-hot-toast";
-import GenericFormItems from "@/components/reusable/GenericFormItems/GenericFormItems";
 
 const Form: React.FC<FormProps> = ({ showCalendatInput, handleCloseModal }) => {
   const dateToCreateTask = useStore((state) => state.dateToCreateTask);
 
-  const [formState, setFormState] = useState({
-    timeFrom: "00:01",
-    timeTo: "23:59",
-    taskInfo: "some task",
-    allDay: false,
-    date: "",
-    addInfo: "some task details",
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm<FormStateType>({
+    defaultValues: {
+      timeFrom: "00:01",
+      timeTo: "23:59",
+      taskInfo: "some task",
+      allDay: false,
+      date: "",
+      addInfo: "some task details",
+    },
   });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value, type } = e.target;
+  const allDay = watch("allDay");
 
-    setFormState((prevState) => ({
-      ...prevState,
-      [name]:
-        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
-    }));
-  };
-
-  const handleSumbit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const onSubmit: SubmitHandler<FormStateType> = async (data) => {
     const response = await addTask({
       date: showCalendatInput
-        ? parseDate(formState.date)
+        ? parseDate(data.date)
         : (dateToCreateTask as { day: number; month: number; year: number }),
       task: {
         time: {
-          timeFrom: formState.allDay ? "00:00" : formState.timeFrom,
-          timeTo: formState.allDay ? "00:00" : formState.timeTo,
+          timeFrom: data.allDay ? "00:00" : data.timeFrom,
+          timeTo: data.allDay ? "00:00" : data.timeTo,
         },
-        info: formState.taskInfo,
-        addInfo: formState.addInfo,
+        info: data.taskInfo,
+        addInfo: data.addInfo,
       },
       dateIdentifier: createDateIdentifier(
         showCalendatInput,
-        formState,
+        data,
         dateToCreateTask
       ),
     });
@@ -58,14 +54,12 @@ const Form: React.FC<FormProps> = ({ showCalendatInput, handleCloseModal }) => {
         handleCloseModal();
       }
       toast.success("Task added successfully!");
-      setFormState({
-        timeFrom: "00:01",
-        timeTo: "23:59",
-        taskInfo: "some task",
-        allDay: false,
-        date: "",
-        addInfo: "some task details",
-      });
+      setValue("timeFrom", "00:01");
+      setValue("timeTo", "23:59");
+      setValue("taskInfo", "some task");
+      setValue("allDay", false);
+      setValue("date", "");
+      setValue("addInfo", "some task details");
     } else {
       toast.error(response.message as string);
     }
@@ -87,30 +81,64 @@ const Form: React.FC<FormProps> = ({ showCalendatInput, handleCloseModal }) => {
         </h4>
       )}
       <form
-        onSubmit={handleSumbit}
+        onSubmit={handleSubmit(onSubmit)}
         data-value="form"
         className={`${styles.createForm} ${showCalendatInput ? styles.lg : ""}`}
       >
         <h5 className={styles.taskDetailsTitle}>Task details:</h5>
         {showCalendatInput && (
           <div className={styles.dateContainer}>
-            <label htmlFor="time">Date: </label>
+            <label htmlFor="date">Date: </label>
             <input
               type="date"
-              name="date"
-              value={formState.date}
-              onChange={handleInputChange}
+              {...register("date", { required: showCalendatInput })}
               placeholder={`${
                 dateToCreateTask ? dateToCreateTask : "01.01.2025"
               }`}
             />
+            {errors.date && <span>This field is required</span>}
           </div>
         )}
-        <GenericFormItems
-          type="add"
-          formState={formState}
-          handleInputChange={handleInputChange}
-        />
+        <div
+          className={`${styles.timeContainer} ${allDay ? styles.disabled : ""}`}
+        >
+          <div className={styles.timeItem}>
+            <label htmlFor="timeFrom">From: </label>
+            <input
+              type="time"
+              {...register("timeFrom")}
+              disabled={allDay}
+              step={60}
+            />
+          </div>
+          <div className={styles.timeItem}>
+            <label htmlFor="timeTo">To: </label>
+            <input
+              type="time"
+              {...register("timeTo")}
+              disabled={allDay}
+              step={60}
+            />
+          </div>
+        </div>
+        <div className={styles.wholeDay}>
+          <label htmlFor="all_day">All day</label>
+          <input {...register("allDay")} type="checkbox" id="all_day" />
+        </div>
+        <div className={styles.infoContainer}>
+          <div className={styles.taskContainer}>
+            <label htmlFor="taskInfo">Task:</label>
+            <input type="text" {...register("taskInfo", { required: true })} />
+            {errors.taskInfo && <span>This field is required</span>}
+          </div>
+          <div className={styles.addInfoContainer}>
+            <label htmlFor="addInfo">Additional info:</label>
+            <textarea {...register("addInfo")} />
+          </div>
+        </div>
+        <button className={styles.submitBtn} type="submit">
+          Add task
+        </button>
       </form>
     </>
   );

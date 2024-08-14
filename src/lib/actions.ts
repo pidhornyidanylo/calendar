@@ -1,6 +1,6 @@
 "use server";
 import { connectToDb } from "./db";
-import { TaskModel } from "./models";
+import { TaskModel, ThemeModel } from "./models";
 import { revalidatePath } from "next/cache";
 import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.types";
 import type {
@@ -121,4 +121,20 @@ export const updateTask = async (data: updateTaskActionPayloadType) => {
 
 export const loginUser = async (data: loginUserActionPayloadType) => {
   console.log(data.email);
+};
+
+export const updateTheme = async (theme: "dark" | "light") => {
+  try {
+    await connectToDb();
+    const themeFromDB = await ThemeModel.findOne();
+    if (!themeFromDB) {
+      return { success: false, message: "DB not responding." };
+    }
+    themeFromDB.theme = theme;
+    await themeFromDB.save();
+    revalidatePath("/");
+    return { success: true, message: "Theme changed!" };
+  } catch (error) {
+    return { success: false, message: "Error changing theme." };
+  }
 };

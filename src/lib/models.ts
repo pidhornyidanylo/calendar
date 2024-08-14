@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
 
 const timeSchema = new mongoose.Schema(
   {
@@ -36,5 +36,15 @@ const mainTaskSchema = new mongoose.Schema({
   },
 });
 
+type ThemeDocument = Document & {
+  theme: "light" | "dark";
+};
+
+const themeSchema = new mongoose.Schema({
+  theme: { type: String, required: true },
+});
+
 export const TaskModel =
   mongoose.models?.Task || mongoose.model("Task", mainTaskSchema);
+export const ThemeModel =
+  mongoose.models.Theme || mongoose.model<ThemeDocument>("Theme", themeSchema);

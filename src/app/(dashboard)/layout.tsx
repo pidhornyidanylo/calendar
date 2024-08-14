@@ -7,7 +7,7 @@ import { Toaster } from "react-hot-toast";
 export const metadata: Metadata = {
   title: {
     default: "home",
-    template: "%s | calendar"
+    template: "%s | calendar",
   },
   icons: [{ rel: "icon", url: Favicon.src }],
 };

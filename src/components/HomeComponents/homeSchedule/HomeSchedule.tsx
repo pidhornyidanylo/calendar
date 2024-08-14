@@ -1,8 +1,10 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { useStore } from "@/store";
 import TaskItem from "../taskItem/TaskItem";
 import type { TaskItemType } from "../taskItem/TaskItem.types";
+import Spinner from "@/components/reusable/Spinner/Spinner";
 
 type HomeScheduleProps = {
   data: string;
@@ -10,6 +12,7 @@ type HomeScheduleProps = {
 
 const HomeSchedule: React.FC<HomeScheduleProps> = ({ data }) => {
   const [schedule, setSchedule] = useState<TaskItemType[]>([]);
+  const [loading, setLoading] = useState(true);
   const showPastEvents = useStore((state) => state.showPastEvents);
   const headerSearchValue = useStore((state) => state.headerSearchValue);
   const currentMonthForFiltering = useStore((state) => state.currentMonth);
@@ -35,6 +38,7 @@ const HomeSchedule: React.FC<HomeScheduleProps> = ({ data }) => {
     });
 
     setSchedule(sortedTasks);
+    setLoading(false);
   }, [data, showPastEvents]);
 
   const filteredTasks = headerSearchValue
@@ -60,6 +64,22 @@ const HomeSchedule: React.FC<HomeScheduleProps> = ({ data }) => {
             task.date.month <= currentMonthForFiltering - 9
         )
       : [];
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignContent: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Spinner />;
+      </div>
+    );
+  }
 
   return (
     <div>

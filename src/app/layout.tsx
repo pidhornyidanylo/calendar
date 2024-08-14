@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import Favicon from "../../public/favicon.ico";
-import { Toaster } from "react-hot-toast";
+import { getTheme } from "@/lib/data";
 import "./globals.css";
 
 const inter = DM_Sans({ subsets: ["latin"] });
@@ -14,18 +14,15 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: Favicon.src }],
 };
 
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = await getTheme();
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Toaster />
-        {children}
-      </body>
+    <html lang="en" className={`${theme === "light" ? "" : "dark-mode"}`}>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

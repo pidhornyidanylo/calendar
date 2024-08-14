@@ -10,10 +10,11 @@
   --time-bc: #e7f1ff;
 
   --main-pink: rgb(255, 136, 250, .4);
-  --main-blue: rgba(172, 207, 255, 0.9) --main-hover: rgb(247, 192, 109, .2);
+  --main-blue: rgba(172, 207, 255, 0.9); 
+  --main-hover: rgb(247, 192, 109, .2);
 }
 
-.dark-mode {
+html.dark-mode {
   --main-light-blue: rgb(0, 0, 0, .87);
   --main-hard-blue: rgb(0, 0, 0, .87);
   --main-white: rgb(57, 57, 57);
@@ -25,8 +26,7 @@
   --current-month-days: rgb(173, 171, 171);
   --next-prev-days-calendar: rgba(71, 71, 71, 0.702);
 
-  --time-bc: none;
-
+  --time-bc: rgb(0, 0, 0, .87);
 }
 
 * {
