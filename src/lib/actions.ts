@@ -136,6 +136,7 @@ export const updateTheme = async (theme: "dark" | "light") => {
     revalidatePath("/settings");
     revalidatePath("/apps");
     revalidatePath("/user");
+    revalidatePath("/help");
     return { success: true, message: "Theme changed!" };
   } catch (error) {
     return { success: false, message: "Error changing theme." };
