@@ -1,55 +1,66 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./LoginForm.module.css";
 import Link from "next/link";
-import { loginUser } from "@/lib/actions";
-const LoginForm = () => {
-  const [formState, setFormState] = useState({
-    email: "",
-    password: "",
-  });
+import { signIn } from "next-auth/react";
+import toast from "react-hot-toast";
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormState((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+type FormValues = {
+  email: string;
+  password: string;
+};
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    const response = await loginUser(formState);
-    
+const LoginForm: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    const result = await signIn("credentials", {
+      redirect: false,
+      email: data.email,
+      password: data.password,
+    });
+    if (result?.error) {
+      toast.error(result.error);
+    } else {
+      toast.success("Logged in successfully!");
+    }
   };
 
   return (
-    <form className={styles.loginForm}>
+    <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
       <h3 className={styles.formTitle}>Login 🔐</h3>
+
       <div className={styles.loginFormItem}>
         <label htmlFor="email">Email</label>
         <input
           type="email"
-          name="email"
-          value={formState.email}
-          onChange={(e) => handleInputChange(e)}
-          required
+          id="email"
+          {...register("email", { required: "Email is required" })}
           placeholder="calendar1user@gmail.com"
         />
+        {errors.email && <p className={styles.error}>{errors.email.message}</p>}
       </div>
+
       <div className={styles.loginFormItem}>
         <label htmlFor="password">Password</label>
         <input
           type="password"
-          name="password"
-          value={formState.password}
-          onChange={(e) => handleInputChange(e)}
-          required
+          id="password"
+          {...register("password", { required: "Password is required" })}
           placeholder="••••••••••••••••"
         />
+        {errors.password && (
+          <p className={styles.error}>{errors.password.message}</p>
+        )}
       </div>
+
       <button type="submit">Login</button>
+
       <p>
         Don't have an account? <Link href={"/register"}>Register now</Link>
       </p>

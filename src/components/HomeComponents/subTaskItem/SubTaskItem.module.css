@@ -238,11 +238,7 @@
     }
 
     .addInfoDelete {
-        transform: translateX(-8px);
-        -webkit-transform: translateX(-8px);
-        -moz-transform: translateX(-8px);
-        -ms-transform: translateX(-8px);
-        -o-transform: translateX(-8px);
+        padding-right: 8px;
     }
 
     .subTaskTime {

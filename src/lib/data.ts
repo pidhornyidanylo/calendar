@@ -1,6 +1,7 @@
 "use server";
 import { connectToDb } from "./db";
-import { TaskModel, ThemeModel } from "./models";
+import { TaskModel } from "./models/TaskModel";
+import { ThemeModel } from "./models/ThemeModel";
 
 export const getTasks = async () => {
   try {

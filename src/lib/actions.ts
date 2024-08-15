@@ -1,12 +1,13 @@
 "use server";
 import { connectToDb } from "./db";
-import { TaskModel, ThemeModel } from "./models";
+import { TaskModel } from "./models/TaskModel";
+import { ThemeModel } from "./models/ThemeModel";
+import { UserModel } from "./models/UserModel";
 import { revalidatePath } from "next/cache";
 import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.types";
 import type {
   addTaskActionPayloadType,
   deleteTaskActionPayloadType,
-  loginUserActionPayloadType,
   updateTaskActionPayloadType,
 } from "./actions.types";
 
@@ -119,10 +120,6 @@ export const updateTask = async (data: updateTaskActionPayloadType) => {
   }
 };
 
-export const loginUser = async (data: loginUserActionPayloadType) => {
-  console.log(data.email);
-};
-
 export const updateTheme = async (theme: "dark" | "light") => {
   try {
     await connectToDb();
@@ -136,8 +133,26 @@ export const updateTheme = async (theme: "dark" | "light") => {
     revalidatePath("/apps");
     revalidatePath("/user");
     revalidatePath("/help");
-    return { success: true, message: "Theme changed!", theme: theme};
+    return { success: true, message: "Theme changed!", theme: theme };
   } catch (error) {
     return { success: false, message: "Error changing theme." };
+  }
+};
+
+
+export const loginUser = async (data: { email: string; password: string }) => {
+  try {
+    await connectToDb();
+    const user = await UserModel.findOne({ email: data.email });
+
+    if (user && user.password === data.password) {
+      // Authentication successful
+      return { success: true, user };
+    } else {
+      // Authentication failed
+      return { success: false, message: "Invalid credentials!" };
+    }
+  } catch (error) {
+    return { success: false, message: "Error connecting to DB" };
   }
 };

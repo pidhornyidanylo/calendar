@@ -27,8 +27,3 @@ export type updateTaskActionPayloadType = {
   taskID: string;
   subTaskID: string;
 };
-
-export type loginUserActionPayloadType = {
-  email: string;
-  password: string;
-};

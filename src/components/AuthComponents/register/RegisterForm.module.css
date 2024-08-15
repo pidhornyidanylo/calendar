@@ -35,7 +35,7 @@
 }
 
 .registerFormItem input {
-    background-color: #fff;
+    background-color: var(--main-white);
     flex: 1;
     padding: 12px 15px;
     font-size: 1.2em;
@@ -58,7 +58,7 @@
 
 
 .registerForm button {
-    background-color: #fff;
+    background-color: var(--main-white);
     padding: 12px 15px;
     font-size: 1.2em;
     border: none;
@@ -82,6 +82,9 @@
     font-weight: 500;
 }
 
+.error {
+    color: red;
+}
 
 .registerForm p a {
     text-decoration: none;

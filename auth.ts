@@ -1,21 +1,33 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import Google from "next-auth/providers/google";
-import GitHub from "next-auth/providers/github";
+import { loginUser } from "@/lib/actions";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     Credentials({
       credentials: {
-        email: {},
-        password: {},
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
-        let user = null;
-        const hashedPasword = credentials.password;
-        // Logic fot db login
-        return user;
+        if (!credentials) return null;
+
+        const response = await loginUser({
+          email: credentials.email as string,
+          password: credentials.password as string,
+        });
+
+        if (response.success && response.user) {
+          console.log({ id: response.user._id, email: response.user.email });
+          return { id: response.user._id, email: response.user.email };
+        } else {
+          return null;
+        }
       },
     }),
   ],
+  pages: {
+    signIn: "/login",
+  },
 });

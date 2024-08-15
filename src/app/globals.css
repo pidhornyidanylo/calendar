@@ -10,7 +10,7 @@
   --time-bc: #e7f1ff;
 
   --main-pink: rgb(255, 136, 250, .4);
-  --main-blue: rgba(172, 207, 255, 0.9); 
+  --main-blue: rgba(172, 207, 255, 0.9);
   --main-hover: rgb(247, 192, 109, .2);
 }
 
@@ -70,6 +70,35 @@ main .main-content {
   padding: 20px;
   margin-top: 12px;
 }
+
+.notFound-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.notFound-container h2 {
+  font-size: 2em;
+}
+
+.notFound-container p {
+  font-size: 1.4em;
+}
+
+.notFound-container a {
+  font-size: 1.3em;
+  text-decoration: none;
+}
+
+
+.notFound-container a:hover {
+  font-weight: 600;
+}
+
 
 ::-webkit-scrollbar {
   width: 10px;
