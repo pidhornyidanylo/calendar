@@ -3,7 +3,6 @@ import Credentials from "next-auth/providers/credentials";
 import { loginUser } from "@/lib/actions";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     Credentials({
       credentials: {
@@ -19,15 +18,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         });
 
         if (response.success && response.user) {
-          console.log({ id: response.user._id, email: response.user.email });
-          return { id: response.user._id, email: response.user.email };
+          return response.user;
         } else {
           return null;
         }
       },
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
   pages: {
     signIn: "/login",
   },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id as string;
+      }
+      return session;
+    },
+  },
+  secret: process.env.NEXTAUTH_SECRET,
 });

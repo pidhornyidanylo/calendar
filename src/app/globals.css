@@ -3,6 +3,7 @@
   --main-hard-blue: rgba(79, 152, 255, 0.6);
   --main-white: rgba(255, 255, 255, 1);
   --main-text: black;
+  --main-placeholder: rgb(96, 96, 96);
 
   --current-month-days: rgba(255, 255, 255, 1);
   --next-prev-days-calendar: rgba(147, 148, 149, 0.543);
@@ -19,6 +20,8 @@ html.dark-mode {
   --main-hard-blue: rgb(0, 0, 0, .87);
   --main-white: rgb(57, 57, 57);
   --main-text: white;
+
+  --main-placeholder: white;
 
   --main-pink: rgba(181, 181, 181, 0.35);
   --svg-filter: invert(1) hue-rotate(180deg);

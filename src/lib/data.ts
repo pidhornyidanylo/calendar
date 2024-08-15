@@ -1,7 +1,7 @@
 "use server";
 import { connectToDb } from "./db";
 import { TaskModel } from "./models/TaskModel";
-import { ThemeModel } from "./models/ThemeModel";
+import { UserModel } from "./models/UserModel";
 
 export const getTasks = async () => {
   try {
@@ -13,11 +13,11 @@ export const getTasks = async () => {
   }
 };
 
-export const getTheme = async () => {
+export const getTheme = async (id: string) => {
   try {
     await connectToDb();
-    const theme = await ThemeModel.findOne();
-    return theme.theme;
+    const userTheme = await UserModel.findById(id);
+    return userTheme.theme;
   } catch (error) {
     throw new Error("Error connecting to DB");
   }

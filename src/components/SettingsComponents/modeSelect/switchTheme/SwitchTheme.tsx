@@ -20,10 +20,13 @@ const SwitchTheme: React.FC<SwitchThemeProps> = ({ local }) => {
     if (!local) {
       const fetchCurrentTheme = async () => {
         try {
-          const response = await getTheme();
+          const response = await getTheme("66bcadd5be97eb2d7ad9e718");
           const { theme } = await response.json();
           setCurrentMode(theme);
-          document.documentElement.classList.toggle("dark-mode", theme === "dark");
+          document.documentElement.classList.toggle(
+            "dark-mode",
+            theme === "dark"
+          );
         } catch (error) {
           console.error("Failed to fetch the current theme:", error);
         }
@@ -31,17 +34,24 @@ const SwitchTheme: React.FC<SwitchThemeProps> = ({ local }) => {
 
       fetchCurrentTheme();
     } else {
-      setCurrentMode(document.documentElement.classList.contains("dark-mode") ? "dark" : "light");
+      setCurrentMode(
+        document.documentElement.classList.contains("dark-mode")
+          ? "dark"
+          : "light"
+      );
     }
   }, [local]);
 
   const handleDarkModeToggleFromDB = async () => {
     const newMode = currentMode === "dark" ? "light" : "dark";
-    const response = await updateTheme(newMode);
+    const response = await updateTheme("66bcadd5be97eb2d7ad9e718", newMode);
 
     if (response.success) {
       setCurrentMode(newMode);
-      document.documentElement.classList.toggle("dark-mode", newMode === "dark");
+      document.documentElement.classList.toggle(
+        "dark-mode",
+        newMode === "dark"
+      );
       toast.success(`Theme changed to ${newMode} successfully!`);
     } else {
       toast.error(response.message as string);

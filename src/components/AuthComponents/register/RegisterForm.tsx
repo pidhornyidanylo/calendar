@@ -3,6 +3,8 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./RegisterForm.module.css";
 import Link from "next/link";
+import { registerUser } from "@/lib/actions";
+import toast from "react-hot-toast";
 
 type FormValues = {
   email: string;
@@ -21,9 +23,12 @@ const RegisterForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    // Handle the registration logic
-    console.log(data);
-    // Implement your registration logic here
+    const response = await registerUser(data);
+    if (response.success) {
+      toast.success(response.message);
+    } else {
+      toast.error(response.message);
+    }
   };
 
   return (
@@ -70,9 +75,7 @@ const RegisterForm: React.FC = () => {
           <p className={styles.error}>{errors.confirmPassword.message}</p>
         )}
       </div>
-
       <button type="submit">Register</button>
-
       <p>
         Already have an account? <Link href={"/login"}>Login</Link>
       </p>

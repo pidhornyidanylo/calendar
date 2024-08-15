@@ -19,15 +19,15 @@ const LoginForm: React.FC = () => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    const result = await signIn("credentials", {
+    const response = await signIn("credentials", {
       redirect: false,
       email: data.email,
       password: data.password,
     });
-    if (result?.error) {
-      toast.error(result.error);
+    if (!response?.error) {
+      toast.success("Logged in!");
     } else {
-      toast.success("Logged in successfully!");
+      toast.error("Oops! Something went wrong!");
     }
   };
 

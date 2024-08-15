@@ -52,7 +52,7 @@
 }
 
 .registerFormItem input::placeholder {
-    color: var(--main-text);
+    color: var(--main-placeholder);
     font-size: 1em;
 }
 

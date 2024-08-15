@@ -1,7 +1,6 @@
 "use server";
 import { connectToDb } from "./db";
 import { TaskModel } from "./models/TaskModel";
-import { ThemeModel } from "./models/ThemeModel";
 import { UserModel } from "./models/UserModel";
 import { revalidatePath } from "next/cache";
 import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.types";
@@ -10,6 +9,7 @@ import type {
   deleteTaskActionPayloadType,
   updateTaskActionPayloadType,
 } from "./actions.types";
+import * as argon2 from "argon2";
 
 export const addTask = async (data: addTaskActionPayloadType) => {
   try {
@@ -61,7 +61,7 @@ export const addTask = async (data: addTaskActionPayloadType) => {
     revalidatePath("/");
     return { success: true };
   } catch (error) {
-    return { success: false, message: "Error connecting to DB" };
+    return { success: false, message: "Error connecting to DB!" };
   }
 };
 
@@ -115,17 +115,16 @@ export const updateTask = async (data: updateTaskActionPayloadType) => {
     revalidatePath("/");
     return { success: true, message: "Task updated successfully" };
   } catch (error) {
-    console.error("Error updating task from DB:", error);
-    return { success: false, message: "Error updating task from DB" };
+    return { success: false, message: "Error connecting to DB!" };
   }
 };
 
-export const updateTheme = async (theme: "dark" | "light") => {
+export const updateTheme = async (id: string, theme: "dark" | "light") => {
   try {
     await connectToDb();
-    const themeFromDB = await ThemeModel.findOne();
-    themeFromDB.theme = theme;
-    await themeFromDB.save();
+    const userThemeFromDB = await UserModel.findById(id);
+    userThemeFromDB.theme = theme;
+    await userThemeFromDB.save();
     revalidatePath("/");
     revalidatePath("/login");
     revalidatePath("/register");
@@ -135,24 +134,59 @@ export const updateTheme = async (theme: "dark" | "light") => {
     revalidatePath("/help");
     return { success: true, message: "Theme changed!", theme: theme };
   } catch (error) {
-    return { success: false, message: "Error changing theme." };
+    return { success: false, message: "Error connecting to DB!" };
   }
 };
-
 
 export const loginUser = async (data: { email: string; password: string }) => {
   try {
     await connectToDb();
     const user = await UserModel.findOne({ email: data.email });
-
-    if (user && user.password === data.password) {
-      // Authentication successful
-      return { success: true, user };
+    if (user) {
+      console.log(user);
+      const validPassword = await argon2.verify(user.password, data.password);
+      if (validPassword) {
+        return { success: true, user };
+      } else {
+        return { success: false, message: "Invalid credentials!" };
+      }
     } else {
-      // Authentication failed
-      return { success: false, message: "Invalid credentials!" };
+      return {
+        success: false,
+        message: "Invalid credentials! Or user does not exist.",
+      };
     }
   } catch (error) {
-    return { success: false, message: "Error connecting to DB" };
+    return { success: false, message: "Error connecting to DB!" };
+  }
+};
+
+export const registerUser = async (data: {
+  email: string;
+  password: string;
+}) => {
+  try {
+    await connectToDb();
+    const user = await UserModel.findOne({ email: data.email });
+    if (user) {
+      return { success: false, message: "User already exists." };
+    }
+    
+    const hashedPassword = await argon2.hash(data.password);
+
+    const newUser = new UserModel({
+      email: data.email,
+      password: hashedPassword,
+      theme: "light",
+      tasks: []
+    });
+    await newUser.save();
+    return { success: true, message: "User created!" };
+  } catch (error) {
+    console.error("Error registering user:", error);
+    return {
+      success: false,
+      message: "Error connecting to DB or other error!",
+    };
   }
 };
