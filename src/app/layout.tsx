@@ -20,11 +20,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = await getTheme("66bcadd5be97eb2d7ad9e718");
+  const theme = await getTheme("66bddcce8fce16d9d8d21d12");
   return (
     <html lang="en" className={`${theme === "light" ? "" : "dark-mode"}`}>
       <body className={inter.className}>
-        <Toaster position="top-left" />
+        <Toaster position="bottom-right" />
         {children}
       </body>
     </html>

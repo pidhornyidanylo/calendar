@@ -143,7 +143,6 @@ export const loginUser = async (data: { email: string; password: string }) => {
     await connectToDb();
     const user = await UserModel.findOne({ email: data.email });
     if (user) {
-      console.log(user);
       const validPassword = await argon2.verify(user.password, data.password);
       if (validPassword) {
         return { success: true, user };
@@ -171,19 +170,18 @@ export const registerUser = async (data: {
     if (user) {
       return { success: false, message: "User already exists." };
     }
-    
+
     const hashedPassword = await argon2.hash(data.password);
 
     const newUser = new UserModel({
       email: data.email,
       password: hashedPassword,
       theme: "light",
-      tasks: []
+      tasks: [],
     });
     await newUser.save();
     return { success: true, message: "User created!" };
   } catch (error) {
-    console.error("Error registering user:", error);
     return {
       success: false,
       message: "Error connecting to DB or other error!",

@@ -2,7 +2,6 @@ import Header from "@/components/HeaderComponents/header/Header";
 import Sidebar from "@/components/SideBarComponents/sidebar/Sidebar";
 import Favicon from "../../../public/favicon.ico";
 import { Metadata } from "next";
-import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: {
@@ -23,7 +22,6 @@ export default function DashboardLayout({
       <main>
         <Sidebar />
         <div className="main-content">
-          <Toaster position="bottom-left" />
           {children}
         </div>
       </main>

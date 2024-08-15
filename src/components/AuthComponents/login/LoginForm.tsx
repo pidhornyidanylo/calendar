@@ -5,6 +5,7 @@ import styles from "./LoginForm.module.css";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   email: string;
@@ -12,12 +13,12 @@ type FormValues = {
 };
 
 const LoginForm: React.FC = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const response = await signIn("credentials", {
       redirect: false,
@@ -26,6 +27,7 @@ const LoginForm: React.FC = () => {
     });
     if (!response?.error) {
       toast.success("Logged in!");
+      router.push("/");
     } else {
       toast.error("Oops! Something went wrong!");
     }
