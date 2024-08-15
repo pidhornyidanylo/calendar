@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { SECURE_ROUTES, LOGIN_ROUTE, AUTH_ROUTES, ROOT } from "@/lib/routes";
 
 const secret = process.env.NEXTAUTH_SECRET as string;
+const salt = process.env.NEXTAUTH_SALT as string;
 
 export async function middleware(req: NextRequest) {
-  // @ts-ignore
-  const token = await getToken({ req, secret });
+  const token = await getToken({ req, secret, salt: salt });
 
   const { pathname } = req.nextUrl;
 
