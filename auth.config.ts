@@ -13,6 +13,7 @@ export const authConfig = {
       options: {
         httpOnly: true,
         sameSite: "none",
+        domain: "calendar-three-eta.vercel.app",
         path: "/",
         secure: process.env.NODE_ENV === "production",
       },
