@@ -5,6 +5,7 @@ import filter from "../../../public/icons/header/filter.svg";
 import help from "../../../public/icons/header/help.svg";
 import home from "../../../public/icons/header/home.svg";
 import logo from "../../../public/icons/header/logo.svg";
+import logout from "../../../public/icons/header/logout.svg";
 import more from "../../../public/icons/header/more.svg";
 import search from "../../../public/icons/header/search.svg";
 import settings from "../../../public/icons/header/settings.svg";
@@ -20,4 +21,5 @@ export {
 	apps,
 	more,
 	cross,
+	logout,
 };

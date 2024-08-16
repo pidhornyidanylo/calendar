@@ -1,190 +1,173 @@
 "use server";
-import { connectToDb } from "./db";
-import { TaskModel } from "./models/TaskModel";
-import { UserModel } from "./models/UserModel";
-import { revalidatePath } from "next/cache";
 import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.types";
+import type { TaskItemType } from "@/components/HomeComponents/taskItem/TaskItem.types";
+import { revalidatePath } from "next/cache";
 import type {
-  addTaskActionPayloadType,
-  deleteTaskActionPayloadType,
-  updateTaskActionPayloadType,
+	AddTaskActionPayloadType,
+	DeleteTaskActionPayloadType,
+	UpdateTaskActionPayloadType,
+	UpdateThemeActionPayloadType,
 } from "./actions.types";
-import * as argon2 from "argon2";
+import { connectToDb } from "./db";
+import { UserModel } from "./models";
 
-export const addTask = async (data: addTaskActionPayloadType) => {
-  try {
-    await connectToDb();
-    const taskAlreadyExistsInDB = await TaskModel.findOne({
-      dateIdentifier: data.dateIdentifier,
-    });
+export const addTask = async (data: AddTaskActionPayloadType) => {
+	try {
+		await connectToDb();
+		const dbUser = await UserModel.findOne({ token: data.token });
+		if (!dbUser) {
+			return { success: false, message: "User not found." };
+		}
+		const taskAlreadyExistsInDB = dbUser.tasks.find(
+			(task: TaskItemType) => task.dateIdentifier === data.dateIdentifier,
+		);
 
-    if (taskAlreadyExistsInDB) {
-      const sameParametersTask = taskAlreadyExistsInDB.tasks.find(
-        (subTask: SubTaskItemType) =>
-          subTask.time.timeFrom === data.task.time.timeFrom &&
-          subTask.time.timeTo === data.task.time.timeTo &&
-          subTask.info === data.task.info
-      );
-      if (sameParametersTask) {
-        return { success: false, message: "Task already exists." };
-      }
-      taskAlreadyExistsInDB.tasks.push({
-        time: {
-          timeFrom: data.task.time.timeFrom,
-          timeTo: data.task.time.timeTo,
-        },
-        info: data.task.info,
-        addInfo: data.task.addInfo,
-      });
-      await taskAlreadyExistsInDB.save();
-    } else {
-      const newTask = new TaskModel({
-        date: {
-          year: data.date.year,
-          month: data.date.month,
-          day: data.date.day,
-        },
-        tasks: [
-          {
-            time: {
-              timeFrom: data.task.time.timeFrom,
-              timeTo: data.task.time.timeTo,
-            },
-            info: data.task.info,
-            addInfo: data.task.addInfo,
-          },
-        ],
-        dateIdentifier: data.dateIdentifier,
-      });
-      await newTask.save();
-    }
-    revalidatePath("/");
-    return { success: true };
-  } catch (error) {
-    return { success: false, message: "Error connecting to DB!" };
-  }
+		if (taskAlreadyExistsInDB) {
+			const sameParametersTask = taskAlreadyExistsInDB.tasks.find(
+				(subTask: SubTaskItemType) =>
+					subTask.time.timeFrom === data.task.time.timeFrom &&
+					subTask.time.timeTo === data.task.time.timeTo &&
+					subTask.info === data.task.info,
+			);
+
+			if (sameParametersTask) {
+				return {
+					success: false,
+					message: "Task with these parameters already exists.",
+				};
+			}
+			taskAlreadyExistsInDB.tasks.push({
+				time: {
+					timeFrom: data.task.time.timeFrom,
+					timeTo: data.task.time.timeTo,
+				},
+				info: data.task.info,
+				addInfo: data.task.addInfo,
+			});
+		} else {
+			dbUser.tasks.push({
+				date: {
+					year: data.date.year,
+					month: data.date.month,
+					day: data.date.day,
+				},
+				tasks: [
+					{
+						time: {
+							timeFrom: data.task.time.timeFrom,
+							timeTo: data.task.time.timeTo,
+						},
+						info: data.task.info,
+						addInfo: data.task.addInfo,
+					},
+				],
+				dateIdentifier: data.dateIdentifier,
+			});
+		}
+
+		await dbUser.save();
+		revalidatePath("/");
+		return { success: true };
+	} catch (error) {
+		return {
+			success: false,
+			message: "Error adding task!",
+		};
+	}
 };
 
-export const deleteTask = async (data: deleteTaskActionPayloadType) => {
-  try {
-    await connectToDb();
-    const task = await TaskModel.findById(data.taskID);
-    if (task) {
-      task.tasks = task.tasks.filter(
-        (subTask: SubTaskItemType) => subTask._id.toString() !== data.subTaskID
-      );
-      if (task.tasks.length === 0) {
-        await TaskModel.findByIdAndDelete(data.taskID);
-      } else {
-        await task.save();
-      }
-      revalidatePath("/");
-      return { success: true };
-    } else {
-      throw new Error("Task not found");
-    }
-  } catch (error) {
-    return { success: false, message: "Error deleting task from DB." };
-  }
+export const deleteTask = async (data: DeleteTaskActionPayloadType) => {
+	try {
+		await connectToDb();
+		const dbUser = await UserModel.findOne({ token: data.token });
+
+		if (!dbUser) {
+			return { success: false, message: "User not found." };
+		}
+		const task = dbUser.tasks.id(data.taskID);
+
+		if (!task) {
+			return { success: false, message: "Task not found." };
+		}
+
+		task.tasks = task.tasks.filter(
+			(subTask: SubTaskItemType) => subTask._id.toString() !== data.subTaskID,
+		);
+
+		if (task.tasks.length === 0) {
+			dbUser.tasks.pull({ _id: data.taskID });
+		}
+
+		await dbUser.save();
+		revalidatePath("/");
+		return { success: true };
+	} catch (error) {
+		return {
+			success: false,
+			message: "Error deleting task!",
+		};
+	}
 };
 
-export const updateTask = async (data: updateTaskActionPayloadType) => {
-  try {
-    await connectToDb();
+export const updateTask = async (data: UpdateTaskActionPayloadType) => {
+	try {
+		await connectToDb();
 
-    const task = await TaskModel.findById(data.taskID);
-    if (!task) {
-      return { success: false, message: "Task not found" };
-    }
+		const dbUser = await UserModel.findOne({ token: data.token });
+		if (!dbUser) {
+			return { success: false, message: "User not found." };
+		}
 
-    const subTask = task.tasks.find(
-      (subTask: SubTaskItemType) => subTask._id.toString() === data.subTaskID
-    );
+		const mainTask = dbUser.tasks.find((taskItem: TaskItemType) =>
+			taskItem.tasks.some(
+				(subTask: SubTaskItemType) => subTask._id.toString() === data.subTaskID,
+			),
+		);
 
-    if (!subTask) {
-      return { success: false, message: "Subtask not found" };
-    }
-    subTask.time = {
-      timeFrom: data.formState.timeFrom,
-      timeTo: data.formState.timeTo,
-    };
-    subTask.info = data.formState.taskInfo;
-    subTask.addInfo = data.formState.addInfo;
+		if (!mainTask) {
+			return { success: false, message: "Task not found." };
+		}
 
-    await task.save();
-    revalidatePath("/");
-    return { success: true, message: "Task updated successfully" };
-  } catch (error) {
-    return { success: false, message: "Error connecting to DB!" };
-  }
+		const subTask = mainTask.tasks.find(
+			(subTask: SubTaskItemType) => subTask._id.toString() === data.subTaskID,
+		);
+
+		if (!subTask) {
+			return { success: false, message: "Subtask not found." };
+		}
+
+		subTask.time = {
+			timeFrom: data.formState.timeFrom,
+			timeTo: data.formState.timeTo,
+		};
+		subTask.info = data.formState.taskInfo;
+		subTask.addInfo = data.formState.addInfo;
+
+		await dbUser.save();
+
+		revalidatePath("/");
+
+		return { success: true, message: "Task updated successfully." };
+	} catch (error) {
+		return { success: false, message: "Error updating task!" };
+	}
 };
 
-export const updateTheme = async (id: string, theme: "dark" | "light") => {
-  try {
-    await connectToDb();
-    const userThemeFromDB = await UserModel.findById(id);
-    userThemeFromDB.theme = theme;
-    await userThemeFromDB.save();
-    revalidatePath("/");
-    revalidatePath("/login");
-    revalidatePath("/register");
-    revalidatePath("/settings");
-    revalidatePath("/apps");
-    revalidatePath("/user");
-    revalidatePath("/help");
-    return { success: true, message: "Theme changed!", theme: theme };
-  } catch (error) {
-    return { success: false, message: "Error connecting to DB!" };
-  }
-};
-
-export const loginUser = async (data: { email: string; password: string }) => {
-  try {
-    await connectToDb();
-    const user = await UserModel.findOne({ email: data.email });
-    if (user) {
-      const validPassword = await argon2.verify(user.password, data.password);
-      if (validPassword) {
-        return { success: true, user };
-      } else {
-        return { success: false, message: "Invalid credentials!" };
-      }
-    } else {
-      return {
-        success: false,
-        message: "Invalid credentials! Or user does not exist.",
-      };
-    }
-  } catch (error) {
-    return { success: false, message: "Error connecting to DB!" };
-  }
-};
-
-export const registerUser = async (data: {
-  email: string;
-  password: string;
-}) => {
-  try {
-    await connectToDb();
-    const user = await UserModel.findOne({ email: data.email });
-    if (user) {
-      return { success: false, message: "User already exists." };
-    }
-
-    const hashedPassword = await argon2.hash(data.password);
-
-    const newUser = new UserModel({
-      email: data.email,
-      password: hashedPassword,
-      theme: "light",
-      tasks: [],
-    });
-    await newUser.save();
-    return { success: true, message: "User created!" };
-  } catch (error) {
-    return {
-      success: false,
-      message: "Error connecting to DB or other error!",
-    };
-  }
+export const updateTheme = async (data: UpdateThemeActionPayloadType) => {
+	try {
+		await connectToDb();
+		const userThemeFromDB = await UserModel.findOne({ token: data.token });
+		userThemeFromDB.theme = data.theme;
+		await userThemeFromDB.save();
+		revalidatePath("/");
+		revalidatePath("/login");
+		revalidatePath("/register");
+		revalidatePath("/settings");
+		revalidatePath("/apps");
+		revalidatePath("/user");
+		revalidatePath("/help");
+		return { success: true, message: "Theme changed!", theme: data.theme };
+	} catch (error) {
+		return { success: false, message: "Error changing theme!" };
+	}
 };

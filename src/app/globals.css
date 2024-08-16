@@ -1,5 +1,5 @@
 :root {
-  --main-light-blue: rgba(97, 163, 255, 0.149);
+  --main-light-blue: #61a3ff26;
   --main-hard-blue: rgba(79, 152, 255, 0.6);
   --main-white: rgba(255, 255, 255, 1);
   --main-text: black;
@@ -11,7 +11,7 @@
   --time-bc: #e7f1ff;
 
   --main-pink: rgb(255, 136, 250, .4);
-  --main-blue: rgba(172, 207, 255, 0.9);
+  --main-blue: rgba(172, 207, 255, 0.902);
   --main-hover: rgb(247, 192, 109, .2);
 }
 

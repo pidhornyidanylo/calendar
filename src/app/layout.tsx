@@ -1,32 +1,38 @@
+import { getTheme } from "@/lib/data";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
-import Favicon from "../../public/favicon.ico";
-import { getTheme } from "@/lib/data";
-import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import Favicon from "../../public/favicon.ico";
+import "./globals.css";
 
 const inter = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    default: "calendar",
-    template: "%s | calendar",
-  },
-  icons: [{ rel: "icon", url: Favicon.src }],
+	title: {
+		default: "calendar",
+		template: "%s | calendar",
+	},
+	icons: [{ rel: "icon", url: Favicon.src }],
 };
 
 export default async function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  const theme = await getTheme("66bddcce8fce16d9d8d21d12");
-  return (
-    <html lang="en" className={`${theme === "light" ? "" : "dark-mode"}`}>
-      <body className={inter.className}>
-        <Toaster position="bottom-right" />
-        {children}
-      </body>
-    </html>
-  );
+	const { getUser } = getKindeServerSession();
+	const user = await getUser();
+	const dbUser = await getTheme(user?.id as string);
+	return (
+		<html
+			lang="en"
+			className={`${dbUser.theme === "light" ? "" : "dark-mode"}`}
+		>
+			<body className={inter.className}>
+				<Toaster position="bottom-right" />
+				{children}
+			</body>
+		</html>
+	);
 }

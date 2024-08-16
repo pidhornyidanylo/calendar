@@ -1,29 +1,37 @@
 import type { FormStateType } from "@/components/HomeComponents/subTaskItem/editForm/EditForm.types";
 
-export type addTaskActionPayloadType = {
-  date: {
-    day: number;
-    month: number;
-    year: number;
-  };
-  task: {
-    time: {
-      timeFrom: string;
-      timeTo: string;
-    };
-    info: string;
-    addInfo: string;
-  };
-  dateIdentifier: string;
+export type AddTaskActionPayloadType = {
+	date: {
+		day: number;
+		month: number;
+		year: number;
+	};
+	task: {
+		time: {
+			timeFrom: string;
+			timeTo: string;
+		};
+		info: string;
+		addInfo: string;
+	};
+	dateIdentifier: string;
+	token: string;
 };
 
-export type deleteTaskActionPayloadType = {
-  subTaskID: string;
-  taskID: string;
+export type DeleteTaskActionPayloadType = {
+	subTaskID: string;
+	taskID: string;
+	token: string;
 };
 
-export type updateTaskActionPayloadType = {
-  formState: FormStateType;
-  taskID: string;
-  subTaskID: string;
+export type UpdateTaskActionPayloadType = {
+	formState: FormStateType;
+	taskID: string;
+	subTaskID: string;
+	token: string;
+};
+
+export type UpdateThemeActionPayloadType = {
+	theme: "dark" | "light";
+	token: string;
 };

@@ -1,16 +1,16 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: {
-    default: "apps",
-    template: "%s | calendar",
-  },
+	title: {
+		default: "apps",
+		template: "%s | calendar",
+	},
 };
 
 export default function AppsLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return children;
+	return children;
 }

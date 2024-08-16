@@ -1,15 +1,17 @@
+import GenericModal from "@/components/reusable/GenericModal/GenericModal";
+import { deleteTask } from "@/lib/actions";
+import { convertTimeRange } from "@/utils/timeUtils";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import Image from "next/image";
-import React, { useState } from "react";
-import arrowDown from "../../../../public/icons/home/expand_more.svg";
+import type React from "react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 import cross from "../../../../public/icons/header/cross.svg";
 import edit from "../../../../public/icons/home/editt.svg";
-import { convertTimeRange } from "@/utils/timeUtils";
-import type { SubTaskItemProps, SubTaskItemType } from "./SubTaskItem.types";
-import { deleteTask } from "@/lib/actions";
+import arrowDown from "../../../../public/icons/home/expand_more.svg";
 import styles from "./SubTaskItem.module.css";
+import type { SubTaskItemProps, SubTaskItemType } from "./SubTaskItem.types";
 import EditForm from "./editForm/EditForm";
-import GenericModal from "@/components/reusable/GenericModal/GenericModal";
-import toast from "react-hot-toast";
 
 const SubTaskItem: React.FC<SubTaskItemProps> = ({
   subTask,
@@ -18,11 +20,17 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
   subTask: SubTaskItemType;
   taskID: string;
 }) => {
+  const { getUser } = useKindeBrowserClient();
+  const user = getUser();
   const [expandSubTask, setExpandSubTask] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSubTaskDelete = async (subTaskID: string, taskID: string) => {
-    const response = await deleteTask({ subTaskID, taskID });
+    const response = await deleteTask({
+      subTaskID,
+      taskID,
+      token: user?.id as string,
+    });
 
     if (response.success) {
       toast.success("Task deleted successfully!");
@@ -30,9 +38,7 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
       toast.error(response.message as string);
     }
   };
-  const handleEditStateChange = () => {
-    setIsEditing(!isEditing);
-  };
+
   return (
     <div className={styles.subTask}>
       <div className={styles.subTaskMain}>
@@ -61,6 +67,7 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
         <p>{subTask.addInfo}</p>
         <div className={styles.subTaskControls}>
           <button
+            type="button"
             className={styles.addInfoEdit}
             onClick={() => setIsEditing(true)}
           >
@@ -73,6 +80,7 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
             />
           </button>
           <button
+            type="button"
             onClick={() => handleSubTaskDelete(subTask._id, taskID)}
             className={styles.addInfoDelete}
           >
@@ -80,17 +88,13 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
           </button>
         </div>
       </div>
-      <GenericModal
-        children={
-          <EditForm
-            subTask={subTask}
-            taskID={taskID}
-            handleCloseModal={handleEditStateChange}
-          />
-        }
-        open={isEditing}
-        setOpen={handleEditStateChange}
-      />
+      <GenericModal open={isEditing} setOpen={() => setIsEditing(!isEditing)}>
+        <EditForm
+          subTask={subTask}
+          taskID={taskID}
+          handleCloseModal={() => setIsEditing(!isEditing)}
+        />
+      </GenericModal>
     </div>
   );
 };

@@ -1,18 +1,28 @@
 "use client";
+import GenericResize from "@/components/reusable/GenericResize/GenericResize";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { apps, avatar, help, home, more, settings } from "../HeaderIcons.index";
+import type React from "react";
+import { useEffect, useState } from "react";
+import {
+  apps,
+  avatar,
+  help,
+  home,
+  logout,
+  more,
+  settings,
+} from "../HeaderIcons.index";
 import styles from "./HeaderMenu.module.css";
-import GenericResize from "@/components/reusable/GenericResize/GenericResize";
 
 const HeaderMenu: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showTablet, setShowTablet] = useState(false);
 
   useEffect(() => {
-    const handleClickOutside = (e: any) => {
-      if (!e.target.closest("[data-menu]")) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest("[data-menu]")) {
         setShowTablet(false);
       }
     };
@@ -130,6 +140,20 @@ const HeaderMenu: React.FC = () => {
                 height={24}
               />
             </Link>
+            <LogoutLink
+              data-menu="data-menu"
+              type="button"
+              className={styles.headerMenuLink}
+            >
+              <Image
+                data-menu="data-menu"
+                src={logout}
+                alt="logout"
+                className="svgIcon"
+                width={24}
+                height={24}
+              />
+            </LogoutLink>
           </div>
         </>
       ) : (
@@ -170,6 +194,20 @@ const HeaderMenu: React.FC = () => {
               height={24}
             />
           </Link>
+          <LogoutLink
+            data-menu="data-menu"
+            type="button"
+            className={styles.headerMenuLink}
+          >
+            <Image
+              data-menu="data-menu"
+              src={logout}
+              alt="logout"
+              className="svgIcon"
+              width={24}
+              height={24}
+            />
+          </LogoutLink>
         </>
       )}
     </>
