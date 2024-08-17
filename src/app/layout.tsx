@@ -23,6 +23,7 @@ export default async function RootLayout({
 }>) {
 	const { getUser } = getKindeServerSession();
 	const user = await getUser();
+	console.log(user);
 	const dbUser = await getTheme(user?.id as string);
 	return (
 		<html
