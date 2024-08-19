@@ -6,6 +6,7 @@ import styles from "./CopyCalendarJson.module.css";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import GenericModal from "@/components/reusable/GenericModal/GenericModal";
 import SettingsButton from "../settingsButton/SettingsButton";
+import toast from "react-hot-toast";
 
 const CopyCalendarJson = ({ schedule }: { schedule: string }) => {
   const [showPreview, setShowPreview] = useState(false);
@@ -25,6 +26,11 @@ const CopyCalendarJson = ({ schedule }: { schedule: string }) => {
           <div className={styles.viewerHeader}>
             <h2>Document Preview</h2>
             <Button
+              onClick={() => {
+                toast.success(
+                  "Your PDF has been successfully generated and downloaded."
+                );
+              }}
               component={PDFDownloadLink}
               document={<Document data={parsedSchedule} />}
               fileName="document.pdf"

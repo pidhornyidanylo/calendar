@@ -64,7 +64,7 @@ const SubTaskItem: React.FC<SubTaskItemProps> = ({
       <div
         className={`${styles.addInfo} ${expandSubTask ? styles.visible : ""}`}
       >
-        <p>{subTask.addInfo}</p>
+        <p style={{ whiteSpace: 'pre-wrap' }}>{subTask.addInfo}</p>
         <div className={styles.subTaskControls}>
           <button
             type="button"

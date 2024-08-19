@@ -28,9 +28,11 @@
 .headerMenuTablet {
     position: fixed;
     top: 75px;
+    padding: 20px;
     right: 0px;
     width: 80px;
     display: grid;
+    grid-column: auto;
     background-color: transparent;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -42,6 +44,13 @@
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
+}
+
+
+.headerMenuTablet button {
+    padding: 0;
+    border: none;
+    border-right: 0;
 }
 
 
