@@ -1,0 +1,67 @@
+.viewerContainer {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 500px;
+  height: 800px;
+}
+
+.viewerHeader {
+  background-color: var(--main-hard-blue);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.viewerHeader h2 {
+  font-size: 1.1em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.viewerHeader a {
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1.1em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.viewerHeader button:hover {
+  background-color: #0056b3;
+}
+
+.pdfSectionContainer {
+  display: flex;
+  border: none;
+  justify-content: space-between;
+}
+
+@media(max-width: 576px) {
+  .viewerContainer {
+    width: 400px;
+    height: 500px;
+  }
+}
+
+@media(max-width: 475px) {
+  .viewerContainer {
+    width: 300px;
+    height: 400px;
+  }
+  .viewerHeader h2 {
+    font-size: .9em;
+  }
+
+  .viewerHeader a {
+    font-size: .7em;
+  }
+}
+
+@media(max-width: 375px) {
+  .viewerContainer {
+    width: 275px;
+    height: 400px;
+  }
+}

@@ -34,6 +34,10 @@
     justify-content: center;
 }
 
+.settingsSectionContent {
+    flex: 1;
+}
+
 .settingsSectionContent h3 {
     font-size: 1.3em;
     font-weight: 500;
@@ -44,26 +48,6 @@
 .settingsSectionContent p {
     font-size: 1.1em;
     color: var(--main-text);
-}
-
-.settingsButton {
-    margin-top: 20px;
-    background-color: var(--main-white);
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    color: var(--main-text);
-    font-size: 1.05em;
-    cursor: pointer;
-    transition: background 0.3s;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-}
-
-.settingsButton:hover {
-    background: var(--main-pink);
 }
 
 .active {

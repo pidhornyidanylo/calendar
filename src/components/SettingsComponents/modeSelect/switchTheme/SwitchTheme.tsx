@@ -79,10 +79,10 @@ const SwitchTheme: React.FC<SwitchThemeProps> = ({ local }) => {
 			sx={{
 				"--Switch-thumbSize": "25px",
 				"--Switch-trackRadius": "17px",
-				"--Switch-trackWidth": "70px",
+				"--Switch-trackWidth": "80px",
 				"--Switch-trackHeight": "35px",
 				"--Switch-thumbOffset": "4px",
-				position: "relative",
+				"position": "relative",
 			}}
 			startDecorator={
 				currentMode === "light" ? (

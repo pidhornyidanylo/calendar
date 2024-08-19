@@ -1,0 +1,8 @@
+.copyIcon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -30px;
+    top: -5px;
+    cursor: pointer;
+}

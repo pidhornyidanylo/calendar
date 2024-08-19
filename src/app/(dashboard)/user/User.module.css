@@ -1,0 +1,47 @@
+.userTitle {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.7em;
+    margin-bottom: 20px;
+}
+
+.userParagraph {
+    font-weight: 300;
+    font-size: 1.2em;
+    text-align: start;
+    margin-bottom: 40px;
+    color: var(--main-text);
+    text-align: center;
+}
+
+.userSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px 0 20px 0;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    width: 100%;
+}
+
+.userInfoItem {
+    display: flex;
+    gap: 50px;
+    align-items: end;
+}
+
+.nameInfoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.userSection p {
+    font-size: 1.2em;
+    position: relative;
+}
