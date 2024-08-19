@@ -18,6 +18,7 @@ import CopyCalendarJson from "@/components/SettingsComponents/copyCalendarJson/C
 import { getTasks } from "@/lib/data";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import SettingsButton from "@/components/SettingsComponents/settingsButton/SettingsButton";
+import RecurringEventSetter from "@/components/SettingsComponents/recurringEventSetter/RecurringEventSetter";
 
 export const metadata: Metadata = {
   title: "settings",
@@ -66,7 +67,7 @@ const Settings: React.FC = async () => {
         <div className={styles.settingsSectionContent}>
           <h3>Set Recurring Events</h3>
           <p>Specify the frequency and duration of recurring events.</p>
-          <SettingsButton textContent="Set Recurring Events" />
+          <RecurringEventSetter />
         </div>
       </div>
 
