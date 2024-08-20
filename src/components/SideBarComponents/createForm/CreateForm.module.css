@@ -30,7 +30,7 @@
     min-height: 324px;
 }
 
-@media(max-width: 1420px) {
+@media(max-width: 1600px) {
     .createFormContainer {
         transform: translateX(-112.5%) translateY(110%);
         -webkit-transform: translateX(-112.5%) translateY(110%);

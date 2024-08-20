@@ -13,7 +13,7 @@
 
 
 .sidebar.expanded {
-    width: 365px;
+    min-width: 365px;
     opacity: 1;
 }
 
@@ -51,7 +51,7 @@
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
-@media(max-width: 1420px) {
+@media(max-width: 1600px) {
     .sidebar {
         width: 190px;
     }
@@ -67,7 +67,7 @@
     }
 }
 
-@media(max-width: 1025px) {
+@media(max-width: 1220px) {
     .sidebar {
         padding-top: 20px 0 0 0;
         height: 380px;

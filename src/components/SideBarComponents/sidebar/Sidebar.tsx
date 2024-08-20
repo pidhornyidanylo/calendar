@@ -47,7 +47,7 @@ const Sidebar: React.FC = () => {
 			} `}
 		>
 			<GenericResize
-				size={1025}
+				size={1220}
 				setState={handleMutateCreateButton}
 				valueIf={true}
 			/>
