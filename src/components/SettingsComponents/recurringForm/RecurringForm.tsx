@@ -8,8 +8,11 @@ import toast from "react-hot-toast";
 import styles from "./RecurringForm.module.css";
 import { RecurringFormStateType } from "./RecurringForm.types";
 
-const ReccuringForm = ({ showCalendatInput, handleCloseModal }: any) => {
-  const dateToCreateTask = useStore((state) => state.dateToCreateTask);
+const ReccuringForm = ({
+  handleCloseModal,
+}: {
+  handleCloseModal: () => void;
+}) => {
   const { getUser } = useKindeBrowserClient();
   const user = getUser();
   const {
@@ -20,25 +23,30 @@ const ReccuringForm = ({ showCalendatInput, handleCloseModal }: any) => {
     formState: { errors },
   } = useForm<RecurringFormStateType>({
     defaultValues: {
+      recurrenceStartDate: "",
+      recurrenceEndDate: "",
+      recurrenceFrequency: "daily",
+      reccuring: true,
       timeFrom: "00:01",
       timeTo: "23:59",
       taskInfo: "some task",
       allDay: false,
-      date: "",
       addInfo: "some task details",
-      recurrenceFrequency: "daily",
-      recurrenceEndDate: "",
-      reccuring: true,
     },
   });
 
   const allDay = watch("allDay");
 
   const onSubmit: SubmitHandler<RecurringFormStateType> = async (data) => {
-    const taskData = {
-      date: showCalendatInput
-        ? parseDate(data.date)
-        : (dateToCreateTask as { day: number; month: number; year: number }),
+    const parsedStartDate = parseDate(data.recurrenceStartDate);
+    const parsedEndDate = parseDate(data.recurrenceEndDate);
+    const dateIdentifier = createDateIdentifier(
+      true,
+      data.recurrenceStartDate,
+      parsedStartDate
+    );
+    const response = await addTask({
+      date: parseDate(data.recurrenceStartDate),
       task: {
         time: {
           timeFrom: data.allDay ? "00:00" : data.timeFrom,
@@ -46,19 +54,13 @@ const ReccuringForm = ({ showCalendatInput, handleCloseModal }: any) => {
         },
         info: data.taskInfo,
         addInfo: data.addInfo,
+        recurring: true,
+        recurrenceEndDate: parsedEndDate,
+        recurrenceFrequency: data.recurrenceFrequency,
       },
-      dateIdentifier: createDateIdentifier(
-        showCalendatInput,
-        data,
-        dateToCreateTask
-      ),
+      dateIdentifier: dateIdentifier,
       token: user?.id as string,
-      reccuring: true,
-      recurrenceFrequency: data.recurrenceFrequency,
-      recurrenceEndDate: parseDate(data.recurrenceEndDate),
-    };
-
-    const response = await addTask(taskData);
+    });
 
     if (response.success) {
       if (handleCloseModal) {
@@ -69,10 +71,8 @@ const ReccuringForm = ({ showCalendatInput, handleCloseModal }: any) => {
       setValue("timeTo", "23:59");
       setValue("taskInfo", "some task");
       setValue("allDay", false);
-      setValue("date", "");
+      setValue("recurrenceStartDate", "");
       setValue("addInfo", "some task details");
-      setValue("recurrenceFrequency", "daily");
-      setValue("recurrenceEndDate", "");
     } else {
       toast.error(response.message as string);
     }
@@ -87,15 +87,13 @@ const ReccuringForm = ({ showCalendatInput, handleCloseModal }: any) => {
       >
         <h5 className={styles.taskDetailsTitle}>Task details:</h5>
         <div className={styles.dateContainer}>
-          <label htmlFor="date">Start: </label>
+          <label htmlFor="recurrenceStartDate">Start: </label>
           <input
             type="date"
-            {...register("date", { required: showCalendatInput })}
-            placeholder={`${
-              dateToCreateTask ? dateToCreateTask : "01.01.2025"
-            }`}
+            {...register("recurrenceStartDate", { required: true })}
+            placeholder="01.01.2025"
           />
-          {errors.date && <span>This field is required</span>}
+          {errors.recurrenceStartDate && <span>This field is required</span>}
         </div>
         <div className={styles.recurrenceEndDate}>
           <label htmlFor="recurrenceEndDate">End:</label>

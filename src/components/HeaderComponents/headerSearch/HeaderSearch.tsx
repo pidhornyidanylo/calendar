@@ -82,9 +82,11 @@ const HeaderSearch: React.FC = () => {
         placeholder={shortenPlaceholder ? "Search" : "Search on Calendar"}
         onKeyDown={handleKeyDown}
       />
-      <button type="button">
-        <Image className="svgIcon" src={filter} alt={"filter"} />
-      </button>
+      <Tooltip title="Filter">
+        <button type="button">
+          <Image className="svgIcon" src={filter} alt={"filter"} />
+        </button>
+      </Tooltip>
     </>
   );
 };

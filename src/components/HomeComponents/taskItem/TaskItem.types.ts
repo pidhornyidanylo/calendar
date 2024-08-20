@@ -11,7 +11,7 @@ export type TaskItemType = {
 	dateIdentifier: string;
 	tasks: SubTaskItemType[];
 	_id: string;
-	__v: number;
+	__v?: number;
 };
 
 export type TaskItemProps = {

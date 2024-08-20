@@ -3,7 +3,7 @@ export type RecurringFormStateType = {
   timeTo: string;
   taskInfo: string;
   allDay: boolean;
-  date: "";
+  recurrenceStartDate: string;
   reccuring: true;
   addInfo: string;
   recurrenceFrequency: string;

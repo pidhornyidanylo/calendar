@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
 });
 
 const PDFDocument = ({ data }: { data: TaskItemType[] }) => {
-  console.log(data);
   return (
     <Document>
       <Page size="A4" style={styles.page}>

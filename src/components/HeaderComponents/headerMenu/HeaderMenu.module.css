@@ -25,6 +25,10 @@
     -o-transform: scale(1.1);
 }
 
+.moreBtn:hover {
+    background-color: transparent;
+}
+
 .headerMenuTablet {
     position: fixed;
     top: 75px;

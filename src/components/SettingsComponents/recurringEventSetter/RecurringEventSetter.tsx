@@ -16,7 +16,9 @@ const RecurringEventSetter = () => {
         open={showRecurringModal}
         setOpen={() => setShowRecurringModal(!showRecurringModal)}
       >
-        <RecurringForm />
+        <RecurringForm
+          handleCloseModal={() => setShowRecurringModal(!showRecurringModal)}
+        />
       </GenericModal>
     </>
   );
