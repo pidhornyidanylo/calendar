@@ -6,7 +6,7 @@ const ModeSelect: React.FC = () => {
 		<>
 			<h3>Enable Dark Mode</h3>
 			<p>Switch between light and dark themes.</p>
-			<SwitchTheme local={false} />
+			<SwitchTheme />
 		</>
 	);
 };
