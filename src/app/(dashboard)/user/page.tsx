@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "User",
 };
 
-const allowedDomains = ["avatars.githubusercontent.com"];
+const allowedDomains: string[] = [];
 
 const isAllowedDomain = (url: string) => {
   try {
