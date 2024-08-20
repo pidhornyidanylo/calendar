@@ -1,8 +1,10 @@
 :root {
-  --main-light-blue: #61a3ff26;
+  --main-light-blue: rgba(97, 163, 255, 0.149);
   --main-hard-blue: rgba(79, 152, 255, 0.6);
   --main-white: rgba(255, 255, 255, 1);
   --main-text: black;
+  --main-subTaskTime: rgba(255, 136, 249, 0.712);
+
   --main-placeholder: rgb(96, 96, 96);
 
   --current-month-days: rgba(255, 255, 255, 1);
@@ -19,9 +21,9 @@ html.dark-mode {
   --main-light-blue: rgb(0, 0, 0, .87);
   --main-hard-blue: rgb(0, 0, 0, .87);
   --main-white: rgb(57, 57, 57);
-  --main-text: white;
-
-  --main-placeholder: white;
+  --main-text: rgba(239, 239, 239, 0.969);
+  --main-subTaskTime: rgba(212, 209, 209, 0.969);
+  --main-placeholder: rgba(239, 239, 239, 0.969);
 
   --main-pink: rgba(181, 181, 181, 0.35);
   --svg-filter: invert(1) hue-rotate(180deg);
@@ -138,5 +140,12 @@ main .main-content {
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+  }
+}
+
+@media(max-width: 425px) {
+  main .main-content {
+    background-color: transparent;
+    padding: 0;
   }
 }

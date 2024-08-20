@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
 import { getTheme } from "@/lib/data";
-import { Toaster } from "react-hot-toast";
-import { DM_Sans } from "next/font/google";
-import Favicon from "../../public/favicon.ico";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import type { Metadata } from "next";
+import { DM_Sans } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+import Favicon from "../../public/favicon.ico";
 import "./globals.css";
 
 const inter = DM_Sans({ subsets: ["latin"] });

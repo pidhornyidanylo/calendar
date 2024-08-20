@@ -1,55 +1,15 @@
+import type { SubTaskItemType } from "@/components/HomeComponents/subTaskItem/SubTaskItem.types";
+import type { TaskItemType } from "@/components/HomeComponents/taskItem/TaskItem.types";
+import { Document, Page, Text, View } from "@react-pdf/renderer";
 import React from "react";
-import {
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet,
-  Font,
-} from "@react-pdf/renderer";
-import { TaskItemType } from "@/components/HomeComponents/taskItem/TaskItem.types";
-
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: "column",
-    backgroundColor: "#ffffff",
-    padding: 30,
-  },
-  title: {
-    fontSize: 18,
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  section: {
-    marginBottom: 20,
-    padding: 10,
-    border: "1px solid #000",
-    borderRadius: 5,
-  },
-  dateTitle: {
-    fontSize: 14,
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-  taskList: {
-    marginLeft: 10,
-  },
-  taskItem: {
-    fontSize: 12,
-    marginBottom: 5,
-  },
-  taskTime: {
-    fontSize: 10,
-    color: "#555",
-  },
-});
+import { styles } from "./PDFDocument.styles";
 
 const PDFDocument = ({ data }: { data: TaskItemType[] }) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <Text style={styles.title}>Calendar Tasks Report</Text>
-        {data.map((taskGroup: any) => (
+        {data.map((taskGroup: TaskItemType) => (
           <View style={styles.section} key={taskGroup._id}>
             <Text style={styles.dateTitle}>
               Date:{" "}
@@ -64,7 +24,7 @@ const PDFDocument = ({ data }: { data: TaskItemType[] }) => {
             </Text>
             <View style={styles.taskList}>
               {taskGroup.tasks.length > 0 ? (
-                taskGroup.tasks.map((task: any) => (
+                taskGroup.tasks.map((task: SubTaskItemType) => (
                   <View style={styles.taskItem} key={task._id}>
                     <Text>
                       - {task.info}: {task.addInfo}

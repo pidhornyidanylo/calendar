@@ -14,89 +14,89 @@ import type { SubTaskItemProps, SubTaskItemType } from "./SubTaskItem.types";
 import EditForm from "./editForm/EditForm";
 
 const SubTaskItem: React.FC<SubTaskItemProps> = ({
-  subTask,
-  taskID,
+	subTask,
+	taskID,
 }: {
-  subTask: SubTaskItemType;
-  taskID: string;
+	subTask: SubTaskItemType;
+	taskID: string;
 }) => {
-  const { getUser } = useKindeBrowserClient();
-  const user = getUser();
-  const [expandSubTask, setExpandSubTask] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+	const { getUser } = useKindeBrowserClient();
+	const user = getUser();
+	const [expandSubTask, setExpandSubTask] = useState(false);
+	const [isEditing, setIsEditing] = useState(false);
 
-  const handleSubTaskDelete = async (subTaskID: string, taskID: string) => {
-    const response = await deleteTask({
-      subTaskID,
-      taskID,
-      token: user?.id as string,
-    });
+	const handleSubTaskDelete = async (subTaskID: string, taskID: string) => {
+		const response = await deleteTask({
+			subTaskID,
+			taskID,
+			token: user?.id as string,
+		});
 
-    if (response.success) {
-      toast.success("Task deleted successfully!");
-    } else {
-      toast.error(response.message as string);
-    }
-  };
+		if (response.success) {
+			toast.success("Task deleted successfully!");
+		} else {
+			toast.error(response.message as string);
+		}
+	};
 
-  return (
-    <div className={styles.subTask}>
-      <div className={styles.subTaskMain}>
-        <span className={styles.subTaskTimeSquare} />
-        <span className={styles.subTaskTime}>
-          {subTask.time.timeFrom === "00:00" && subTask.time.timeTo === "00:00"
-            ? "All day"
-            : convertTimeRange(
-                `${subTask.time.timeFrom} - ${subTask.time.timeTo}`
-              )}
-        </span>
-        <span className={styles.subTaskInner}>{subTask.info}</span>
-        <button
-          type="button"
-          onClick={() => setExpandSubTask(!expandSubTask)}
-          className={`${styles.subTaskExpand} ${
-            expandSubTask ? styles.upsided : ""
-          }`}
-        >
-          <Image className="svgIcon" src={arrowDown} alt={"arrow-down"} />
-        </button>
-      </div>
-      <div
-        className={`${styles.addInfo} ${expandSubTask ? styles.visible : ""}`}
-      >
-        <p style={{ whiteSpace: "pre-wrap" }}>{subTask.addInfo}</p>
-        <div className={styles.subTaskControls}>
-          <button
-            type="button"
-            className={styles.addInfoEdit}
-            onClick={() => setIsEditing(true)}
-          >
-            <Image
-              className="svgIcon"
-              src={edit}
-              alt={"edit"}
-              width={19}
-              height={18}
-            />
-          </button>
-          <button
-            type="button"
-            onClick={() => handleSubTaskDelete(subTask._id, taskID)}
-            className={styles.addInfoDelete}
-          >
-            <Image className="svgIcon" src={cross} alt={"delete"} />
-          </button>
-        </div>
-      </div>
-      <GenericModal open={isEditing} setOpen={() => setIsEditing(!isEditing)}>
-        <EditForm
-          subTask={subTask}
-          taskID={taskID}
-          handleCloseModal={() => setIsEditing(!isEditing)}
-        />
-      </GenericModal>
-    </div>
-  );
+	return (
+		<div className={styles.subTask}>
+			<div className={styles.subTaskMain}>
+				<span className={styles.subTaskTimeSquare} />
+				<span className={styles.subTaskTime}>
+					{subTask.time.timeFrom === "00:00" && subTask.time.timeTo === "00:00"
+						? "All day"
+						: convertTimeRange(
+								`${subTask.time.timeFrom} - ${subTask.time.timeTo}`,
+							)}
+				</span>
+				<span className={styles.subTaskInner}>{subTask.info}</span>
+				<button
+					type="button"
+					onClick={() => setExpandSubTask(!expandSubTask)}
+					className={`${styles.subTaskExpand} ${
+						expandSubTask ? styles.upsided : ""
+					}`}
+				>
+					<Image className="svgIcon" src={arrowDown} alt={"arrow-down"} />
+				</button>
+			</div>
+			<div
+				className={`${styles.addInfo} ${expandSubTask ? styles.visible : ""}`}
+			>
+				<p style={{ whiteSpace: "pre-wrap" }}>{subTask.addInfo}</p>
+				<div className={styles.subTaskControls}>
+					<button
+						type="button"
+						className={styles.addInfoEdit}
+						onClick={() => setIsEditing(true)}
+					>
+						<Image
+							className="svgIcon"
+							src={edit}
+							alt={"edit"}
+							width={19}
+							height={18}
+						/>
+					</button>
+					<button
+						type="button"
+						onClick={() => handleSubTaskDelete(subTask._id, taskID)}
+						className={styles.addInfoDelete}
+					>
+						<Image className="svgIcon" src={cross} alt={"delete"} />
+					</button>
+				</div>
+			</div>
+			<GenericModal open={isEditing} setOpen={() => setIsEditing(!isEditing)}>
+				<EditForm
+					subTask={subTask}
+					taskID={taskID}
+					handleCloseModal={() => setIsEditing(!isEditing)}
+				/>
+			</GenericModal>
+		</div>
+	);
 };
 
 export default SubTaskItem;

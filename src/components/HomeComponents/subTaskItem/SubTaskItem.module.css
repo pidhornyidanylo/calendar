@@ -175,7 +175,7 @@
         justify-content: center;
         border-radius: 5px;
         background-color: var(--main-hard-blue);
-        border: 2px solid rgb(255, 135, 249, .6);
+        border: 2px solid var(--main-subTaskTime);
         backdrop-filter: blur(10px);
         color: var(--main-text);
         -webkit-border-radius: 5px;

@@ -1,6 +1,12 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import type {
+  MainTaskType,
+  TaskItemType,
+  TimeType,
+  UserType,
+} from "./models.types";
 
-const timeSchema = new mongoose.Schema(
+const timeSchema = new Schema<TimeType>(
   {
     timeFrom: {
       type: String,
@@ -14,7 +20,7 @@ const timeSchema = new mongoose.Schema(
   { _id: false }
 );
 
-const taskItemSchema = new mongoose.Schema(
+const taskItemSchema = new Schema<TaskItemType>(
   {
     time: timeSchema,
     info: { type: String, required: true },
@@ -29,14 +35,14 @@ const taskItemSchema = new mongoose.Schema(
         month: { type: Number, required: true },
         day: { type: Number, required: true },
       },
-      required: function (this: any) {
+      required: function (this: TaskItemType) {
         return this.recurring === true;
       },
     },
     recurrenceFrequency: {
       type: String,
       enum: ["daily", "weekly", "monthly"],
-      required: function (this: any) {
+      required: function (this: TaskItemType) {
         return this.recurring === true;
       },
     },
@@ -44,7 +50,7 @@ const taskItemSchema = new mongoose.Schema(
   { _id: true }
 );
 
-const mainTaskSchema = new mongoose.Schema({
+const mainTaskSchema = new Schema<MainTaskType>({
   date: {
     year: { type: Number, required: true },
     month: { type: Number, required: true },
@@ -57,7 +63,7 @@ const mainTaskSchema = new mongoose.Schema({
   },
 });
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema<UserType>({
   token: {
     type: String,
     required: true,
@@ -74,4 +80,4 @@ const userSchema = new mongoose.Schema({
 });
 
 export const UserModel =
-  mongoose.models?.User || mongoose.model("User", userSchema);
+  mongoose.models?.User || mongoose.model<UserType>("User", userSchema);

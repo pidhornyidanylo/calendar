@@ -16,9 +16,8 @@ const Home: React.FC = async () => {
         <HomeSchedule data={JSON.stringify(schedule.tasks)} />
       </>
     );
-  } else {
-    return <Spinner />;
   }
+  return <Spinner />;
 };
 
 export const revalidate = 60;
