@@ -33,10 +33,10 @@ const Calendar: React.FC = () => {
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			setIsWindowSmall(window.innerWidth < 991);
+			setIsWindowSmall(window.innerWidth < 1220);
 
 			const handleResize = () => {
-				setIsWindowSmall(window.innerWidth < 991);
+				setIsWindowSmall(window.innerWidth < 1220);
 			};
 
 			window.addEventListener("resize", handleResize);

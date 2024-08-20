@@ -221,7 +221,15 @@
         cursor: pointer;
     }
 
-    @media(max-width: 1020px) {
+    @media(max-width: 1220px) {
+        .createForm {
+            display: none;
+        }
+
+        .formDate {
+            display: none;
+        }
+
         .timeContainer .timeItem {
             display: flex;
             gap: 15px;
