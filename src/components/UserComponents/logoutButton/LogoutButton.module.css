@@ -1,5 +1,18 @@
+.logoutButton {
+    margin-top: 50px;
+    width: 500px;
+    align-self: center;
+}
+
 .logoutLink {
     text-decoration: none;
     font-weight: 400;
     font-size: 1.2em;
+}
+
+@media(max-width: 576px) {
+    .logoutButton {
+    margin-top: 25px;
+    width: 100%;
+    }
 }

@@ -17,8 +17,15 @@
 .userSection {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+    justify-content: center;
+    align-items: justify;
+}
+
+.userData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
     margin-bottom: 30px;
     padding: 20px 0 20px 0;
     border-radius: 10px;
@@ -29,19 +36,45 @@
     width: 100%;
 }
 
-.userInfoItem {
-    display: flex;
-    gap: 50px;
-    align-items: end;
+.avatarContainer img {
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
 }
 
-.nameInfoContainer {
+
+.userInfo {
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.userSection p {
+.userInfo p {
+    display: flex;
+    gap: 10px;
     font-size: 1.2em;
     position: relative;
+}
+
+@media(max-width: 768px) {
+    .userData {
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 576px) {
+    .userInfo {
+        max-width: 90%;
+    }
+
+    .userInfo p {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 1.1em;
+        position: relative;
+    }
 }

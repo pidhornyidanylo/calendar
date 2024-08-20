@@ -5,17 +5,17 @@ import React from "react";
 import styles from "./LogoutButton.module.css";
 
 const LogoutButton = () => {
-	return (
-		<Button
-			sx={{ marginTop: "50px" }}
-			color="neutral"
-			loading={false}
-			size="lg"
-			variant="outlined"
-		>
-			<LogoutLink className={styles.logoutLink}>Logout</LogoutLink>
-		</Button>
-	);
+  return (
+    <Button
+      className={styles.logoutButton}
+      color="neutral"
+      loading={false}
+      size="lg"
+      variant="outlined"
+    >
+      <LogoutLink className={styles.logoutLink}>Logout</LogoutLink>
+    </Button>
+  );
 };
 
 export default LogoutButton;

@@ -132,7 +132,7 @@
     .subTaskTime {
         min-width: 80px;
         font-size: .9em;
-        padding: 1px 3px;
+        padding: 5px 0px;
         border-radius: 5px;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
@@ -167,10 +167,10 @@
     }
 
     .subTaskTime {
-        padding: 2px 5px;
+        padding: 4px 5px;
         position: absolute;
         font-size: .83em;
-        top: -27px;
+        top: -28px;
         display: flex;
         justify-content: center;
         border-radius: 5px;
@@ -243,7 +243,7 @@
 
     .subTaskTime {
         font-size: .8em;
-        top: -24px;
+        top: -28px;
     }
 
     .subTaskInner {
