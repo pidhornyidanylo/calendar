@@ -13,7 +13,7 @@ type AppData = {
 };
 
 export const appData: AppData = {
-  "1wxcw&89am1": {
+  "meditation%20master_app": {
     title: "Meditation Master",
     description: "A guided meditation app to help you relax and focus.",
     features: [
@@ -51,7 +51,7 @@ export const appData: AppData = {
       },
     ],
   },
-  "1wxcw&89am2": {
+  "recipe%20finder_app": {
     title: "Recipe Finder",
     description: "Discover and save recipes from around the world.",
     features: [
@@ -89,7 +89,7 @@ export const appData: AppData = {
       },
     ],
   },
-  "1wxcw&89am3": {
+  "fitness%20tracker_app": {
     title: "Fitness Tracker",
     description: "Track your workouts and monitor your fitness progress.",
     features: [
@@ -127,7 +127,7 @@ export const appData: AppData = {
       },
     ],
   },
-  "1wxcw&89am4": {
+  "travel%20guide_app": {
     title: "Travel Guide",
     description: "Get recommendations and travel tips for your next adventure.",
     features: [
@@ -165,7 +165,7 @@ export const appData: AppData = {
       },
     ],
   },
-  "1wxcw&89am5": {
+  "budget%20planner_app": {
     title: "Budget Planner",
     description: "Manage your finances and plan your budget effectively.",
     features: [
@@ -203,7 +203,7 @@ export const appData: AppData = {
       },
     ],
   },
-  "1wxcw&89am6": {
+  "learning%20hub_app": {
     title: "Learning Hub",
     description:
       "Explore a wide range of online courses and educational resources.",
@@ -241,7 +241,7 @@ export const appData: AppData = {
       },
     ],
   },
-  "1wxcw&89am7": {
+  "news%20digest_app": {
     title: "News Digest",
     description:
       "Stay updated with the latest news and headlines from around the world.",
@@ -279,7 +279,7 @@ export const appData: AppData = {
       },
     ],
   },
-  "1wxcw&89am8": {
+  "photo%20editor%20pro_app": {
     title: "Photo Editor Pro",
     description: "Enhance and edit your photos with professional tools.",
     features: [
