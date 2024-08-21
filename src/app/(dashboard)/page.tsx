@@ -9,7 +9,7 @@ const Home: React.FC = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   if (user) {
-    const schedule = await getTasks(user?.id as string);
+    const schedule = await getTasks(user.id);
     return (
       <>
         <HomeHeader />

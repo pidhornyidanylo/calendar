@@ -5,6 +5,7 @@ import { addDays, addMonths, startOfDay } from "date-fns";
 import { revalidatePath } from "next/cache";
 import type {
   AddTaskActionPayloadType,
+  AutoDeleteActionPayloadType,
   DeleteTaskActionPayloadType,
   UpdateTaskActionPayloadType,
   UpdateThemeActionPayloadType,
@@ -240,5 +241,26 @@ export const updateTheme = async (data: UpdateThemeActionPayloadType) => {
     return { success: true, message: "Theme changed!", theme: data.theme };
   } catch (error) {
     return { success: false, message: "Error changing theme!" };
+  }
+};
+
+export const updateAutoDelete = async (data: AutoDeleteActionPayloadType) => {
+  try {
+    await connectToDb();
+    const dbUser = await UserModel.findOne({ token: data.token });
+    if (!dbUser) {
+      return { success: false, message: "User not found." };
+    }
+    dbUser.autoDelete = data.frequency;
+    await dbUser.save();
+    
+    revalidatePath("/");
+
+    return {
+      success: true,
+      message: `Successfully changed auto deletion frequency to ${data.frequency} deletion.`,
+    };
+  } catch (error) {
+    return { success: false, message: "Error setting auto delete frequency." };
   }
 };

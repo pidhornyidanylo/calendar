@@ -73,6 +73,10 @@ const userSchema = new Schema<UserType>({
     type: String,
     required: true,
   },
+  autoDelete: {
+    type: String,
+    required: true,
+  },
   tasks: {
     type: [mainTaskSchema],
     required: true,

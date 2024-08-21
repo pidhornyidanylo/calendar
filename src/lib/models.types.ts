@@ -30,6 +30,7 @@ export type MainTaskType = Document & {
 
 export type UserType = Document & {
   token: string;
+  autoDelete: string;
   theme: string;
   tasks: MainTaskType[];
 };
