@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type React from "react";
-import { appData } from "./appsInfo";
 import styles from "./App.module.css";
+import { appData } from "./appsInfo";
 
 export const metadata: Metadata = {
   title: "app",
@@ -24,16 +24,19 @@ const AppItem: React.FC<AppItemProps> = ({
       <h2 className={styles.appTitle}>{appContent.title}</h2>
       <p className={styles.appParagraph}>{appContent.description}</p>
       <ul className={styles.appFeatures}>
-        {appContent.features.map((feature, index) => (
-          <li key={index} className={styles.appFeature}>
+        {appContent.features.map((feature) => (
+          <li key={feature.split(" ")[0]} className={styles.appFeature}>
             {feature}
           </li>
         ))}
       </ul>
       <h3 className={styles.testimonialsTitle}>What Our Users Say</h3>
       <ul className={styles.testimonialsList}>
-        {appContent.testimonials.map((testimonial, index) => (
-          <li key={index} className={styles.testimonialItem}>
+        {appContent.testimonials.map((testimonial) => (
+          <li
+            key={testimonial.feedback.split(" ")[0]}
+            className={styles.testimonialItem}
+          >
             <p className={styles.testimonialFeedback}>
               "{testimonial.feedback}"
             </p>

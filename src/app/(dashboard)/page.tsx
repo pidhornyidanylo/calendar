@@ -6,18 +6,18 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import type React from "react";
 
 const Home: React.FC = async () => {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-  if (user) {
-    const schedule = await getTasks(user.id);
-    return (
-      <>
-        <HomeHeader />
-        <HomeSchedule data={JSON.stringify(schedule.tasks)} />
-      </>
-    );
-  }
-  return <Spinner />;
+	const { getUser } = getKindeServerSession();
+	const user = await getUser();
+	if (user) {
+		const schedule = await getTasks(user.id);
+		return (
+			<>
+				<HomeHeader />
+				<HomeSchedule data={JSON.stringify(schedule.tasks)} />
+			</>
+		);
+	}
+	return <Spinner />;
 };
 
 export const revalidate = 60;

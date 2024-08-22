@@ -1,12 +1,12 @@
 import CopyIcon from "@/components/UserComponents/copyIcon/CopyIcon";
 import LogoutButton from "@/components/UserComponents/logoutButton/LogoutButton";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import Image from "next/image";
-import type { Metadata } from "next";
-import React from "react";
-import styles from "./User.module.css";
 import Spinner from "@/components/reusable/Spinner/Spinner";
 import { getRandomAvatar } from "@/utils/randomAvatar";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import type { Metadata } from "next";
+import Image from "next/image";
+import React from "react";
+import styles from "./User.module.css";
 
 export const metadata: Metadata = {
   title: "User",
@@ -56,13 +56,13 @@ const User = async () => {
               {user?.email && (
                 <>
                   <p>
-                    <strong>Email:</strong> {user?.email}
+                    <strong>Email:</strong> {`${user?.email.slice(0, 14)}...`}
                     <CopyIcon field={user?.email as string} />
                   </p>
                 </>
               )}
               <p>
-                <strong>ID:</strong> {user?.id.slice(0, 18) + "..."}
+                <strong>ID:</strong> {`${user?.id.slice(0, 18)}...`}
                 <CopyIcon field={user?.id as string} />
               </p>
             </div>
