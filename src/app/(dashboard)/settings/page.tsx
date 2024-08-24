@@ -69,7 +69,7 @@ const Settings: React.FC = async () => {
         <div className={styles.settingsSectionContent}>
           <h3>Set Recurring Events</h3>
           <p>Specify the frequency and duration of recurring events.</p>
-          <RecurringEventSetter />
+          <RecurringEventSetter token={user?.id as string} />
         </div>
       </div>
 
@@ -122,6 +122,7 @@ const Settings: React.FC = async () => {
         </div>
         <div className={styles.settingsSectionContent}>
           <AutoDeleteSelect
+            token={user?.id as string}
             value={
               fetchAutoDelete.autoDelete as
                 | "daily"
@@ -144,7 +145,7 @@ const Settings: React.FC = async () => {
           />
         </div>
         <div className={styles.settingsSectionContent}>
-          <ModeSelect />
+          <ModeSelect token={user?.id as string} />
         </div>
       </div>
     </>
