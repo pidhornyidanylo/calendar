@@ -15,7 +15,6 @@ import {
   autoDelete,
   cycle,
   exportIcon,
-  importIcon,
   mode,
   timezone,
 } from "./Settings.icons";
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
   title: "settings",
 };
 
-const Settings: React.FC = async () => {
+const Settings = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   const schedule = await getTasks(user?.id as string);

@@ -31,12 +31,13 @@
 
 .headerMenuTablet {
     position: fixed;
-    top: 75px;
-    padding: 20px;
+    top: 85px;
+    padding: 30px;
     right: 0px;
-    width: 80px;
+    min-width: 80px;
     display: grid;
     grid-column: auto;
+    gap: 10px;
     background-color: transparent;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(2, 1fr);

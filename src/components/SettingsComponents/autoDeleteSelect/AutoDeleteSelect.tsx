@@ -64,7 +64,7 @@ const AutoDeleteSelect: React.FC<AutoDeleteSelectPropsType> = ({
           },
         }}
       >
-        <Option value="daily">Daily</Option>
+        <Option data-testid="daily-option" value="daily">Daily</Option>
         <Option value="weekly">Weekly</Option>
         <Option value="monthly">Monthly</Option>
         <Option value="yearly">Yearly</Option>

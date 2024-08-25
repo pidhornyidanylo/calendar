@@ -19,12 +19,11 @@ export default async function DashboardLayout({
 }>) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  console.log(user);
   return (
     <>
       <Header />
       <main>
-        <Sidebar />
+        <Sidebar token={user?.id as string} />
         <div className="main-content">{children}</div>
       </main>
     </>

@@ -148,5 +148,6 @@ main .main-content {
   main .main-content {
     background-color: transparent;
     padding: 0;
+    box-shadow: none;
   }
 }

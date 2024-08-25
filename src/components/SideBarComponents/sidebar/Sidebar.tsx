@@ -11,64 +11,69 @@ import CreateForm from "../createForm/CreateForm";
 import Form from "../createForm/form/Form";
 import styles from "./Sidebar.module.css";
 
-const Sidebar: React.FC = () => {
-	const [openModal, setOpenModal] = useState(false);
-	const [mutateCreateButton, setMutateCreateButton] = useState(false);
+type SidebarPropType = {
+  token: string;
+};
 
-	const expandedSideBar = useStore((state) => state.expandedSideBar);
-	const setExpandedSideBar = useStore((state) => state.setExpandedSideBar);
-	const setDateToCreateTask = useStore((state) => state.setDateToCreateTask);
-	const showCreateForm = useStore((state) => state.showCreateForm);
-	const toggleShowCreateForm = useStore((state) => state.toggleShowCreateForm);
+const Sidebar: React.FC<SidebarPropType> = ({ token }: { token: string }) => {
+  const [openModal, setOpenModal] = useState(false);
+  const [mutateCreateButton, setMutateCreateButton] = useState(false);
 
-	const handleMutateCreateButton = (value: boolean) => {
-		setMutateCreateButton(value);
-	};
+  const expandedSideBar = useStore((state) => state.expandedSideBar);
+  const setExpandedSideBar = useStore((state) => state.setExpandedSideBar);
+  const setDateToCreateTask = useStore((state) => state.setDateToCreateTask);
+  const showCreateForm = useStore((state) => state.showCreateForm);
+  const toggleShowCreateForm = useStore((state) => state.toggleShowCreateForm);
 
-	const handleClick = () => {
-		if (!mutateCreateButton) {
-			setDateToCreateTask(null);
-			toggleShowCreateForm();
-		} else {
-			setOpenModal(true);
-		}
-	};
+  const handleMutateCreateButton = (value: boolean) => {
+    setMutateCreateButton(value);
+  };
 
-	useEffect(() => {
-		if (showCreateForm) {
-			setExpandedSideBar(true);
-		}
-	}, [showCreateForm, expandedSideBar]);
+  const handleClick = () => {
+    if (!mutateCreateButton) {
+      setDateToCreateTask(null);
+      toggleShowCreateForm();
+    } else {
+      setOpenModal(true);
+    }
+  };
 
-	return (
-		<aside
-			className={`${styles.sidebar} ${expandedSideBar ? styles.expanded : ""} ${
-				showCreateForm ? styles.expandedForCreate : ""
-			} `}
-		>
-			<GenericResize
-				size={1220}
-				setState={handleMutateCreateButton}
-				valueIf={true}
-			/>
-			<button
-				type="button"
-				className={styles.createBtn}
-				onClick={() => handleClick()}
-			>
-				<Image className="svgIcon" src={plus} alt="plus" />
-				<span>Create</span>
-			</button>
-			<Calendar />
-			<CreateForm />
-			<GenericModal open={openModal} setOpen={() => setOpenModal(!openModal)}>
-				<Form
-					handleCloseModal={() => setOpenModal(!openModal)}
-					showCalendatInput={true}
-				/>
-			</GenericModal>
-		</aside>
-	);
+  useEffect(() => {
+    if (showCreateForm) {
+      setExpandedSideBar(true);
+    }
+  }, [showCreateForm, expandedSideBar]);
+
+  return (
+    <aside
+      className={`${styles.sidebar} ${expandedSideBar ? styles.expanded : ""} ${
+        showCreateForm ? styles.expandedForCreate : ""
+      } `}
+    >
+      <GenericResize
+        size={1220}
+        setState={handleMutateCreateButton}
+        valueIf={true}
+      />
+      <button
+        type="button"
+        className={styles.createBtn}
+        onClick={() => handleClick()}
+      >
+        <Image className="svgIcon" src={plus} alt="plus" />
+        <span>Create</span>
+      </button>
+      <Calendar />
+      <CreateForm />
+      <GenericModal open={openModal} setOpen={() => setOpenModal(!openModal)}>
+        <Form
+          token={token}
+          handleCloseModal={() => setOpenModal(!openModal)}
+          showCalendatInput={true}
+        />
+      </GenericModal>
+    </aside>
+  );
 };
 
 export default Sidebar;

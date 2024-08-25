@@ -258,7 +258,7 @@ export const updateAutoDelete = async (data: AutoDeleteActionPayloadType) => {
 
 		return {
 			success: true,
-			message: `Successfully changed auto deletion frequency to ${data.frequency} deletion.`,
+			message: "Frequency updated successfully!",
 		};
 	} catch (error) {
 		return { success: false, message: "Error setting auto delete frequency." };

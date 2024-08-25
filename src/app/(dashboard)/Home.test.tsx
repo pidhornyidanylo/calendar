@@ -46,4 +46,36 @@ describe("Home Server Component", () => {
     });
     expect(todayButton).toBeInTheDocument();
   });
+  it("renders SubTask date", async () => {
+    jest.mocked(getTasks).mockResolvedValueOnce({
+      success: false,
+      tasks: [
+        {
+          date: {
+            year: new Date().getFullYear(),
+            month: new Date().getMonth() + 1,
+            day: new Date().getDate(),
+          },
+          tasks: [
+            {
+              addInfo: "swimming pool",
+              info: "swim",
+              recurrenceEndDate: null,
+              recurrenceFrequency: null,
+              recurring: false,
+              time: {
+                timeFrom: "10:00",
+                timeTo: "12:00",
+              },
+              _id: "66c6fbacdd9b3c4895e0b331",
+            },
+          ],
+          dateIdentifier: "2482024",
+        },
+      ],
+    });
+    render(await Home());
+    const subTaskDate = screen.getByText(/aug, sun/i);
+    expect(subTaskDate).toBeInTheDocument();
+  });
 });

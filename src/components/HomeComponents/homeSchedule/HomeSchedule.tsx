@@ -22,7 +22,6 @@ const HomeSchedule: React.FC<HomeScheduleProps> = ({ data, token }) => {
 
   useEffect(() => {
     const tasks: TaskItemType[] = JSON.parse(data);
-
     const today = new Date();
     const todayDay = today.getDate();
     const todayMonth = today.getMonth() + 1;
@@ -86,14 +85,14 @@ const HomeSchedule: React.FC<HomeScheduleProps> = ({ data, token }) => {
   }
 
   return (
-    <div>
+    <>
       {filteredTasks.map((task: TaskItemType) => (
-        <TaskItem token={token} key={task._id} task={task} />
+        <TaskItem token={token} key={`filtered-${task._id}`} task={task} />
       ))}
       {extraTasks.map((task: TaskItemType) => (
-        <TaskItem token={token} key={task._id} task={task} />
+        <TaskItem token={token} key={`extra-${task._id}`} task={task} />
       ))}
-    </div>
+    </>
   );
 };
 
