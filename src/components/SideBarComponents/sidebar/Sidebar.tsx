@@ -64,7 +64,7 @@ const Sidebar: React.FC<SidebarPropType> = ({ token }: { token: string }) => {
         <span>Create</span>
       </button>
       <Calendar />
-      <CreateForm />
+      <CreateForm token={token} />
       <GenericModal open={openModal} setOpen={() => setOpenModal(!openModal)}>
         <Form
           token={token}

@@ -5,30 +5,38 @@ import styles from "./CreateForm.module.css";
 import Form from "./form/Form";
 import PreFormInfo from "./preFormInfo/PreFormInfo";
 
-const CreateForm: React.FC = () => {
-	const dateToCreateTask = useStore((state) => state.dateToCreateTask);
-	const showCreateForm = useStore((state) => state.showCreateForm);
-	const setShowCreateForm = useStore((state) => state.setShowCreateForm);
+type CreateFormPropType = {
+  token: string;
+};
 
-	return (
-		<>
-			<PreFormInfo />
-			<div
-				className={`${styles.createFormContainer} ${
-					dateToCreateTask ? styles.visible : ""
-				}`}
-			>
-				<div className={styles.formContainer}>
-					<GenericResize
-						size={992}
-						setState={setShowCreateForm}
-						valueIf={false}
-					/>
-					{showCreateForm && <Form showCalendatInput={false} />}
-				</div>
-			</div>
-		</>
-	);
+const CreateForm: React.FC<CreateFormPropType> = ({
+  token,
+}: {
+  token: string;
+}) => {
+  const dateToCreateTask = useStore((state) => state.dateToCreateTask);
+  const showCreateForm = useStore((state) => state.showCreateForm);
+  const setShowCreateForm = useStore((state) => state.setShowCreateForm);
+
+  return (
+    <>
+      <PreFormInfo />
+      <div
+        className={`${styles.createFormContainer} ${
+          dateToCreateTask ? styles.visible : ""
+        }`}
+      >
+        <div className={styles.formContainer}>
+          <GenericResize
+            size={992}
+            setState={setShowCreateForm}
+            valueIf={false}
+          />
+          {showCreateForm && <Form showCalendatInput={false} token={token} />}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default CreateForm;
